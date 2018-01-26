@@ -1,0 +1,13 @@
+{
+  "plugins": [
+    "codeblock-numbering",
+    "scripts"
+  ],
+  "pluginsConfig": {
+    "scripts": {
+      "files": [
+        "./scripts/onKSLoad.js"
+      ]
+    }
+  }
+}

@@ -1,0 +1,52 @@
+/* @import 'https://unpkg.com/open-color@1.5.1/open-color.css'; */
+
+.markdown-section h2 {
+  font-size: 1.6em;
+}
+
+.markdown-section h3 {
+  font-size: 1.2em;
+}
+
+.markdown-section h4 {
+  font-size: 1em;
+}
+
+.markdown-section pre {
+  position: relative;
+}
+
+.markdown-section pre::before {
+  display: block;
+  content: attr(data-index);
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #dee2e6;
+  text-align: center;
+  width: 2em;
+  color: white;
+}
+
+li.chapter {
+  display: flex;
+}
+
+li.chapter::before {
+  display: block;
+  content: attr(data-level);
+  padding: 10px 5px 10px 15px;
+  color: #939da3;
+}
+
+li.chapter > span {
+  color: #939da3 !important;
+}
+
+li.chapter > span, li.chapter > a {
+  padding: 10px 15px 10px 0 !important;
+}
+
+embed.hover[src*=".svg"] {
+  opacity: 0.8;
+}

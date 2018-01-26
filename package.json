@@ -1,0 +1,23 @@
+{
+  "name": "fds-js",
+  "version": "1.0.0",
+  "description": "본 교재는 [패스트캠퍼스 프론트엔드 개발 스쿨](http://school.fastcampus.co.kr/dev_fds/)의 강의 자료로서 제작되었습니다. 강의에서는 이 교재에 나온 내용 외에 실무 관련 지식을 포함한 더 깊은 내용을 다루며, 퀴즈, 실습 과제 수행, 코드 리뷰, 팀 프로젝트 등의 활동을 하게 됩니다.",
+  "main": "index.js",
+  "dependencies": {
+    "gitbook-plugin-codeblock-numbering": "^0.0.2"
+  },
+  "devDependencies": {
+    "gitbook-cli": "^2.3.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/seungha/fds-js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/seungha/fds-js#readme"
+}
