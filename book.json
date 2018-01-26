@@ -1,4 +1,7 @@
 {
+  "title": "JavaScript로 만나는 세상",
+  "author": "김승하",
+  "language": "ko",
   "plugins": [
     "codeblock-numbering",
     "scripts"
