@@ -55,7 +55,7 @@ JavaScript에는 날짜과 시각을 다루기 위한 `Date` 생성자가 내장
 
 - `new Date()` - **현재 시각**을 나타내는 Date 객체를 반환합니다.
 - `new Date(value)` - `value`가 정수인 경우, 이를 **밀리초 단위**의 유닉스 시간으로 간주해서 이에 해당하는 Date 객체를 반환합니다. `value`가 문자열인 경우, 이 문자열이 나타내는 Date 객체를 반환합니다.
-- `new Date(year, month, day, hour, minutes, seconds, milliseconds)` - 년, 월, 일, 시, 분, 초, 밀리초를 **직접 입력**해서 Date 객체를 생성할 수도 있습니다. '월' 부분은 0부터 11까지의 값을 가집니다. 월 이후의 인자는 생략가능하고, 인자를 생략하면 '일'은 1로, 나머지는 모두 0으로 지정됩니다.
+- `new Date(year, month, day, hour, minutes, seconds, milliseconds)` - 년, 월, 일, 시, 분, 초, 밀리초를 **직접 입력**해서 Date 객체를 생성할 수도 있습니다. '월' 부분은 0부터 11까지의 값을 가집니다. 월 이후의 인수는 생략가능하고, 인수를 생략하면 '일'은 1로, 나머지는 모두 0으로 지정됩니다.
 
 `Date` 객체를 생성하고 난 뒤에는, 해당 객체가 나타내는 년, 월, 일, 시, 분, 초, 밀리초를 가져오거나 변경할 수 있습니다. [MDN 문서](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date)의 메소드 목록을 참고하세요.
 
@@ -110,7 +110,7 @@ console.log(typeof sym); // symbol
 console.log(sym); // Symbol()
 ```
 
-`Symbol` 함수에 문자열을 넘겨서, 해당 심볼에 대한 설명을 포함한 심볼을 생성할 수 있습니다. 이 때 넘겨지는 문자열은 그저 심볼의 설명일 뿐이므로, 심볼의 비교 연산에 영향을 주지 않습니다. 즉, 어떤 문자열이 인자열에 들어오는 지와 상관없이 **새로 생성된 심볼은 다른 모든 심볼과 다른 것으로 취급됩니다.**
+`Symbol` 함수에 문자열을 넘겨서, 해당 심볼에 대한 설명을 포함한 심볼을 생성할 수 있습니다. 이 때 넘겨지는 문자열은 그저 심볼의 설명일 뿐이므로, 심볼의 비교 연산에 영향을 주지 않습니다. 즉, 어떤 문자열이 인수열에 들어오는 지와 상관없이 **새로 생성된 심볼은 다른 모든 심볼과 다른 것으로 취급됩니다.**
 
 ```js
 console.log(Symbol('my symbol')); // Symbol(my symbol)
@@ -133,13 +133,13 @@ console.log(obj); // { [Symbol(my symbol)]: 'hello' }
 **내장 심볼(well-known symbol)**을 객체의 속성 키로 사용하면, 특정 상황에서의 객체의 동작 방식을 마음대로 바꿀 수 있습니다.
 
 - `Symbol.hasInstance` - 객체가 `instanceof` 연산자의 피연산자로 왔을 때의 동작을 바꿉니다.
-- `Symbol.isConcatSpreadable` - 객체가 `Array.prototype.concat` 메소드의 인자로 넘겨질 때의 동작을 바꿉니다.
+- `Symbol.isConcatSpreadable` - 객체가 `Array.prototype.concat` 메소드의 인수로 넘겨질 때의 동작을 바꿉니다.
 - `Symbol.iterator` - 객체가 `for...of` 구문을 통해 사용될 때의 동작 방식을 바꿉니다.
-- `Symbol.match` - 객체가 `String.prototype.match` 메소드의 인자로 넘겨질 때의 동작을 바꿉니다.
-- `Symbol.replace` - 객체가 `String.prototype.replace` 메소드의 인자로 넘겨질 때의 동작을 바꿉니다.
-- `Symbol.search` - 객체가 `String.prototype.search` 메소드의 인자로 넘겨질 때의 동작을 바꿉니다.
+- `Symbol.match` - 객체가 `String.prototype.match` 메소드의 인수로 넘겨질 때의 동작을 바꿉니다.
+- `Symbol.replace` - 객체가 `String.prototype.replace` 메소드의 인수로 넘겨질 때의 동작을 바꿉니다.
+- `Symbol.search` - 객체가 `String.prototype.search` 메소드의 인수로 넘겨질 때의 동작을 바꿉니다.
 - `Symbol.species` - `Array.prototype`을 상속받은 객체에 대해 `Array.prototype.map` 등의 메소드를 호출할 때, 반환되는 객체의 생성자를 지정합니다.
-- `Symbol.split` - 객체가 `String.prototype.split` 메소드의 인자로 넘겨질 때의 동작을 바꿉니다.
+- `Symbol.split` - 객체가 `String.prototype.split` 메소드의 인수로 넘겨질 때의 동작을 바꿉니다.
 - `Symbol.toPrimitive` - 객체가 원시 타입의 값으로 변환되어야 할 때, 정확이 어떤 값으로 변환되어야 하는 지를 지정합니다.
 - `Symbol.toStringTag` - `Object.prototype.toString()` 메소드를 객체에 대해 직접 호출할 때의 동작을 바꿉니다.
 - `Symbol.unscopable` - `with` 블록 안에서 어떤 속성을 참조할 수 있는 지를 지정합니다.
