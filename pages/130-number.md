@@ -267,7 +267,7 @@ Math.max(1, 2, 3, 4, 5); // 5
 
 # number 타입의 메소드
 
-number 타입은 객체가 아니지만, 마치 객체처럼 메소드를 사용할 수 있습니다. 이는 JavaScript가 **래퍼 객체(wrapper object)**라는 기능을 제공하기 때문인데, 이에 대해서는 [값 더 알아보기](./temp/220-value-in-depth.md) 챕터에서 자세히 다룹니다.
+number 타입은 객체가 아니지만, 마치 객체처럼 메소드를 사용할 수 있습니다. 이는 JavaScript가 **래퍼 객체(wrapper object)**라는 기능을 제공하기 때문인데, 이에 대해서는 [값 더 알아보기](./220-value-in-depth.md) 챕터에서 자세히 다룹니다.
 
 ```js
 (12345).toString(); // '12345'

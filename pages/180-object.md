@@ -173,7 +173,7 @@ person2.introduce(); // 안녕하세요, 제 이름은 신하경입니다.
 
 이렇게 `introduce`라는 함수가 객체 외부에서 정의되었고, `person1`과 `person2`에서 재사용되었는데도 불구하고 메소드가 잘 동작했습니다.
 
-다만, **화살표 함수**는 `this` 키워드를 전혀 다르게 취급하기 때문에 위와 같은 방식으로는 메소드로 사용될 수 없습니다. 또한, `function` 키워드를 통해 정의된 메소드가 항상 위와 같은 방식으로 `this`를 취급하는 것은 아닙니다. 특별한 방법을 통해 아예 `this`를 우리가 원하는 객체로 바꿔버릴 수도 있습니다. 이에 대해서는 [함수 더 알아보기](./temp/230-function-in-depth.md) 챕터에서 자세히 알아보겠습니다.
+다만, **화살표 함수**는 `this` 키워드를 전혀 다르게 취급하기 때문에 위와 같은 방식으로는 메소드로 사용될 수 없습니다. 또한, `function` 키워드를 통해 정의된 메소드가 항상 위와 같은 방식으로 `this`를 취급하는 것은 아닙니다. 특별한 방법을 통해 아예 `this`를 우리가 원하는 객체로 바꿔버릴 수도 있습니다. 이에 대해서는 [함수 더 알아보기](./230-function-in-depth.md) 챕터에서 자세히 알아보겠습니다.
 
 ## 프로토타입 (Prototype)
 
@@ -442,7 +442,7 @@ Object.getPrototypeOf(person1) === Person.prototype; // true
 
 그런데 좀 이상한 점이 있습니다. 우리는 `Person.prototype`에 객체를 저장한 적이 없습니다. 심지어 `Person`은 함수인데도 불구하고 속성을 갖고 있습니다!
 
-먼저, JavaScript에서는 **함수도 특별한 형태의 객체입니다.** 이에 대해서는 [함수 더 알아보기](./temp/230-function-in-depth.md) 챕터에서 자세히 다룹니다.
+먼저, JavaScript에서는 **함수도 특별한 형태의 객체입니다.** 이에 대해서는 [함수 더 알아보기](./230-function-in-depth.md) 챕터에서 자세히 다룹니다.
 
 그리고, JavaScript에서는 **`function` 구문을 통해 함수를 정의할 때 함수의 `prototype` 속성에 객체가 자동으로 생성되고, 이 객체의 `constructor` 속성에는 함수 자기 자신이 저장됩니다.**
 
@@ -460,7 +460,7 @@ Person.prototype.constructor === Person; // true
 person1.constructor === Person; // true
 ```
 
-여기서 주의할 점이 하나 있습니다. **화살표 함수는 생성자로 사용할 수 없고,** 그에 따라 `prototype`과 같은 속성이 자동으로 생성되지도 않습니다. 이에 대해서는 [함수 더 알아보기](./temp/230-function-in-depth.md) 챕터에서 자세히 알아보도록 하겠습니다.
+여기서 주의할 점이 하나 있습니다. **화살표 함수는 생성자로 사용할 수 없고,** 그에 따라 `prototype`과 같은 속성이 자동으로 생성되지도 않습니다. 이에 대해서는 [함수 더 알아보기](./230-function-in-depth.md) 챕터에서 자세히 알아보도록 하겠습니다.
 
 ```js
 const Person = () => {};
@@ -548,7 +548,7 @@ Person.compareAge = function(person1, person2) {
 
 [^1]: 다른 언어에서 HashMap, Dictionary 등으로 불리는 자료 구조와 유사하다고 할 수 있습니다.
 [^2]: 한글은 JavaScript의 식별자로 사용할 수 있습니다만, 권장되지는 않습니다.
-[^3]: `Object.create` 함수에는 프로토타입을 지정하는 것 말고도 다른 기능이 있는데, 이에 대해서는 [객체 더 알아보기](./temp/240-object-in-depth.md) 챕터에서 자세히 다룹니다.
+[^3]: `Object.create` 함수에는 프로토타입을 지정하는 것 말고도 다른 기능이 있는데, 이에 대해서는 [객체 더 알아보기](./240-object-in-depth.md) 챕터에서 자세히 다룹니다.
 [^4]: Common Lisp, Self 등의 몇몇 Lisp 방언과 Lua 등이 프로토타입 상속을 내장하고 있지만, 대부분의 유명한 범용 프로그래밍 언어는 프로토타입 상속과 같은 기능을 내장하고 있지 않습니다.
 [^5]: 객체의 `__proto__` 속성을 통해서도 프로토타입을 조작할 수 있지만, 이 기능은 `Object.getPrototypeOf`, `Object.setPrototypeOf`에 의해 대체되었습니다.
 [^6]: 'a의 프로토타입을 b로, b의 프로토타입을 a로 지정'하면 어떻게 될 지 궁금하다고요? 최신 JavaScript 엔진에서는 순환하는 프로토타입 체인을 만들 수 없도록 제한하고 있습니다. 한 번 시험해보세요: `a = {}; b = {}; a.__proto__ = b; b.__proto__ = a;`

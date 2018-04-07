@@ -262,7 +262,7 @@ for (let item of arr) {
 }
 ```
 
-`for...of` 구문에 대해서는 [Iterable](./temp/260-iteration.md) 챕터에서 자세히 다룹니다.
+`for...of` 구문에 대해서는 [Iterable](./260-iteration.md) 챕터에서 자세히 다룹니다.
 
 ## `break`, `continue`
 
@@ -326,6 +326,6 @@ function translateColor(english) {
 }
 ```
 
-`throw` 구문은 코드의 실행을 중단시키고 에러를 발생시키는 동작을 합니다. 이에 대해서는 [예외 처리](./temp/290-exception.md) 챕터에서 자세히 다룹니다.
+`throw` 구문은 코드의 실행을 중단시키고 에러를 발생시키는 동작을 합니다. 이에 대해서는 [예외 처리](./290-exception.md) 챕터에서 자세히 다룹니다.
 
 [^1]: 일치 여부는 strict equality, 즉 `===` 연산자와 같은 방식에 의해 결정됩니다. ([명세](http://www.ecma-international.org/ecma-262/5.1/#sec-12.11))
