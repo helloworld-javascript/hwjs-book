@@ -4,11 +4,11 @@ JavaScript는 웹의 초창기였던 1995년에 Netscape Navigator라는 웹 브
 
 ## 언어와 구동 환경
 
-JavaScript 언어 자체에는 다른 범용 프로그래밍 언어(general-purpose programming language)에 비해 적은 양의 기능(주로 **코드의 실행**과 관련된 것)을 포함하고 있습니다. 하지만 이 JavaScript를 구동할 수 있는 **구동 환경**에 여러 기능(주로 **입출력**과 관련된 것)이 포함되어 있어서, 우리는 이 기능을 이용해 쓸모있는 응용 프로그램을 만들 수 있게 됩니다. JavaScript 구동 환경에는 웹 브라우저, 웹 서버, 게임 엔진, 포토샵(!) 등 많은 프로그램들이 있습니다.
+JavaScript 언어 자체에는 다른 범용 프로그래밍 언어(general-purpose programming language)에 비해 적은 양의 기능(주로 **코드의 실행**과 관련된 것)을 포함하고 있습니다. 하지만 이 JavaScript를 구동할 수 있는 **구동 환경**에 여러 기능(주로 **입출력**과 관련된 것)이 포함되어 있어서, 우리는 이 기능을 이용해 쓸모있는 응용 프로그램을 만들 수 있게 됩니다. JavaScript 구동 환경에는 웹 브라우저, 웹 서버 (Node.js), 게임 엔진, 포토샵(!) 등 많은 프로그램들이 있습니다.
 
 ## ECMAScript와 브라우저 잔혹사
 
-몇몇 유명한 프로그래밍 언어로 마찬가지로, JavaScript라는 언어에는 표준 명세(standard specification)라는 것이 존재합니다. 여러 브라우저 개발사에서 통일된 JavaScript 기능을 구현할 수 있도록, 언어의 문법과 기능을 세부적으로 정의해놓은 설계도라고 생각하면 됩니다. JavaScript의 표준 명세는 **ECMAScript**라는 이름을 갖고 있는데, Netscape에 탑재되었던 JavaScript 구현체(implementation)를 ECMA(European Computer Manufacturer’s Association)라는 단체에서 표준화한 것입니다. 이 표준은 1997년에 처음 제정되어 계속 발전하고 있는 중입니다.
+몇몇 유명한 프로그래밍 언어와 마찬가지로, JavaScript라는 언어에는 표준 명세(standard specification)라는 것이 존재합니다. 여러 브라우저 개발사에서 통일된 JavaScript 기능을 구현할 수 있도록, 언어의 문법과 기능을 세부적으로 정의해놓은 설계도라고 생각하면 됩니다. JavaScript의 표준 명세는 **ECMAScript**라는 이름을 갖고 있는데, Netscape에 탑재되었던 JavaScript 구현체(implementation)를 ECMA(European Computer Manufacturer’s Association)라는 단체에서 표준화한 것입니다. 이 표준은 1997년에 처음 제정되어 계속 발전하고 있는 중입니다.
 
 ### 브라우저 간 호환성
 
@@ -22,7 +22,7 @@ ES5가 공개된 2009년 경부터는 브라우저 간 호환성 문제가 조�
 
 ES5의 다음 버전부터는 해당 버전이 공개된 연도를 버전 번호로 사용하고 있습니다. 즉, ES5의 다음 버전의 이름은 ES6가 아니라 **ES2015** 입니다. 다만 ES2015라는 이름이 확정되기 전까지는 ES5의 다음 버전이라는 의미에서 ES6라는 이름이 널리 사용되었고, 아직까지도 ES6라는 이름이 사용되는 경우가 있습니다. 하지만 정식 명칭은 ES2015라는 사실을 기억하세요.
 
-ES2015에서 엄청나게 많은 문법과 기능(클래스, 모듈, 분해대입, 템플릿 문자열, 블록 스코프, 반복자, 프록시 등등...)이 추가되고, Node.js 등 웹 브라우저 외에도 JavaScript를 구동할 수 있는 구동 환경의 종류가 많아지면서, 이제 JavaScript는 Python 등 다른 범용 프로그래밍 언어와 비교해도 전혀 뒤쳐지지 않는 범용 프로그래밍 언어가 되었습니다. ES2015부터는 매년 새로운 버전의 ECMAScript가 공개되고 있고, 2017년 11월 현재 Chrome, Firefox, Safari 등의 브라우저에 ES2017의 거의 모든 기능이 구현되어 있는 상태입니다. 그리고 새로운 명세인 [ES2018의 초안](https://tc39.github.io/ecma262/)이 작성되고 있습니다.
+ES2015에서 엄청나게 많은 문법과 기능(클래스, 모듈, 분해대입, 템플릿 문자열, 블록 스코프, 반복자, 프록시 등등...)이 추가되고, Node.js 등 웹 브라우저 외에도 JavaScript를 구동할 수 있는 구동 환경의 종류가 많아지면서, 이제 JavaScript는 Python 등 다른 범용 프로그래밍 언어와 비교해도 전혀 뒤쳐지지 않는 범용 프로그래밍 언어가 되었습니다. ES2015부터는 매년 새로운 버전의 ECMAScript가 공개되고 있습니다. 최신 명세는 [이 곳](https://tc39.github.io/ecma262/)에서, 브라우저 별 기능 개발 현황은 [이 곳](http://kangax.github.io/compat-table/es2016plus/)에서 확인해볼 수 있습니다.
 
 ## 빠르게 발전하는 언어, 따라가는 개발자
 
@@ -32,13 +32,13 @@ ES2015에서 엄청나게 많은 문법과 기능(클래스, 모듈, 분해대�
 
 ### 트랜스파일러 (Transpiler)
 
-트랜스파일러는 최신 버전 JavaScript의 **문법**을 **똑같이 동작하는 이전 버전 JavaScript의 문법**으로 바꾸어주는 도구입니다. 마법같은 도구죠! 이를 이용해 개발자는 최신 버전으로 코딩을 하고, 실제로 사용자에게 배포할 코드는 구형 브라우저에서도 잘 동작하도록 변환해줄 수 있습니다. 요즈음 많이 사용되는 트랜스파일러에는 [Babel](https://babeljs.io/), [TypeScript](http://www.typescriptlang.org/) 같은 것들이 있습니다. 우리가 나중에 사용할 [Create React App](https://github.com/facebookincubator/create-react-app), 줄여서 CRA라고 부르는 도구는 Babel 트랜스파일러를 사용하고 있습니다.
+트랜스파일러는 최신 버전 JavaScript의 **문법**을 **똑같이 동작하는 이전 버전 JavaScript의 문법**으로 바꾸어주는 도구입니다. 마법같은 도구죠! 이를 이용해 개발자는 최신 버전으로 코딩을 하고, 실제로 사용자에게 배포할 코드는 구형 브라우저에서도 잘 동작하도록 변환해줄 수 있습니다. 요즈음 많이 사용되는 트랜스파일러에는 [Babel](https://babeljs.io/), [TypeScript](http://www.typescriptlang.org/) 같은 것들이 있습니다.
 
 ### 폴리필 (Polyfill)
 
-시간이 지남에 따라 JavaScript를 실행하는 구동 환경에는 여러가지 **기능**이 추가됩니다. 새롭게 추가된 기능을 구형 환경에서도 사용할 수 있도록 똑같이 구현해놓은 라이브러리를 폴리필(polyfill) 혹은 심(shim)이라고 부릅니다. Babel을 사용하고 있다면, Babel과 연동해서 쉽게 사용할 수 있는 폴리필([babel-polyfill](https://babeljs.io/docs/usage/polyfill/) 또는 [transform-runtime](https://babeljs.io/docs/plugins/transform-runtime/))이 있기 때문에 폴리필에 대해 크게 걱정할 필요는 없습니다.
+JavaScript를 실행하는 구동 환경에는 여러가지 **문법과 기능**이 추가됩니다. 이를 구형 환경에서도 사용할 수 있도록 똑같이 구현해놓은 라이브러리를 폴리필(polyfill) 혹은 심(shim)이라고 부릅니다. 본인이 개발하는 프로그램이 어느 정도까지의 구형 환경을 지원해야 하는 지를 결정한 후, 적절한 폴리필을 프로젝트에 추가하세요. 예를 들어, [Fetch API](https://developer.mozilla.org/ko/docs/Web/API/Fetch_API)를 활용한 웹 사이트를 Internet Explorer 10에서도 문제없이 동작할 수 있도록 만드려면 [해당 기능에 대한 폴리필](https://github.com/github/fetch)을 프로젝트에 추가시키세요.
 
 ### 이용중인 환경의 JavaScript 기능 지원 여부 확인하기
 
-다만 최신 버전에 포함된 문법과 기능을 전부 이전 버전에서 구현할 수 있는 것은 아니고, 또 트랜스파일러마다 지원하는 기능의 종류가 달라서, 항상 모든 최신 기능을 사용할 수 있는 것은 아닙니다. 최신 기능을 사용하고 싶다면, 본인이 사용중인 트랜스파일러가 해당 기능을 지원하도록 설정되어 있는지 확인하세요. JavaScript 최신 버전에 관심이 있다면, 페이스북이나 트위터 등의 매체를 통해 JavaScript 최신 버전에 대한 뉴스를 수집하고,
+다만 최신 버전에 포함된 문법과 기능을 전부 이전 버전에서 구현할 수 있는 것은 아니고, 또 트랜스파일러마다 지원하는 기능의 종류가 달라서, 항상 모든 최신 기능을 사용할 수 있는 것은 아닙니다. 최신 기능을 사용하고 싶다면, 본인이 사용중인 트랜스파일러가 해당 기능을 지원하도록 설정되어 있는지, 프로젝트에 적절한 폴리필이 포함되어 있는지 확인하세요. JavaScript 최신 버전에 관심이 있다면, 페이스북이나 트위터 등의 매체를 통해 JavaScript 최신 버전에 대한 뉴스를 수집하고,
 [브라우저열 지원 기능 일람](http://kangax.github.io/compat-table/es6/)을 제공하는 웹사이트를 주기적으로 확인해보세요.
