@@ -169,7 +169,7 @@ function translateColor(english) {
       break;
     case 'purple':
     case 'violet':
-      // 이 코드 영역은 english 변수의 값이 'purple'일 때와 'violet'일 때 모두 실행됨.
+      // 이 코드 영역은 english 변수의 값이 'purple'일 때와 'violet'일 때 모두 실행됩니다.
       result = '보라색';
       break;
     default:
@@ -220,7 +220,7 @@ do {
 
 ## `for` 구문
 
-위의 `while` 구문 예제에서 볼 수 있듯이, 루프에는 초기값과 갱신에 대한 코드가 있는 경우가 많습니다. 이런 경우에는 `for` 구문을 이용해 코드를 조금 더 보기 좋게 짤 수 있습니다. 아래 예제는 위 `while` 구문에 대한 예제와 완전히 똑같이 작동합니다.
+위의 `while` 구문 예제에서 볼 수 있듯이, 루프에는 초기값과 갱신에 대한 코드가 있는 경우가 많습니다. 이런 경우에는 `for` 구문을 이용해 코드를 조금 더 짧게 짤 수 있습니다. 아래 예제는 위 `while` 구문에 대한 예제와 완전히 똑같이 작동합니다.
 
 ```js
 // for (초기값 정의; 실행 조건; 갱신) { ... }
@@ -262,7 +262,7 @@ for (let item of arr) {
 }
 ```
 
-`for...of` 구문에 대해서는 [Iterable](./temp/260-iteration.md) 챕터에서 자세히 다룹니다.
+`for...of` 구문에 대해서는 [Iterable](./260-iteration.md) 챕터에서 자세히 다룹니다.
 
 ## `break`, `continue`
 
@@ -326,6 +326,6 @@ function translateColor(english) {
 }
 ```
 
-예외 처리에 대해서는 [예외 처리](./temp/290-exception.md) 챕터에서 자세히 다룹니다.
+`throw` 구문은 코드의 실행을 중단시키고 에러를 발생시키는 동작을 합니다. 이에 대해서는 [예외 처리](./290-exception.md) 챕터에서 자세히 다룹니다.
 
 [^1]: 일치 여부는 strict equality, 즉 `===` 연산자와 같은 방식에 의해 결정됩니다. ([명세](http://www.ecma-international.org/ecma-262/5.1/#sec-12.11))

@@ -24,7 +24,7 @@ str[Symbol.iterator]; // [Function]
 - `for...of` 루프
 - spread 연산자 (`...`)
 - 분해대입(destructuring assignment)
-- 기타 iterable을 인자로 받는 함수
+- 기타 iterable을 인수로 받는 함수
 
 즉, **문자열에 대해서도 위 기능들을 사용할 수 있습니다.** 아래의 코드를 실행하고 그 결과를 직접 확인해보세요.
 
@@ -40,7 +40,7 @@ const characters = [...'hello'];
 // 분해대입
 const [c1, c2] = 'hello';
 
-// `Array.from`은 iterable 혹은 array-like 객체를 인자로 받습니다.
+// `Array.from`은 iterable 혹은 array-like 객체를 인수로 받습니다.
 Array.from('hello');
 ```
 
@@ -323,7 +323,7 @@ for (let v of gen()) {
 }
 ```
 
-세 번째로, generator 함수로부터 생성된 객체의 `next` 메소드에 인자를 주어서 호출하면, generator 함수가 멈췄던 부분의 `yield` 표현식의 결과값은 앞에서 받은 인자가 됩니다!
+세 번째로, generator 함수로부터 생성된 객체의 `next` 메소드에 인수를 주어서 호출하면, generator 함수가 멈췄던 부분의 `yield` 표현식의 결과값은 앞에서 받은 인수가 됩니다!
 
 ```js
 function* gen() {

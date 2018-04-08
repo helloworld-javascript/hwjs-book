@@ -104,7 +104,7 @@ func2(); // TypeError: Cannot delete property 'PI' of #<Object>
 
 ## 속성 기술자를 통해 객체의 속성 정의하기
 
-속성 기술자는 속성의 부수속성을 얻어올 때에만 사용하는 것이 아닙니다. 우리가 직접 속성 기술자를 이용해 속성을 정의할 수도 있습니다. 프로토타입 상속을 위해 사용했던 `Object.create` 정적 메소드는, 사실 두 번째 인자로 속성 기술자로 이루어진 객체를 받습니다.
+속성 기술자는 속성의 부수속성을 얻어올 때에만 사용하는 것이 아닙니다. 우리가 직접 속성 기술자를 이용해 속성을 정의할 수도 있습니다. 프로토타입 상속을 위해 사용했던 `Object.create` 정적 메소드는, 사실 두 번째 인수로 속성 기술자로 이루어진 객체를 받습니다.
 
 ```js
 const obj = Object.create(Object.prototype, {
@@ -208,7 +208,7 @@ const obj = {
   }
 }
 
-// `set prop` 메소드가 `1`을 인자로 해서 호출됩니다.
+// `set prop` 메소드가 `1`을 인수로 해서 호출됩니다.
 obj.prop = 1;
 
 // `get prop` 메소드가 호출되고 해당 메소드의 반환값을 읽어옵니다.
@@ -278,7 +278,7 @@ console.log(w.won); // 3258
 
 앞에서 속성의 부수속성 중에 `enumerable`이라는 것이 있다는 것을 살펴봤습니다. 이 부수속성은 객체의 속성을 열거할 때에 그 결과에 영향을 미칩니다.
 
-객체의 속성을 열거할 때에 사용할 수 있는 방법에는 여러가지가 있습니다.
+객체의 속성을 열거할 때에 사용할 수 있는 방법에는 여러 가지가 있습니다.
 
 - `Object.keys` - **객체 자신의 속성** 중 **열거 가능한(enumerable) 속성**의 이름을 배열로 반환합니다.
 - `Object.values` - **객체 자신의 속성** 중 **열거 가능한(enumerable) 속성**의 속성 값을 배열로 반환합니다.
@@ -300,7 +300,7 @@ Object.keys(obj); // ['a', 'b']
 
 ## 얕은 복사(Shallow Copy) & 깊은 복사(Deep Copy)
 
-`Object.assign` 정적 메소드는 인자로 받은 객체들의 **모든 열거 가능한 속성**을 대상 객체에 복사합니다.
+`Object.assign` 정적 메소드는 인수로 받은 객체들의 **모든 열거 가능한 속성**을 대상 객체에 복사합니다.
 
 ```js
 const obj = {};
@@ -375,8 +375,8 @@ Object.isExtensible(obj); // false
 
 `Object` 생성자의 정적 메소드 중에 `[[Extensible]]` 속성을 바꿔버리는 메소드가 두 개 더 있습니다.
 
-- `Object.seal` - 인자로 들어온 객체의 `[[Extensible]]` 속성을 `false`로 바꾸고, 객체 자신의 속성을 모두 `configurable: false` 상태로 바꿉니다.
-- `Object.freeze` - 인자로 들어온 객체의 `[[Extensible]]` 속성을 `false`로 바꾸고, 객체 자신의 속성을 모두 `configurable: false, writable: false` 상태로 바꿉니다.
+- `Object.seal` - 인수로 들어온 객체의 `[[Extensible]]` 속성을 `false`로 바꾸고, 객체 자신의 속성을 모두 `configurable: false` 상태로 바꿉니다.
+- `Object.freeze` - 인수로 들어온 객체의 `[[Extensible]]` 속성을 `false`로 바꾸고, 객체 자신의 속성을 모두 `configurable: false, writable: false` 상태로 바꿉니다.
 
 아래의 표는 앞에서 다뤘던 세 정적 메소드를 호출한 뒤에 객체가 어떻게 변하는지를 나타냅니다. O는 가능, X는 불가능을 나타냅니다.
 
