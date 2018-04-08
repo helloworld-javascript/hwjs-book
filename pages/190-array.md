@@ -12,35 +12,48 @@ typeof []; // 'object'
 
 ## 배열 생성하기
 
+### 배열 리터럴
+
 배열은 **배열 리터럴(array literal)**을 통해서 생성하는 것이 가장 쉽습니다.
 
 ```js
-const numbers = [1, 2, 3];
-const strings = ['one', 'two', 'three'];
-const objects = [{prop: 1}, {prop: 2}, {prop: 3}];
-const mixed = [1, 'one', {prop: 1}, null];
+const empty = []; // 빈 배열
+const numbers = [1, 2, 3]; // 숫자가 들어있는 배열
+const strings = ['one', 'two', 'three']; // 문자열이 들어있는 배열
+const objects = [{prop: 1}, {prop: 2}, {prop: 3}]; // 객체가 들어있는 배열
+const mixed = [1, 'one', {prop: 1}, null]; // 아무거나(?) 들어있는 배열
 ```
 
-혹은 **`Array` 생성자**를 통해서도 배열을 생성할 수 있습니다. `Array` 생성자는 주어지는 인수에 따라 두 가지 서로 다른 방식으로 동작을 합니다.
+### Array 생성자
+
+**`Array` 생성자**를 통해서도 배열을 생성할 수 있습니다. `Array` 생성자는 주어지는 인수에 따라 두 가지 서로 다른 방식으로 동작을 합니다.
 
 1. 수 타입의 인수가 하나 주어질 때는 해당 수 만큼의 길이를 갖는 비어있는[^1] 배열을 만들어 냅니다. 만약 인수가 양의 정수가 아니라면 [에러](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError)를 냅니다.
 2. 이 외에 다른 모양으로 인수가 주어지면 그 인수들을 요소로 갖는 배열을 생성합니다.
 
 ```js
-// 생성자는 이런 용도로만 사용하세요.
 new Array(1); // [empty]
 new Array(1000); // [empty × 1000]
 
+new Array(1, 2, 3); // [1, 2, 3]
+```
+
+### Array.of
+
+이렇게 일관적이지 못한 생성자의 동작방식 때문에, ES2015에 `Array.of` 정적 메소드가 추가되었습니다. 이 메소드는 위의 2번 방식으로만 동작합니다. 따라서, **`Array` 생성자를 사용할 때에는 1번 방식으로만 사용하고, 2번 방식의 코드를 작성할 때는 생성자 대신 `Array.of` 정적 메소드를 사용하세요.**
+
+```js
 new Array(1, 2, 3); // 이렇게 하지 마세요!
 Array.of(1, 2, 3) // 대신 이렇게 하세요.
 
 // `Array.of` 정적 메소드는 인수가 하나이더라도 그 인수를 요소로 갖는 배열을 반환합니다.
 Array.of(1); // [1]
+
+// 생성자는 이런 용도로만 사용하세요.
+new Array(1000); // [empty × 1000]
 ```
 
-이렇게 일관적이지 못한 생성자의 동작방식 때문에, ES2015에 `Array.of` 정적 메소드가 추가되었습니다. 이 메소드는 위의 2번 방식으로만 동작합니다. 따라서, **`Array` 생성자를 사용할 때에는 1번 방식으로만 사용하고, 2번 방식의 코드를 작성할 때는 생성자 대신 `Array.of` 정적 메소드를 사용하세요.**
-
-### 다른 객체로부터 배열 생성하기
+### Array.from
 
 JavaScript에는 **유사 배열 객체(array-like object)**와 **iterable**이라는 개념이 있어서, 이에 해당하는 값들은 `Array.from` 정적 메소드를 통해 배열로 쉽게 변환될 수 있습니다. 앞의 두 개념에 대해서는 [Iterable](./260-iteration.md) 챕터에서 자세히 다룹니다.
 
@@ -60,7 +73,7 @@ const arr = ['one', 'two', 'three'];
 arr[0]; // 'one'
 arr[1]; // 'two'
 arr[2]; // 'three'
-arr[4]; // undefined
+arr[3]; // undefined
 ```
 
 위에서 볼 수 있듯이, 인덱스는 0부터 시작합니다.[^3] 즉, **첫 번째 요소를 가리키는 인덱스는 1이 아니라 0입니다.** 헷갈리지 않도록 주의하세요.
@@ -89,7 +102,7 @@ arr.fill(1, 2, 4);
 console.log(arr); // [ 0, 0, 1, 1, 0 ];
 ```
 
-`Array` 생성자와 `fill` 메소드를 사용해 큰 배열을 만들고 값을 채워넣는 일을 쉽게 할 수 있습니다.
+`Array` 생성자와 `fill` 메소드를 사용하면, 큰 배열을 만들고 값을 채워넣는 일을 쉽게 할 수 있습니다.
 
 ```js
 new Array(1000); // [empty × 1000]
@@ -177,7 +190,7 @@ console.log(arr); // [3, 2, 1]
 
 ## 배열 정렬하기
 
-배열의 `sort` 메소드를 통해 원하는 방식대로 배열을 정렬을 할 수 있습니다.
+배열의 `sort` 메소드를 통해 원하는 방식대로 배열을 정렬할 수 있습니다.
 
 ```js
 const arr = [3, 1, 4, 5, 2];
@@ -219,6 +232,9 @@ arr.sort(); // [1, 2, 3, 4, 5]
 ```js
 [20, 3, 100].sort(); // [100, 20, 3]
 ['abc', 'DEF', 'aBC'].sort(); // [ 'DEF', 'aBC', 'abc' ]
+
+[20, 3, 100].sort((x, y) => x - y); // [3, 20, 100]
+['abc', 'DEF', 'aBC'].sort((x, y) => x.localeCompare(y)); // [ 'abc', 'aBC', 'DEF' ]
 ```
 
 ## 배열의 길이
@@ -515,21 +531,12 @@ arr.some(item => item.length > 5); // false
 
 ## 배열인지 아닌지 판별하기
 
-어떤 값이 배열인지 아닌지 판별하기 위해서 `Array.isArray` 정적 메소드를 사용할 수 있습니다.
+어떤 값이 배열인지 아닌지 판별하기 위해서 `Array.isArray` 정적 메소드를 사용할 수 있습니다.[^6]
 
 ```js
 Array.isArray([]); // true
 Array.isArray({}); // false
 Array.isArray('hello'); // false
-```
-
-`arr instanceof Array`와 같이 할 수 있다고 생각하실지도 모르겠습니다. 하지만 아래와 같이 `instanceof` 연산자를 속이는 것은 매우 쉬운 일이므로, 어떤 값이 배열인지 아닌지 판별하기 위해서는 꼭 용도에 맞는 `Array.isArray`를 사용하세요.[^6]
-
-```js
-const obj = {};
-Object.setPrototypeOf(obj, Array.prototype);
-obj instanceof Array; // true
-Array.isArray(obj); // false
 ```
 
 ## 문자열과 배열
@@ -569,7 +576,7 @@ table[2][0]; // 7
 
 [^1]: 배열의 요소는 **비어있을 수 있습니다.** 이는 `undefined`와는 다릅니다. 비어있는 요소에 대해서는 `for...of`나 `forEach` 등의 메소드를 통해 순회를 하려고 해도 순회가 되지 않습니다. `Array` 생성자를 사용하거나, `length` 속성을 조작하거나, 배열의 길이을 넘어서는 인덱스를 사용해서 요소를 추가하려고 하면 비어있는 요소가 생기게 되고, 의도치 않은 동작을 할 수 있으므로 주의해야 합니다. 대부분의 경우 이와 같은 조작을 하지 않고도 프로그램을 짤 수 있습니다.
 [^2]: 사실은, 배열도 객체이므로, 속성 접근자를 통해 배열의 요소에 접근할 때 **인덱스가 문자열로 변환되는 과정**을 거칩니다. 실제로 `[1, 2, 3]['1'] === 2`와 같이 배열의 인덱스가 들어가야 할 자리에 정수를 나타내는 문자열을 넣어도 잘 동작합니다.
-[^3]: C 언어의 시초가 된 BCPL 언어에서는 배열이라는 자료구조가 [포인터](https://ko.wikipedia.org/wiki/%ED%8F%AC%EC%9D%B8%ED%84%B0_(%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D) 연산을 통해 구현되었기 때문에, 첫 번째 요소의 인덱스를 0으로 하는 편이 구현 상 자연스러운 방향이었습니다. 이것이 시초가 되어, 대부분의 범용 프로그래밍 언어에서는 0부터 시작하는 인덱스가 쓰이게 되었습니다. 다만, COBOL, Fortran, R, Matlab 등과 같이 주로 수학/과학 영역에서 쓰이는 프로그래밍 언어에서는 1부터 시작하는 인덱스도 사용되고 있습니다.
-[^4]: 정확히 말하면, ECMAScript 표준에서는 정렬 알고리즘의 [안정성](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability), 즉 `a`와 `b` 중 어떤 것이 앞에 올 지에 대해서 아무것도 보장하지 않습니다. 즉, 순서가 뒤바뀔 수도 있다는 말이죠. 이런 정렬 방식을 불안정 정렬(unstable sort)이라고 합니다. 이와는 다르게, 원래 `a`가 앞에 있었다면 정렬 후에도 여전히 `a`가 앞에 있도록 보장해주는 정렬 방식을 안정 정렬(stable sort)이라고 합니다. 몇몇 브라우저들이 `Array.prototype.sort`를 내부적으로 안정 정렬로 구현해놓고 있긴 하지만, 대표적으로 Chrome이 불안정 정렬을 하고 있고, ECMAScript 표준이 보장해주는 것은 아니므로 속 편하게 불안정 정렬이라고 생각하고 프로그램을 작성하세요.
-[^5]: [이 벤치마크](https://jsperf.com/for-of-vs-for-loop)와 [이 벤치마크](https://jsperf.com/for-vs-foreach/75)를 참고하세요.
-[^6]: 마치 배열처럼 보이고 배열처럼 사용할 수 있지만, 실제로는 배열이 아닌 객체를 만들 수도 있습니다. [이 링크](https://repl.it/@seungha/fake-array)의 코드를 가지고 시험해보세요.
+[^3]: C 언어의 시초가 된 BCPL 언어에서는 배열이라는 자료구조가 [포인터](https://ko.wikipedia.org/wiki/%ED%8F%AC%EC%9D%B8%ED%84%B0_(%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D) 연산을 통해 구현되었기 때문에, 첫 번째 요소의 인덱스를 0으로 하는 편이 구현 상 자연스러운 방향이었습니다. 이것이 시초가 되어, 대부분의 범용 프로그래밍 언어에서는 0부터 시작하는 인덱스가 쓰이게 되었습니다. 다만, COBOL, Fortran, R, Matlab 등과 같이 주로 수학/과학 분야에서 쓰이는 프로그래밍 언어에서는 1부터 시작하는 인덱스도 사용되고 있습니다.
+[^4]: 정확히 말하면, ECMAScript 표준에서는 정렬 알고리즘의 [안정성](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability), 즉 `a`와 `b` 중 어떤 것이 앞에 올 지에 대해서 아무것도 보장하지 않습니다. 즉, 같은 순서라고 판별된 두 요소의 정렬 전후의 순서가 뒤바뀔 수도 있다는 말이죠. 이런 정렬 방식을 불안정 정렬(unstable sort)이라고 합니다. 이와는 다르게, 원래 `a`가 앞에 있었다면 정렬 후에도 여전히 `a`가 앞에 있도록 보장해주는 정렬 방식을 안정 정렬(stable sort)이라고 합니다. 몇몇 브라우저들이 `Array.prototype.sort`를 내부적으로 안정 정렬로 구현해놓고 있긴 하지만, 대표적으로 Chrome이 불안정 정렬을 하고 있고, ECMAScript 표준이 보장해주는 것은 아니므로 속 편하게 불안정 정렬이라고 생각하고 프로그램을 작성하세요.
+[^5]: 속도의 차이를 확인하시려면 [이 벤치마크](https://jsperf.com/for-of-vs-for-loop)와 [이 벤치마크](https://jsperf.com/for-vs-foreach/75)를 참고하세요.
+[^6]: `arr instanceof Array`와 같이 할 수도 있다고 생각하실지 모르겠습니다. 하지만 `instanceof` 연산자를 속이는 것은 매우 쉬운 일이므로, 어떤 값이 배열인지 아닌지 판별하기 위해서는 꼭 용도에 맞는 `Array.isArray`를 사용하세요. 마치 배열처럼 보이고 배열처럼 사용할 수 있지만, 실제로는 배열이 아닌 객체를 만들 수도 있습니다. [이 링크](https://repl.it/@seungha/fake-array)의 코드를 가지고 시험해보세요.
