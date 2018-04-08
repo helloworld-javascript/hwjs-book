@@ -154,7 +154,7 @@ number 타입과 마찬가지로 string 타입도 래퍼 객체의 속성과 메
 'hello javascript'.endsWith('ript'); // true
 'hello javascript'.search('java'); // 6
 
-// 문자열의 특정 부분 바꾸기
+// 문자열의 특정 부분을 바꾼 새 문자열 생성하기
 'hello javascript'.replace('java', 'type'); // 'hello typescript'
 
 // 문자열의 일부를 얻어오기
@@ -163,9 +163,13 @@ number 타입과 마찬가지로 string 타입도 래퍼 객체의 속성과 메
 // 좌우 공백문자 제거하기
 '   hello  '.trim(); // 'hello'
 
-// 문자열을 특정 문자를 기준으로 잘라 배열로 바꾸기
+// 문자열을 특정 문자를 기준으로 잘라 새 배열 생성하기
 'hello!fun!javavscript'.split('!'); // ['hello', 'fun', 'javascript']
 'hello'.split(''); // ['h', 'e', 'l', 'l', 'o']
+
+// 모든 문자를 소문자, 혹은 대문자로 변환한 새 문자열 생성하기
+'Hello JavaScript'.toLowerCase(); // 'hello javascript'
+'Hello JavaScript'.toUpperCase(); // 'HELLO JAVASCRIPT'
 ```
 
 [^1]: 정확히 말하면, 문자열은 JavaScript 내부적으로 UTF-16 형식으로 인코딩된 값으로 다뤄집니다. ([명세](https://tc39.github.io/ecma262/#sec-ecmascript-language-types-string-type))
