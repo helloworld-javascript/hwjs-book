@@ -139,7 +139,7 @@ console.log('\u{1F435}'); // 🐵
 number 타입과 마찬가지로 string 타입도 래퍼 객체의 속성과 메소드를 사용할 수 있습니다. 아래는 자주 쓰이는 몇 개의 속성과 메소드에 대한 예제입니다. 이 밖의 내용을 확인하려면 [MDN 문서](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String#String_instances)를 참고하세요.
 
 ```js
-// 문자열의 길이
+// 문자열의 길이 알아내기
 'hello'.length; // 5
 
 // 여러 문자열 연결하기
@@ -157,11 +157,17 @@ number 타입과 마찬가지로 string 타입도 래퍼 객체의 속성과 메
 // 문자열의 특정 부분을 바꾼 새 문자열 생성하기
 'hello javascript'.replace('java', 'type'); // 'hello typescript'
 
-// 문자열의 일부를 얻어오기
+// 문자열의 일부를 잘라낸 새 문자열 생성하기
 'hello'.slice(2, 4); // 'll'
 
-// 좌우 공백문자 제거하기
+// 좌우 공백문자를 제거한 새 문자열 생성하기
 '   hello  '.trim(); // 'hello'
+'   hello  '.trimLeft(); // 'hello  '
+'   hello  '.trimRight(); // '   hello'
+
+// 좌우 공백문자를 추가한 새 문자열 생성하기
+'hello'.padStart(8); // '   hello'
+'hello'.padEnd(8); // 'hello   '
 
 // 문자열을 특정 문자를 기준으로 잘라 새 배열 생성하기
 'hello!fun!javavscript'.split('!'); // ['hello', 'fun', 'javascript']
