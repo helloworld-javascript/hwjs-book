@@ -353,8 +353,6 @@ Object.is(0, -0); // false
 
 ES2015에서 배열을 다른 배열에 쉽게 삽입할 수 있게 해 주는 spread 문법이 추가되었습니다. 나머지 매개변수(rest parameters) 문법과 같은 기호인 `...`가 사용되지만, 그 의미는 다릅니다.
 
-객체에 대한 spread 문법은 아직 정식 표준으로 확정되지는 않았지만, 후보(candidate) 단계의 표준으로 [이미 여러 브라우저에 구현이 되어 있습니다.](http://kangax.github.io/compat-table/esnext/)
-
 ### 배열
 
 Spread 문법을 통해 배열 리터럴의 중간에 다른 배열을 이어붙일 수 있습니다. 이 때, `arr1` 안에 있는 요소들이 `arr2` 안으로 **복사**됩니다.
@@ -393,7 +391,7 @@ Math.max.apply(null, arr); // 5
 
 ### 객체
 
-아직 정식 표준에 포함되지는 않았지만, 객체에 대해서도 spread 문법을 사용할 수 있습니다. 이 때 자기 자신의(own) 열거 가능한(enumerable) 속성만을 복사합니다.
+객체에 대해서도 spread 문법을 사용할 수 있습니다. 이 때 자기 자신의(own) 열거 가능한(enumerable) 속성만을 복사합니다.
 
 ```js
 const obj1 = {prop: 1};
