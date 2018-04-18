@@ -168,7 +168,7 @@ Generator 함수를 사용할 때 주의할 점이 있습니다.
 
 ```js
 // Generator 함수로부터 생성된 iterable은 한 번만 사용될 수 있습니다.
-function gen() {
+function* gen() {
   yield 1;
   yield 2;
   yield 3;
@@ -188,7 +188,7 @@ for (let n of iter) {
 
 ```js
 // Generator 함수 내부에서 정의된 일반 함수에서는 `yield` 키워드를 사용할 수 없습니다.
-function gen2() {
+function* gen2() {
   // 아예 문법 오류가 납니다. (Unexpected token)
   function fakeGen() {
     yield 1;
