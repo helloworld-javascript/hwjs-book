@@ -110,7 +110,7 @@ function* numberGen() {
   yield 3;
 }
 
-function numberGen2() {
+function* numberGen2() {
   yield* numberGen();
   yield* numberGen();
 }
