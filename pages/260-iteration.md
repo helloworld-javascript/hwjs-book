@@ -24,7 +24,7 @@ str[Symbol.iterator]; // [Function]
 - `for...of` 루프
 - spread 연산자 (`...`)
 - 분해대입(destructuring assignment)
-- 기타 iterable을 인자로 받는 함수
+- 기타 iterable을 인수로 받는 함수
 
 즉, **문자열에 대해서도 위 기능들을 사용할 수 있습니다.** 아래의 코드를 실행하고 그 결과를 직접 확인해보세요.
 
@@ -40,7 +40,7 @@ const characters = [...'hello'];
 // 분해대입
 const [c1, c2] = 'hello';
 
-// `Array.from`은 iterable 혹은 array-like 객체를 인자로 받습니다.
+// `Array.from`은 iterable 혹은 array-like 객체를 인수로 받습니다.
 Array.from('hello');
 ```
 
@@ -110,7 +110,7 @@ function* numberGen() {
   yield 3;
 }
 
-function numberGen2() {
+function* numberGen2() {
   yield* numberGen();
   yield* numberGen();
 }
@@ -168,7 +168,7 @@ Generator 함수를 사용할 때 주의할 점이 있습니다.
 
 ```js
 // Generator 함수로부터 생성된 iterable은 한 번만 사용될 수 있습니다.
-function gen() {
+function* gen() {
   yield 1;
   yield 2;
   yield 3;
@@ -188,7 +188,7 @@ for (let n of iter) {
 
 ```js
 // Generator 함수 내부에서 정의된 일반 함수에서는 `yield` 키워드를 사용할 수 없습니다.
-function gen2() {
+function* gen2() {
   // 아예 문법 오류가 납니다. (Unexpected token)
   function fakeGen() {
     yield 1;
@@ -323,7 +323,7 @@ for (let v of gen()) {
 }
 ```
 
-세 번째로, generator 함수로부터 생성된 객체의 `next` 메소드에 인자를 주어서 호출하면, generator 함수가 멈췄던 부분의 `yield` 표현식의 결과값은 앞에서 받은 인자가 됩니다!
+세 번째로, generator 함수로부터 생성된 객체의 `next` 메소드에 인수를 주어서 호출하면, generator 함수가 멈췄던 부분의 `yield` 표현식의 결과값은 앞에서 받은 인수가 됩니다!
 
 ```js
 function* gen() {
