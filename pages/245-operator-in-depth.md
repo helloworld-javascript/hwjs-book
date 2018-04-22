@@ -407,9 +407,7 @@ Object.assign({}, obj1);
 
 ## 분해대입 (Destructuring Assignment)
 
-ES2015에서는 배열과 객체 안에 들어있는 값을 쉽게 추출해낼 수 있는 문법이 추가되었습니다.
-
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+ES2015에서 배열과 객체 안에 들어있는 값을 쉽게 추출해낼 수 있는 문법이 추가되었습니다.
 
 ### 배열의 분해대입
 
