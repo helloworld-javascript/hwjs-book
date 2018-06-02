@@ -33,5 +33,5 @@
 - [큐, 스택, 트리](./pages/282-data-structures.md)
 - [비동기 프로그래밍](./pages/285-async.md)
 - [예외 처리](./pages/290-exception.md)
-- 모듈 (준비중)
+- [모듈](./pages/293-module.md)
 - 정규 표현식 (준비중)
