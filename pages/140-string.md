@@ -152,7 +152,7 @@ number 타입과 마찬가지로 string 타입도 래퍼 객체의 속성과 메
 'hello javascript'.includes('hello'); // true
 'hello javascript'.startsWith('he'); // true
 'hello javascript'.endsWith('ript'); // true
-'hello javascript'.search('java'); // 6
+'hello javascript'.indexOf('java'); // 6
 
 // 문자열의 특정 부분을 바꾼 새 문자열 생성하기
 'hello javascript'.replace('java', 'type'); // 'hello typescript'
