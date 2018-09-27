@@ -224,6 +224,10 @@ if (Number.isNaN(num)) {
 JavaScript에 내장된 `Math` 객체에는 수 연산을 위한 많은 메소드와 상수들이 내장되어 있습니다.
 
 ```js
+// 상수
+Math.E // 자연상수 (2.71...)
+Math.PI // 원주율 (3.14...)
+
 // 삼각함수, 로그함수, 지수함수
 Math.sin // 사인
 Math.cos // 코사인
@@ -243,15 +247,8 @@ Math.trunc // 소수점 아래 잘라내기
 Math.max
 Math.min
 
-// 총합
-Math.sum
-
 // 랜덤
 Math.random
-
-// 상수
-Math.E // 자연상수 (2.71...)
-Math.PI // 원주율 (3.14...)
 ...
 ```
 
