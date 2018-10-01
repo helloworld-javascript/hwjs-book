@@ -222,7 +222,7 @@ function createEmptyFunc() {
 
 컴퓨터 과학 분야에서 사용되는 용어 중에 [1급 시민(First-Class Citizen)](https://ko.wikipedia.org/wiki/%EC%9D%BC%EA%B8%89_%EA%B0%9D%EC%B2%B4)이라는 특이한 용어가 있습니다. 값으로 사용할 수 있는 JavaScript의 함수는 1급 시민입니다. 1급 시민인 함수를 줄여서 **1급 함수**라 부르기도 합니다.
 
-JavaScript에서는 1급 함수의 성질을 여러 가지 흥미로운 방식으로 활용을 할 수 있습니다. 이에 대한 자세한 내용은 [함수형 프로그래밍](./255-fp.md)에서 다룹니다.
+JavaScript에서는 1급 함수의 성질을 여러 가지 흥미로운 방식으로 활용할 수 있습니다. 이에 대한 자세한 내용은 [함수형 프로그래밍](./255-fp.md)에서 다룹니다.
 
 ## 익명 함수 (Anonymous Function)
 
