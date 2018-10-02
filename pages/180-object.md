@@ -91,7 +91,7 @@ const person = {
 // 속성 읽기
 person.name; // '윤아준'
 person.age; // 19
-persion.languages[0] // 'Korean'
+person.languages[0] // 'Korean'
 
 // 속성 쓰기
 person.name = '신하경';
