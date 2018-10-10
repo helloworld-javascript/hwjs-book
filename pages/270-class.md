@@ -291,7 +291,7 @@ const waterMelon = new WaterMelon();
 waterMelon.getColor(); // 속은 빨강색입니다.
 ```
 
-이런 경우에, `super` 키워드를 통해 부모 클래스의 속성에 직접 접근할 수 있습니다.
+이런 경우에, `super` 키워드를 통해 부모 클래스의 메소드에 직접 접근할 수 있습니다.
 
 ```js
 class Melon {
