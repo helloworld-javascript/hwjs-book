@@ -380,7 +380,7 @@ function func() {
 func(); // TypeError: Cannot add property a, object is not extensible
 ```
 
-JavaScript의 모든 객체에는 `[[Extensible]]`이라는 숨겨진 속성이 있습니다. 이 속성의 기본값은 `true`인데, 이 값이 `false`가 되면 해당 객체에 속성을 추가하는 것이 불가능해집니다. `Object.preventExtensions` 정적 메소드는 `[[Extensible]]` 속성을 `false`로 바꿔주는 역할을 합니다.
+JavaScript의 모든 객체에는 `[[Extensible]]`이라는 숨겨진 속성이 있습니다. 이 속성의 기본값은 `true`인데, 이 값이 `false`가 되면 해당 객체에 속성을 추가하는 것이 불가능해집니다. `Object.preventExtensions` 정적 메소드는 `[[Extensible]]` 속성을 `false`로 바꿔주는 역할을 합니다. **즉, 객체에 속성을 추가하는 것이 불가능해집니다.**
 
 객체의 `[[Extensible]]` 속성 값은 `Object.isExtensible` 정적 메소드를 통해 알아볼 수 있습니다.
 
@@ -393,8 +393,8 @@ Object.isExtensible(obj); // false
 
 `Object` 생성자의 정적 메소드 중에 `[[Extensible]]` 속성을 바꿔버리는 메소드가 두 개 더 있습니다.
 
-- `Object.seal` - 인수로 들어온 객체의 `[[Extensible]]` 속성을 `false`로 바꾸고, 객체 자신의 속성을 모두 `configurable: false` 상태로 바꿉니다.
-- `Object.freeze` - 인수로 들어온 객체의 `[[Extensible]]` 속성을 `false`로 바꾸고, 객체 자신의 속성을 모두 `configurable: false, writable: false` 상태로 바꿉니다.
+- `Object.seal` - 인수로 들어온 객체의 `[[Extensible]]` 속성을 `false`로 바꾸고, 객체 자신의 속성을 모두 `configurable: false` 상태로 바꿉니다. **즉, 객체에 속성을 추가하거나, 이미 존재하는 속성을 삭제하는 것이 불가능해집니다.**
+- `Object.freeze` - 인수로 들어온 객체의 `[[Extensible]]` 속성을 `false`로 바꾸고, 객체 자신의 속성을 모두 `configurable: false, writable: false` 상태로 바꿉니다. **즉, 객체에 속성을 추가하거나, 이미 존재하는 속성을 변경/삭제하는 것이 불가능해집니다.**
 
 아래의 표는 앞에서 다뤘던 세 정적 메소드를 호출한 뒤에 객체가 어떻게 변하는지를 나타냅니다. O는 가능, X는 불가능을 나타냅니다.
 
