@@ -19,7 +19,7 @@ console.log('ownProp' in obj); // true
 console.log('constructor' in obj); // true
 ```
 
-객체 자신이 어떤 속성을 가지고 있는지를 확인하기 위해 `Object.prototype.hasOwnProperty` 메소드를 사용할 수 있습니다.
+이 때, **객체 자신이** 특정 속성을 가지고 있는지를 확인하기 위해 `Object.prototype.hasOwnProperty` 메소드를 사용할 수 있습니다.
 
 ```js
 const obj = Object.create({inheritedProp: 'inheritedProp'});
@@ -104,7 +104,7 @@ func2(); // TypeError: Cannot delete property 'PI' of #<Object>
 
 ## 속성 기술자를 통해 객체의 속성 정의하기
 
-속성 기술자는 속성의 부수속성을 얻어올 때에만 사용하는 것이 아닙니다. 우리가 직접 속성 기술자를 이용해 속성을 정의할 수도 있습니다. 프로토타입 상속을 위해 사용했던 `Object.create` 정적 메소드는, 사실 두 번째 인수로 속성 기술자로 이루어진 객체를 받습니다.
+속성 기술자는 속성의 부수속성을 얻어올 때에만 사용하는 것이 아닙니다. 우리가 직접 속성 기술자를 가지고 속성을 정의할 수도 있습니다. 프로토타입 상속을 위해 사용했던 `Object.create` 정적 메소드는, 사실 두 번째 인수로 속성 기술자 객체를 받습니다.
 
 ```js
 const obj = Object.create(Object.prototype, {
@@ -159,10 +159,12 @@ const money = {
 
 ```js
 money.won += 1086;
+
+// 2172원이 되었지만, 2달러로 변경되지 않았습니다.
 money.dollar; // 1
 ```
 
-이를 해결하기 위해, 객체에는 `_won` 속성을 저장하고 달러 단위가 필요할 때는 원 단위로부터 계산해내도록 메소드를 두는 방법을 사용할 수 있습니다.[^1]
+이를 해결하기 위해, 객체에는 `_won` 속성을 저장하고 달러 단위가 필요할 때는 원 단위로부터 계산해내도록 **일일이 메소드를 두는 방법**을 사용할 수 있습니다.[^1]
 ```js
 function Money(won = 0) {
   Object.defineProperty(this, '_won', {
@@ -170,15 +172,23 @@ function Money(won = 0) {
     writable: true
   }); // enumerable: false, configurable: false
 }
+
+// 원 단위 값을 가져오는 메소드
 Money.prototype.getWon = function() {
   return this._won;
 };
+
+// 원 단위 값을 저장하는 메소드
 Money.prototype.setWon = function(amount) {
   this._won = amount;
 };
+
+// 달러 단위 값을 가져오는 메소드
 Money.prototype.getDollar = function() {
   return this._won / 1086;
 };
+
+// 달러 단위 값을 저장하는 메소드
 Money.prototype.setDollar = function(amount) {
   this._won = amount * 1086;
 };
@@ -192,16 +202,20 @@ m.setDollar(2);
 m.getWon(); // 2172
 ```
 
-이제 원하던대로 두 단위 사이의 동기화가 잘 유지되지만, 코드가 조금 길어졌습니다. 특히, 속성을 사용하기 위해 매번 메소드를 호출해야 하는 것이 조금 불편하게 느껴집니다.
+이제 원하던대로 두 단위 사이의 동기화가 잘 유지되지만, **코드가 꽤 길어졌습니다.** 특히, 속성을 사용하기 위해 **매번 메소드를 호출해야 하는** 것이 조금 불편하게 느껴집니다.
 
-JavaScript는 위와 같은 코드를 조금 더 깔끔하게 작성할 수 있도록 도와주는 기능을 제공합니다. 먼저 간단한 예제를 통해 살펴보겠습니다.
+Getter와 setter 기능을 사용해서, 위와 같은 코드를 조금 더 깔끔하게 작성할 수 있습니다. 먼저 간단한 예제를 통해 살펴보겠습니다.
 
 ```js
 const obj = {
+
+  // 메소드 이름 앞에 `get`을 써주면, 이 메소드는 getter 메소드가 됩니다.
   get prop() {
     console.log('getter가 호출되었습니다.');
     return this._hidden;
   },
+  
+  // 메소드 이름 앞에 `set`을 써주면, 이 메소드는 setter 메소드가 됩니다.
   set prop(arg) {
     console.log('setter가 호출되었습니다.');
     this._hidden = arg;
@@ -226,9 +240,9 @@ Object.getOwnPropertyDescriptors(obj);
 // }
 ```
 
-`obj` 객체 리터럴 안에서 함수 앞에 `get`과 `set` 키워드를 사용했습니다. 이 두 함수는 각각 `prop`이라는 속성의 getter와 setter가 됩니다. getter는 속성을 읽어올 때, setter는 속성을 변경할 때 호출됩니다.
+`obj` 객체 리터럴 안에서 함수 앞에 `get`과 `set` 키워드를 사용했습니다. 이 두 함수는 각각 `prop`이라는 속성의 getter와 setter가 됩니다. **getter는 속성을 읽어올 때, setter는 속성을 변경할 때 호출됩니다.**
 
-이렇게 getter와 setter가 정의된 속성을 접근자 속성(accessor property)이라고 합니다. 접근자 속성에 대한 속성 기술자는 네 가지 속성을 갖습니다.
+이렇게 getter와 setter가 정의된 속성을 **접근자 속성(accessor property)**이라고 합니다. 접근자 속성에 대한 속성 기술자는 네 가지 속성을 갖습니다.
 
 - `get`: getter 함수
 - `set`: setter 함수
@@ -244,7 +258,10 @@ function Money(won) {
   this._won = won;
 }
 
+// `Object.defineProperties` 정적 메소드를 사용해서
+// 속성 기술자를 통해 특정 객체의 여러 속성을 한꺼번에 정의할 수 있습니다.
 Object.defineProperties(Money.prototype, {
+  // `Money.prototype` 객체에 `won` 이라는 속성을 정의합니다.
   won: {
     get: function() {
       return this._won;
@@ -253,6 +270,7 @@ Object.defineProperties(Money.prototype, {
       this._won = arg;
     }
   },
+  // `Money.prototype` 객체에 `dollar` 라는 속성을 정의합니다.
   dollar: {
     get: function() {
       return this._won / 1086;
@@ -276,7 +294,7 @@ console.log(w.won); // 3258
 
 ## 객체의 속성 열거하기
 
-앞에서 속성의 부수속성 중에 `enumerable`이라는 것이 있다는 것을 살펴봤습니다. 이 부수속성은 객체의 속성을 열거할 때에 그 결과에 영향을 미칩니다.
+앞에서 속성의 부수속성 중에 `enumerable`이라는 것이 있다는 것을 살펴봤습니다. 이 부수속성은 **객체의 속성을 열거할 때에** 그 결과에 영향을 미칩니다.
 
 객체의 속성을 열거할 때에 사용할 수 있는 방법에는 여러 가지가 있습니다.
 
@@ -300,7 +318,7 @@ Object.keys(obj); // ['a', 'b']
 
 ## 얕은 복사(Shallow Copy) & 깊은 복사(Deep Copy)
 
-`Object.assign` 정적 메소드는 인수로 받은 객체들의 **모든 열거 가능한 속성**을 대상 객체에 복사합니다.
+`Object.assign` 정적 메소드는 인수로 받은 객체들의 **모든 열거 가능한 속성**을 **대상 객체에 복사**합니다.
 
 ```js
 const obj = {};
@@ -322,7 +340,7 @@ const obj2 = Object.assign({}, obj);
 console.log(obj2); // { a: 1, b: 2 }
 ```
 
-다만, 여기서 주의해야 할 점이 있습니다. 객체가 중첩되어 있다면, 내부에 있는 객체는 복제되지 않습니다. `Object.assign`을 통해 속성이 값이 복사될 때, 실제로 복사되는 것은 중첩된 객체라 아니라 그에 대한 **참조**이기 때문입니다.
+다만, 여기서 주의해야 할 점이 있습니다. 객체가 중첩되어 있다면, **내부에 있는 객체는 복제되지 않습니다.** `Object.assign`을 통해 속성이 값이 복사될 때, 실제로 복사되는 것은 중첩된 객체라 아니라 그에 대한 **참조**이기 때문입니다.
 
 ```js
 const obj = {
