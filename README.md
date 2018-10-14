@@ -20,6 +20,7 @@
 - [강가영]() <!-- 예제 코드 버그 수정 -->
 - [김보영](https://github.com/underbleu) <!-- 오타 수정 -->
 - [김범연](https://github.com/BeomyeonAndrewKim) <!-- 내용 오류 수정 -->
+- [김지원](https://github.com/jiwonkirn) <!-- 내용 오류 수정 -->
 
 ---
 
