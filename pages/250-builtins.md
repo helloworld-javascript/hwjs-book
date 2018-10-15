@@ -118,7 +118,7 @@ console.log(Symbol('my symbol') === Symbol('my symbol')); // false
 console.log(Symbol() === Symbol()); // false
 ```
 
-심볼은 객체의 속성 키로 사용될 수 있습니다.
+**심볼은 객체의 속성 키로 사용하기 위해 만들어졌습니다.** 아래와 같이 대괄호 표기법을 통해 심볼을 객체의 속성 키로 사용할 수 있습니다.
 
 ```js
 const mySymbol = Symbol('my symbol');
