@@ -349,7 +349,7 @@ s.introduce(); // 제 이름은 윤아준입니다. 저는 3학년입니다.
 
 ```js
 class Person {}
-class Student extends {}
+class Student extends Person {}
 const student = new Student();
 ```
 
