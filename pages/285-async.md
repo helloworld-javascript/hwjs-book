@@ -96,7 +96,7 @@ add2AndPrint(3); // `add2AndPrint`를 호출
 
 브라우저가 JavaScript 코드를 실행시킬 때, 호출 스택을 다음과 같이 조작합니다.
 
-- 스크립트를 불러올 때, 전역 실행 맥락(global execution context)을 호출 스택에 추가합니다. 
+- 스크립트를 불러올 때, 전역 실행 맥락(global execution context)을 호출 스택에 추가합니다.
 - 함수가 호출되면, 해당 호출에 대한 실행 맥락을 생성해서 호출 스택에 추가(push)합니다.
 - 변수에 대입이 일어나면, 호출 스택에 저장되어 있는 변수의 내용을 변경합니다.
 - 함수의 실행이 끝나면, 결과값을 반환하고 호출 스택 가장 위에 있는 실행 맥락을 제거(pop)합니다.
@@ -321,23 +321,23 @@ delay(1000)
 console.log('시작');
 ```
 
-이제 HTTP 통신을 할 때 Promise가 어떻게 사용되는지 살펴보겠습니다. 최신 브라우저에는 HTTP 통신을 위한 `fetch` 함수가 내장되어 있는데, 이 함수는 Promise 객체를 반환합니다. 아래의 예제를 통해 설명하겠습니다.
+이제 HTTP 통신을 할 때 Promise가 어떻게 사용되는지 살펴보겠습니다. 아래에 사용된 `axios`는 JavaScript를 통해 직접 요청을 보내기 위해 널리 사용되는 라이브러리입니다. GET 메소드로 요청을 보내기 위해 `axios.get()` 함수를 사용할 수 있는데, 이 때 **Promise 객체가 반환됩니다.**
 
 ```js
+const axios = require('axios');
 const API_URL = 'https://api.github.com';
 
-fetch(`${API_URL}/repos/facebookincubator/create-react-app/issues?per_page=10`)
-  .then(res => res.json())
-  .then(issues => {
+axios.get(`${API_URL}/repos/facebookincubator/create-react-app/issues?per_page=10`)
+  .then(res => {
     console.log('최근 10개의 이슈:');
-    issues
+    res.data
       .map(issue => issue.title)
       .forEach(title => console.log(title));
     console.log('출력이 끝났습니다.');
   });
 ```
 
-`fetch`를 호출해서 반환된 Promise 객체의 결과값은 `Response` 객체로, HTTP 응답에 대한 내용을 담고 있습니다. 이 객체의 `json` 메소드는, HTTP 응답에 포함된 JSON 문자열을 JavaScript 객체로 바꾸어주는 역할을 합니다. 특이한 점은 `json` 메소드 역시 Promise 객체를 반환한다는 것입니다.[^8]
+`axios.get()`을 호출해서 반환된 Promise 객체에 담긴 결과값은 `Response` 객체로, HTTP 응답에 대한 내용을 담고 있습니다.
 
 위 코드를 직접 실행해보고 출력 결과를 살펴보세요.
 
@@ -353,19 +353,18 @@ fetch(`${API_URL}/repos/facebookincubator/create-react-app/issues?per_page=10`)
 ```js
 const API_URL = 'https://api.github.com';
 const starCount = {};
+const axios = require('axios');
 
 // 1. Github에 공개되어있는 저장소 중, 언어가 JavaScript이고 별표를 가장 많이 받은 저장소를 불러온다.
-fetch(`${API_URL}/search/repositories?q=language:javascript&sort=stars&per_page=1`)
-  .then(res => res.json())
+axios.get(`${API_URL}/search/repositories?q=language:javascript&sort=stars&per_page=1`)
   // 2. 위 저장소에 가장 많이 기여한 기여자 5명의 정보를 불러온다.
-  .then(result => fetch(`${API_URL}/repos/${result.items[0].full_name}/contributors?per_page=5`))
-  .then(res => res.json())
+  .then(res => axios.get(`${API_URL}/repos/${res.data.items[0].full_name}/contributors?per_page=5`))
   // 3. 해당 기여자들이 최근에 Github에서 별표를 한 저장소를 각각 10개씩 불러온다.
-  .then(users => {
-    const ps = users.map(user => fetch(`${API_URL}/users/${user.login}/starred?per_page=10`));
+  .then(res => {
+    const ps = res.data.map(user => axios.get(`${API_URL}/users/${user.login}/starred?per_page=10`));
     return Promise.all(ps);
   })
-  .then(responses => Promise.all(responses.map(r => r.json())))
+  .then(ress => Promise.all(ress.map(r => r.data)))
   // 4. 불러온 저장소를 모두 모아, 개수를 센 후 저장소의 이름을 개수와 함께 출력한다.
   .then(repoArrs => {
     for (let repoArr of repoArrs) {
@@ -457,23 +456,22 @@ main();
 비동기 함수의 가장 큰 장점은 **동기식 코드를 짜듯이 비동기식 코드를 짤 수 있다**는 것입니다. 아래 예제는 Github 데이터를 불러오는 예제를 비동기 함수를 사용해 다시 작성한 것입니다.
 
 ```js
+const axios = require('axios');
 const API_URL = 'https://api.github.com';
 
 async function fetchStarCount() {
   const starCount = {};
 
   // 1. Github에 공개되어있는 저장소 중, 언어가 JavaScript이고 별표를 가장 많이 받은 저장소를 불러온다.
-  const topRepoRes = await fetch(`${API_URL}/search/repositories?q=language:javascript&sort=stars&per_page=1`);
-  const topRepoData = await topRepoRes.json();
+  const topRepoRes = await axios.get(`${API_URL}/search/repositories?q=language:javascript&sort=stars&per_page=1`);
 
   // 2. 위 저장소에 가장 많이 기여한 기여자 5명의 정보를 불러온다.
-  const topMemberRes = await fetch(`${API_URL}/repos/${topRepoData.items[0].full_name}/contributors?per_page=5`);
-  const topMemeberData = await topMemberRes.json();
+  const topMemberRes = await axios.get(`${API_URL}/repos/${topRepoRes.data.items[0].full_name}/contributors?per_page=5`);
 
   // 3. 해당 기여자들이 최근에 Github에서 별표를 한 저장소를 각각 10개씩 불러온다.
-  const ps = topMemeberData.map(user => fetch(`${API_URL}/users/${user.login}/starred?per_page=10`));
-  const starredReposRes = await Promise.all(ps);
-  const starredReposData = await Promise.all(starredReposRes.map(r => r.json()));
+  const ps = topMemberRes.data.map(user => axios.get(`${API_URL}/users/${user.login}/starred?per_page=10`));
+  const starredReposRess = await Promise.all(ps);
+  const starredReposData = starredReposRess.map(r => r.data)
 
   // 4. 불러온 저장소를 모두 모아, 개수를 센 후 저장소의 이름을 개수와 함께 출력한다.
   for (let repoArr of starredReposData) {
@@ -505,24 +503,22 @@ fetchStarCount().then(console.log);
 
 ```js
 const co = require('co');
-
+const axios = require('axios');
 const API_URL = 'https://api.github.com';
 
 function* fetchStarCount() {
   const starCount = {};
 
   // 1. Github에 공개되어있는 저장소 중, 언어가 JavaScript이고 별표를 가장 많이 받은 저장소를 불러온다.
-  const topRepoRes = yield fetch(`${API_URL}/search/repositories?q=language:javascript&sort=stars&per_page=1`);
-  const topRepoData = yield topRepoRes.json();
+  const topRepoRes = yield axios.get(`${API_URL}/search/repositories?q=language:javascript&sort=stars&per_page=1`);
 
   // 2. 위 저장소에 가장 많이 기여한 기여자 5명의 정보를 불러온다.
-  const topMemberRes = yield fetch(`${API_URL}/repos/${topRepoData.items[0].full_name}/contributors?per_page=5`);
-  const topMemeberData = yield topMemberRes.json();
+  const topMemberRes = yield axios.get(`${API_URL}/repos/${topRepoRes.data.items[0].full_name}/contributors?per_page=5`);
 
   // 3. 해당 기여자들이 최근에 Github에서 별표를 한 저장소를 각각 10개씩 불러온다.
-  const ps = topMemeberData.map(user => fetch(`${API_URL}/users/${user.login}/starred?per_page=10`));
-  const starredReposRes = yield Promise.all(ps);
-  const starredReposData = yield Promise.all(starredReposRes.map(r => r.json()));
+  const ps = topMemberRes.data.map(user => axios.get(`${API_URL}/users/${user.login}/starred?per_page=10`));
+  const starredReposRess = yield Promise.all(ps);
+  const starredReposData = starredReposRess.map(r => r.data)
 
   // 4. 불러온 저장소를 모두 모아, 개수를 센 후 저장소의 이름을 개수와 함께 출력한다.
   for (let repoArr of starredReposData) {
@@ -551,4 +547,3 @@ co(fetchStarCount).then(console.log);
 [^5]: 정확히는, 지연시간으로 0을 준다고 해도 바로 작업 큐에 추가되지 않고 4ms 지연시간이 흐른 뒤에 작업 큐에 추가됩니다. `setTimeout`에 4보다 작은 지연시간을 주면, 4ms 지연시간이 대신 사용되기 때문입니다. ([명세](https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#timer-initialisation-steps))
 [^6]: 또 다른 유명한 구동환경인 Node.js에는 여러 입출력 API를 제공하면서, 각 API마다 동기식 API, 비동기식 API를 따로 제공하고 있습니다. [생활코딩](https://opentutorials.org/course/2136/11884) 강의를 참고하세요.
 [^7]: Github REST API는 인증을 하지 않은 사용자보다 인증을 한 API 사용자에게 훨씬 더 관대한 사용량을 부여합니다. Github에는 [인증 토큰을 생성하고 토큰 별로 권한을 다르게 부여할 수 있는 기능](https://github.com/settings/tokens)이 있기 때문에, 이 기능을 활용하셔도 됩니다. 하지만 실습 시에는 최소한의 권한만을 부여한 토큰을 사용하시고, 더불어 토큰이 유출되지 않도록 각별히 주의하세요. 특히 repl.it은 코드를 자동으로 저장하는 기능을 내장하고 있기 때문에, 공개된 repl.it에서 편집 중인 코드에 토큰을 붙여넣는 행동을 해서는 안됩니다.
-[^8]: HTTP 응답 헤더의 전송이 끝난 즉시 Response 객체가 만들어집니다. 즉, 이 시점에는 응답 바디를 전송받았다는 보장이 없기 때문에 이와 관련된 `json` 메소드가 Promise 객체를 반환하는 것입니다.
