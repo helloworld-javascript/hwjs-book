@@ -17,10 +17,15 @@
 
 - [김찬연](https://github.com/chayeoi) <!-- 오타 수정 -->
 - [김재명](https://github.com/stared329) <!-- 변수 선언 방법 비교표 제작 -->
-- [강가영]() <!-- 예제 코드 버그 수정 -->
 - [김보영](https://github.com/underbleu) <!-- 오타 수정 -->
 - [김범연](https://github.com/BeomyeonAndrewKim) <!-- 내용 오류 수정 -->
 - [김지원](https://github.com/jiwonkirn) <!-- 내용 오류 수정 -->
+- [정세현](https://github.com/sehyunchung) <!-- 스프린트 참여 -->
+- [신창선](https://github.com/changseon-shin) <!-- 스프린트 참여 -->
+- [이근환](https://github.com/leekeunhwan) <!-- 스프린트 참여 -->
+- [김세준](https://github.com/KimSejune) <!-- 스프린트 참여 -->
+- [이강산](https://github.com/hellomac87) <!-- 스프린트 참여 -->
+- [성중원](https://github.com/yoeubi) <!-- 스프린트 참여 -->
 
 ---
 
