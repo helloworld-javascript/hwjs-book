@@ -7,8 +7,8 @@
     "@primer/gatsby-theme-doctocat": "^1.4.0",
     "gatsby": "^2.32.8",
     "gatsby-plugin-typescript": "^2.12.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.2"
   },
