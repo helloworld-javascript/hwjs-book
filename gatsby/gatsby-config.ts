@@ -13,7 +13,7 @@ export default {
     {
       resolve: 'gatsby-plugin-root-import',
       options: {
-        src: path.resolve(__dirname, 'src'),
+        src: path.resolve(__dirname, '..', 'src'),
       },
     },
   ],
