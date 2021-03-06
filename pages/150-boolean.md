@@ -33,9 +33,23 @@ true && false; // false
 false && true; // false
 false && false; // false
 
+// 할당 연산 (assignment operators), ES2021
+// ||= 는 변수의 값이 true이면 아무 변화가 일어나지 않고 false이면 우항의 값이 변수에 할당됩니다.
+let x = false;
+x ||= true; // true
+
+// &&= 는 변수의 값이 false이면 아무 변화가 일어나지 않고 true이면 우항의 값이 변수에 할당됩니다.
+let y = true;
+y &&= false; // false
+
+// ||=와 &&=는 각각 아래 연산과 같은 동작을 합니다.
+x = x || true
+y = y && false
+
 // 삼항 연산자 (ternary operator)
 true ? 1 : 2; // 1
 false ? 1 : 2; // 2
+
 ```
 
 ## 연산자 우선순위 (Operator Precedence)

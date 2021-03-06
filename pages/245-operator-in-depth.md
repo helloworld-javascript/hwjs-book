@@ -194,19 +194,6 @@ let y = 6;
 console.log(x -= 3); // 3
 ```
 
-ES2021에는 논리 연산에 대한 할당 연산자 `||=`, `&&=`가 추가되었습니다. 각각 다음과 같이 동작합니다.
-
-- `||=` - 변수의 값이 `truthy`가 아닌 경우 연산자 우측에 있는 값이 할당됩니다.
-- `&&=` - 변수의 값이 `falsy`가 아닌 경우 연산자 우측에 있는 값이 할당됩니다. 
-
-```js
-let str = '';
-console.log(str ||= 'hello world javascript'); // 'hello world javascript'
-
-let num = 1;
-console.log(num &&= 0); // 0
-```
-
 ## 연산자 우선 순위 (Operator Precedence)
 
 연산자 여러 개가 연이어 사용된 표현식에서는, 연산자 우선 순위(operator precedence)에 따라 어떤 연산자를 먼저 계산할지가 결정됩니다.
