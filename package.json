@@ -26,10 +26,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/seungha/fds-js.git"
+    "url": "git+ssh://git@github.com:helloworld-javascript/hwjs-book.git" 
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/seungha/fds-js#readme"
+  "homepage": "https://helloworldjavascript.net/"
 }
