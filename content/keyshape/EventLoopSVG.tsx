@@ -1,31 +1,52 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Keyshape -->
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 640 337" style="white-space: pre;">
-    <g transform="translate(319.5,161.454) rotate(90) translate(-146,-67)">
-        <rect width="292" height="173" fill="#e9ecef" stroke="none" transform="translate(153.943,-11.5) scale(0.722101,1) translate(-157,-8.5)"/>
-        <rect width="292" height="12" fill="#adb5bd" stroke="none" transform="translate(146,-23) scale(0.722101,1) translate(-146,-9)"/>
-        <rect width="360.254" height="12" fill="#adb5bd" stroke="none" transform="translate(251.427,98) rotate(90) scale(0.546836,1) translate(-237.731,-6)"/>
-        <rect width="292" height="12" fill="#adb5bd" stroke="none" transform="translate(146,162) scale(0.722101,1) translate(-146,-9)"/>
+import React from 'react'
+import LazySVG from './LazySVG'
+
+const svgString = `
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 640 480" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" style="white-space: pre;">
+    <g id="stack" transform="translate(294,97) translate(-315,-96.9576)">
+        <g transform="translate(124,124.412) rotate(90) translate(-146,-67)">
+            <rect width="292" height="134" fill="#e9ecef" stroke="none" transform="translate(153.943,-11.5) scale(0.722101,1) translate(-157,11.5)"/>
+            <rect width="292" height="12" fill="#adb5bd" stroke="none" transform="translate(146,9) scale(0.722101,1) translate(-146,-9)"/>
+            <rect width="245.046" height="12" fill="#adb5bd" stroke="none" transform="translate(251.427,67) rotate(90) scale(0.546836,1) translate(-122.523,-6)"/>
+            <rect width="292" height="12" fill="#adb5bd" stroke="none" transform="translate(146,131) scale(0.722101,1) translate(-146,-9)"/>
+        </g>
+        <rect id="stack-item-1" width="40" height="86" fill="#339af0" stroke="none" fill-rule="nonzero" fill-opacity="1" stroke-opacity="1" opacity="0" transform="translate(124,192.412) rotate(90) translate(-20,-43)"/>
+        <rect id="stack-item-2" width="40" height="86" fill="#339af0" stroke="none" fill-rule="nonzero" fill-opacity="1" stroke-opacity="1" opacity="0" transform="translate(124,138.278) rotate(90) translate(-20,-43)"/>
+        <rect id="stack-item-3" width="40" height="86" fill="#339af0" stroke="none" fill-rule="nonzero" fill-opacity="1" stroke-opacity="1" opacity="0" transform="translate(124,84.1438) rotate(90) translate(-20,-43)"/>
+        <text fill="#000000" font-size="24" font-family="Helvetica" font-weight="400" letter-spacing="0em" word-spacing="0em" text-anchor="middle" stroke="none" transform="translate(122.992,263.346)" style="line-height: 16px; white-space: pre;">Call Stack</text>
     </g>
-    <g id="frame-add2andprint" opacity="0" transform="translate(319.75,229.454) translate(-43,-20)">
-        <rect id="item1" width="40" height="149" fill="#339af0" stroke="none" fill-rule="nonzero" fill-opacity="1" stroke-opacity="1" opacity="1" transform="translate(43,20) rotate(90) translate(-20,-75)"/>
-        <text fill="#ffffff" font-size="18" font-family="monospace" letter-spacing="0em" word-spacing="0em" text-anchor="middle" stroke="none" transform="translate(43,26.4805)" style="line-height: 16px;">add2AndPrint</text>
+    <path id="laser2" d="M0,0L174,0" stroke="#339af0" fill="none" stroke-linecap="square" stroke-dasharray="20 200" stroke-dashoffset="20" transform="translate(146,84.1862)"/>
+    <path id="laser1" d="M0,0L174,43.268" stroke="#339af0" fill="none" stroke-linecap="square" stroke-dasharray="20 200" stroke-dashoffset="20" transform="translate(146,84.1862)"/>
+    <path id="laser3" d="M0,0L174,-41.6862" stroke="#339af0" fill="none" stroke-linecap="square" stroke-dasharray="20 200" stroke-dashoffset="20" transform="translate(146,84.1862)"/>
+    <g id="web api">
+        <rect width="292" height="215" fill="#adb5bd" stroke="none" transform="translate(476.625,127.6) translate(-164.5,-108.573)"/>
+        <rect id="_a0" width="20.125" height="20.125" fill="#e9ecef" stroke="none" transform="translate(322.188,41.8451) translate(-10.0625,-10.0625)"/>
+        <rect width="20.125" height="20.125" fill="#e9ecef" stroke="none" transform="translate(322.188,211.209) translate(-10.0625,-10.0625)"/>
+        <rect id="_a1" width="20.125" height="20.125" fill="#e9ecef" stroke="none" transform="translate(322.188,126.527) translate(-10.0625,-10.0625)"/>
+        <rect id="_a2" width="20.125" height="20.125" fill="#e9ecef" stroke="none" transform="translate(322.188,84.1862) translate(-10.0625,-10.0625)"/>
+        <rect width="20.125" height="20.125" fill="#e9ecef" stroke="none" transform="translate(322.188,168.868) translate(-10.0625,-10.0625)"/>
+        <text fill="#000000" font-size="24" font-family="Helvetica" font-weight="400" letter-spacing="0em" word-spacing="0em" text-anchor="middle" stroke="none" transform="translate(458.125,263.388)" style="line-height: 16px;">Web APIs</text>
+        <g id="timer" opacity="0" transform="translate(356.335,84.1862) scale(0.259577,0.259577) translate(-458.125,-124.454)">
+            <ellipse id="back" rx="40" ry="40" fill="none" stroke="#51cf66" stroke-width="80" stroke-opacity="1" stroke-dashoffset="0" stroke-dasharray="251 300" transform="translate(458.125,124.454) rotate(90) scale(-0.610124,0.610124)"/>
+            <ellipse id="front" rx="40" ry="40" fill="none" stroke="#339af0" stroke-width="80" stroke-opacity="1" stroke-dashoffset="0" stroke-dasharray="251 300" transform="translate(458.125,124.454) rotate(90) scale(-0.610124,0.610124)"/>
+        </g>
+        <g id="timer2" opacity="0" transform="translate(356.335,127.454) scale(0.259577,0.259577) translate(-458.125,-124.454)">
+            <ellipse id="back-2" rx="40" ry="40" fill="none" stroke="#51cf66" stroke-width="80" stroke-opacity="1" stroke-dashoffset="0" stroke-dasharray="251 300" transform="translate(458.125,124.454) rotate(90) scale(-0.610124,0.610124)"/>
+            <ellipse id="front-2" rx="40" ry="40" fill="none" stroke="#339af0" stroke-width="80" stroke-opacity="1" stroke-dashoffset="0" stroke-dasharray="251 300" transform="translate(458.125,124.454) rotate(90) scale(-0.610124,0.610124)"/>
+        </g>
     </g>
-    <g id="frame-add2" opacity="0" transform="translate(319.75,177.454) translate(-43,-20)">
-        <rect id="item1-2" width="40" height="149" fill="#339af0" stroke="none" fill-rule="nonzero" fill-opacity="1" stroke-opacity="1" opacity="1" transform="translate(43,20) rotate(90) translate(-20,-75)"/>
-        <text fill="#ffffff" font-size="18" font-family="monospace" letter-spacing="0em" word-spacing="0em" text-anchor="middle" stroke="none" transform="translate(43,26.4805)" style="line-height: 16px;">add2</text>
-    </g>
-    <g id="frame-add" opacity="0" transform="translate(319.75,125.454) translate(-43,-20)">
-        <rect id="item1-3" width="40" height="149" fill="#339af0" stroke="none" fill-rule="nonzero" fill-opacity="1" stroke-opacity="1" opacity="1" transform="translate(43,20) rotate(90) translate(-20,-75)"/>
-        <text fill="#ffffff" font-size="18" font-family="monospace" letter-spacing="0em" word-spacing="0em" text-anchor="middle" stroke="none" transform="translate(43,26.4805)" style="line-height: 16px;">add</text>
-    </g>
-    <g id="frame-log" opacity="0" transform="translate(319.75,177.454) translate(-43,-20)">
-        <rect id="item1-4" width="40" height="149" fill="#339af0" stroke="none" fill-rule="nonzero" fill-opacity="1" stroke-opacity="1" opacity="1" transform="translate(43,20) rotate(90) translate(-20,-75)"/>
-        <text fill="#ffffff" font-size="18" font-family="monospace" letter-spacing="0em" word-spacing="0em" text-anchor="middle" stroke="none" transform="translate(43,26.4805)" style="line-height: 16px;">log</text>
-    </g>
-    <g id="g-pointer" opacity="0" transform="translate(168.309,229.454) translate(0,0) translate(-43.0118,-14.1602)">
-        <path fill-rule="evenodd" d="M28.3204,17.1602L11.3282,3L11.3282,11.4961L0,11.4961L0,22.8242L11.3282,22.8242L11.3282,31.3204Z" fill="#339af0" transform="translate(57.7031,-3)"/>
-        <text fill="#339af0" font-size="18" font-family="'Apple SD Gothic Neo'" letter-spacing="0em" word-spacing="0em" text-anchor="middle" stroke="none" transform="translate(25.7031,19.5602)" style="line-height: 16px;">실행 중</text>
+    <g id="queue">
+        <g id="container" transform="translate(320,367.915) translate(-146,-67)">
+            <rect width="292" height="134" fill="#e9ecef" stroke="none" transform="translate(157,-11.5) translate(-157,11.5)"/>
+            <rect width="292" height="12" fill="#adb5bd" stroke="none" transform="translate(146,9) translate(-146,-9)"/>
+            <rect width="292" height="12" fill="#adb5bd" stroke="none" transform="translate(146,131) translate(-146,-9)"/>
+            <path fill-rule="evenodd" d="M6,2L0,8L6,14Z" fill="#dee2e6" transform="translate(0,67) scale(19.3333,9.09698) translate(0,-8)"/>
+            <path fill-rule="evenodd" d="M6,2L0,8L6,14Z" fill="#dee2e6" transform="translate(292,67) scale(19.3333,9.09698) translate(-6,-8)"/>
+            <path fill-rule="evenodd" d="M6,2L0,8L6,14Z" fill="#dee2e6" transform="translate(146,67) scale(19.3333,9.09698) translate(-3,-8)"/>
+        </g>
+        <rect id="queue-item-1" width="40" height="86" fill="#51cf66" stroke="none" fill-rule="nonzero" fill-opacity="1" stroke-opacity="1" opacity="0" transform="translate(584.125,191.027) translate(0,0) rotate(180) translate(-20,-43)"/>
+        <rect id="queue-item-2" width="40" height="86" fill="#51cf66" stroke="none" fill-rule="nonzero" fill-opacity="1" stroke-opacity="1" opacity="0" transform="translate(584.125,191.027) translate(0,0) rotate(180) translate(-20,-43)"/>
+        <text fill="#000000" font-size="24" font-family="Helvetica" font-weight="400" letter-spacing="0em" word-spacing="0em" text-anchor="middle" stroke="none" transform="translate(320,463.388)" style="line-height: 16px; white-space: pre;">Task Queue</text>
     </g>
     <script><![CDATA[window.ks=function(){function E(a){return"undefined"!==typeof a}function v(a,b){return a&&0==a.indexOf(b)}function N(a){if(!isFinite(a))throw"non-finite value";}function O(a){if(14>=a)return 16;(a=X[a])||(a=0);return a}function C(a){return 0<=a?Math.pow(a,1/3):-Math.pow(-a,1/3)}function Y(a,b,c,d){if(0==a)return 0==b?b=-d/c:(a=Math.sqrt(c*c-4*b*d),d=(-c+a)/(2*b),0<=d&&1>=d?b=d:(d=(-c-a)/(2*b),b=0<=d&&1>=d?d:0)),b;var e=c/a-b*b/(a*a)/3;c=b*b*b/(a*a*a)/13.5-b*c/(a*a)/3+d/a;var k=c*c/4+e*e*e/27;b=-b/
 (3*a);if(0>=k){if(0==e&&0==c)return-C(d/a);a=Math.sqrt(c*c/4-k);d=Math.acos(-c/2/a);c=Math.cos(d/3);d=Math.sqrt(3)*Math.sin(d/3);a=C(a);e=2*a*c+b;if(0<=e&&1>=e)return e;e=-a*(c+d)+b;if(0<=e&&1>=e)return e;e=a*(d-c)+b;if(0<=e&&1>=e)return e}else{a=C(-c/2+Math.sqrt(k));c=C(-c/2-Math.sqrt(k));d=a+c+b;if(0<=d&&1>=d)return d;d=-(a+c)/2+b;if(0<=d&&1>=d)return d}return 0}function Z(a,b){if(48==a&&"number"===typeof b)return"#"+("000000"+b.toString(16)).substr(-6);if(64==a)return b=b.map(function(a){return a+
@@ -50,12 +71,27 @@ var C=r.indexOf(") ");0>C&&(C=r.length-1);B=r.substring(B+1,C).split(" ");5==D?(
 (A=[]);A.length<n;)A.push([1,0,0,.58,1]);for(n=0;n<A.length;++n)A[n]=ba(A[n]);q=[l,q,y,w,m,t,A,z];m=G(h,"m","motionPath");E(m)&&0===l&&(q[8]=[],q[8][0]=h.motionRotate,h=document.createElementNS("http://www.w3.org/2000/svg","path"),m||(m="M0,0"),h.setAttribute("d",m),q[8][1]=h,q[8][2]=h.getTotalLength());g.push(q)}0<g.length&&(c.v.push(e),c.o.push(g))}c.g=b;!1===c.f&&(x.push(c),c.f=!0,!1!==c.C.autoplay&&c.play());return c},_priv_list:function(){return x.slice()},play:function(){return x[0]?x[0].play():
 this},pause:function(){return x[0]?x[0].pause():this},time:function(a){return x[0]?x[0].time(a):E(a)?this:null}}}();
 document.ks=ks;(function(ks){
-ks.setmptr({'g-pointer':1});ks.animate("#frame-add2andprint",[{p:'opacity',t:[0,1000,14000,15000],v:[0,1,1,0],e:[[0],[0],[0],[0]]}],
-"#frame-add2",[{p:'opacity',t:[2000,3000,8000,9000],v:[0,1,1,0],e:[[0],[0],[0],[0]]}],
-"#frame-add",[{p:'opacity',t:[4000,5000,6000,7000],v:[0,1,1,0],e:[[0],[0],[0],[0]]}],
-"#frame-log",[{p:'opacity',t:[10000,11000,12000,13000],v:[0,1,1,0],e:[[0],[0],[0],[0]]}],
-"#g-pointer",[{p:0,t:[2000,3000,4000,5000,6000,7000,8000,9000,10000,11000,12000,13000],v:['0%','16.873273%','16.873273%','33.746544%','33.746544%','51.239633%','51.239633%','67.493087%','67.493087%','83.746546%','83.746546%','100%'],e:[[1,0,0.0733893,0,1],[0],[1,0,0.133018,0.111198,1],[0],[1,0,0.232103,0.185547,1],[0],[1,0,0.132417,0.139518,1],[0],[1,0,0.142157,0.248594,1],[0],[1,0,0.126248,0.256297,1],[0]],m:"M168.309,229.454L168.309,177.454L168.309,177.454L168.309,125.454L168.309,125.454L168.309,179.364L168.309,179.364L168.309,229.454L168.309,229.454L168.309,179.364L168.309,179.364L168.309,229.454"},{p:'opacity',t:[0,1000,14000,15000],v:[0,1,1,0],e:[[0],[0],[0],[0]]}],
+ks.setmptr({'queue-item-1':1,'queue-item-2':1});ks.animate("#stack-item-1",[{p:'opacity',t:[0,200,3500,3700,7000,7200,10000,10200],v:[0,1,1,0,0,1,1,0],e:[[0],[0],[0],[0],[0],[0],[0],[0]]}],
+"#stack-item-2",[{p:'opacity',t:[500,700,3000,3200,7500,7700,9500,9700],v:[0,1,1,0,0,1,1,0],e:[[0],[0],[0],[0],[0],[0],[0],[0]]}],
+"#stack-item-3",[{p:'opacity',t:[1000,1200,2500,2700,8000,8200,9000,9200],v:[0,1,1,0,0,1,1,0],e:[[0],[0],[0],[0],[0],[0],[0],[0]]}],
+"#laser2",[{p:'strokeDashoffset',t:[1500,2000],v:[20,-200],e:[[0],[0]]}],
+"#laser1",[{p:'strokeDashoffset',t:[2000,2500],v:[20,-200],e:[[0],[0]]}],
+"#laser3",[{p:'strokeDashoffset',t:[8500,9000],v:[20,-200],e:[[0],[0]]}],
+"#_a0",[{p:'fill',t:[8900,9000,9300],v:['#e9ecef','#ffd43b','#e9ecef'],e:[[0],[0],[0]]}],
+"#_a1",[{p:'fill',t:[2400,2500,2800],v:['#e9ecef','#ffd43b','#e9ecef'],e:[[0],[0],[0]]}],
+"#_a2",[{p:'fill',t:[1900,2000,2300],v:['#e9ecef','#ffd43b','#e9ecef'],e:[[0],[0],[0]]}],
+"#timer",[{p:'opacity',t:[1900,2000,4900,5000],v:[0,1,1,0],e:[[0],[0],[0],[0]]}],
+"#front",[{p:'strokeDashoffset',t:[2000,5000],v:[0,251],e:[[0],[0]]}],
+"#timer2",[{p:'opacity',t:[2400,2500,5900,6000],v:[0,1,1,0],e:[[0],[0],[0],[0]]}],
+"#front-2",[{p:'strokeDashoffset',t:[2500,6000],v:[0,251],e:[[0],[0]]}],
+"#queue-item-1",[{p:0,t:[5000,6000,7000],v:['0%','59.687777%','100%'],e:[[0],[0],[0]],m:"M584.125,191.027C589.534,402.345,457.27,367.915,293.188,367.915C75.272,373.672,108.722,326.153,103,244.908"},{p:'opacity',t:[5000,6000,7000],v:[0,1,0],e:[[0],[0],[0]]}],
+"#queue-item-2",[{p:0,t:[6000,7500,10200,11200],v:['0%','55.683403%','55.683403%','100%'],e:[[1,0.278776,0.00784983,0.628906,1],[0],[0],[0]],m:"M584.125,191.027C590.795,347.832,535.313,368.189,320,367.915L320,367.915C197.395,369.205,96.38,368.323,101.992,229.881"},{p:'opacity',t:[6000,7500,10200,11200],v:[0,1,1,0],e:[[0],[0],[0],[0]]}],
 {autoplay:document.location.search.substr(1).split('&').indexOf('autoplay=false')<0})
 })(ks);
 ]]></script>
 </svg>
+`
+
+export default function EventLoopSVG() {
+  return <LazySVG svgString={svgString} />
+}

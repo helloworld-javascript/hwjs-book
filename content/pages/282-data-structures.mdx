@@ -2,6 +2,10 @@
 title: 큐, 스택, 트리
 ---
 
+import QueueSVG from '../keyshape/QueueSVG.tsx'
+import StackSVG from '../keyshape/StackSVG.tsx'
+import TreeSVG from '../keyshape/TreeSVG.tsx'
+
 어떤 데이터의 구체적인 구현 방식은 생략한 채, **데이터의 추상적 형태**와 **그 데이터를 다루는 방법**만을 정해놓은 것을 가지고 **ADT(Abstract Data Type)** 혹은 **추상 자료형**이라고 합니다. 이 챕터에서는 널리 사용되는 ADT인 큐, 스택, 트리에 대해 배웁니다.
 
 ## 큐 (Queue)
@@ -12,7 +16,7 @@ title: 큐, 스택, 트리
 - **먼저 집어넣은 데이터가 먼저 나옵니다.** 이 특징을 줄여서 FIFO(First In First Out)라고 부릅니다.
 - 데이터를 집어넣는 enqueue, 데이터를 추출하는 dequeue 등의 작업을 할 수 있습니다.
 
-<embed src="../images/queue.svg" onload="onKSLoad(this)" data-loop />
+<QueueSVG />
 
 JavaScript에서는 배열을 이용해서 간단하게 큐를 구현할 수 있습니다.
 
@@ -46,7 +50,7 @@ queue.dequeue(); // 1
 - **나중에 집어넣은 데이터가 먼저 나옵니다.** 이 특징을 줄여서 LIFO(Last In First Out)라고 부릅니다.
 - 데이터를 집어넣는 push, 데이터를 추출하는 pop, 맨 나중에 집어넣은 데이터를 확인하는 peek 등의 작업을 할 수 있습니다.
 
-<embed src="../images/stack.svg" onload="onKSLoad(this)" data-loop />
+<StackSVG />
 
 JavaScript에서는 배열을 이용해서 간단하게 스택을 구현할 수 있습니다.
 
@@ -79,7 +83,7 @@ stack.pop(); // 3
 
 트리(tree)는 여러 데이터가 **계층 구조** 안에서 서로 연결된 형태를 나타낼 때 사용됩니다.
 
-<embed src="../images/tree.svg" />
+<TreeSVG />
 
 트리를 다룰 때 사용되는 몇 가지 용어를 살펴보겠습니다.
 

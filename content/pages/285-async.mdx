@@ -2,6 +2,9 @@
 title: 비동기 프로그래밍
 ---
 
+import CallStackSVG from '../keyshape/CallStackSVG.tsx'
+import EventLoopSVG from '../keyshape/EventLoopSVG.tsx'
+
 ## Motivation - 타이머 API
 
 웹 브라우저에는 **함수를 특정 시간이 지난 뒤에 실행**시키거나, 혹은 **함수를 주기적으로 실행**시키는 작업을 할 수 있게 해 주는 함수가 내장되어 있습니다.
@@ -88,7 +91,7 @@ function add2AndPrint(x) {
 add2AndPrint(3); // `add2AndPrint`를 호출
 ```
 
-<embed src="../images/callstack.svg" onload="onKSLoad(this)" data-loop />
+<CallStackSVG />
 
 호출 스택에 저장되는 각 항목을 **실행 맥락(execution context)**[^2]이라고 부릅니다. 실행 맥락에는 아래와 같은 정보들이 저장됩니다.
 
@@ -131,7 +134,7 @@ sleep(5000);
 - 위임된 일이 끝나면, 그 결과와 콜백을 **작업 큐(task queue)**에 추가합니다.
 - 브라우저는 호출 스택이 비워질 때마다 작업 큐에서 가장 오래된 작업을 꺼내와서 해당 작업에 대한 콜백을 실행시킵니다. 브라우저는 이 과정을 끊임없이 반복하는데, 이를 **이벤트 루프(event loop)**라고 부릅니다.
 
-<embed src="../images/eventloop.svg" onload="onKSLoad(this)" data-loop />
+<EventLoopSVG />
 
 JavaScript 코드를 작성할 때에는, 호출 스택과 작업 큐의 성질을 반드시 염두에 두어야 합니다.
 

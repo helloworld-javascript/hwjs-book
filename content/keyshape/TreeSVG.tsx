@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Keyshape -->
+import React from 'react'
+import LazySVG from './LazySVG'
+
+const svgString = `
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 640 406" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" style="white-space: pre;">
     <g>
         <path d="M0,0L-45,67.3333" stroke="#dee2e6" fill="none" stroke-linecap="square" stroke-width="5" transform="translate(320,66.834) scale(1.34818,1.34818)"/>
@@ -25,3 +27,8 @@
         <ellipse rx="22.5" ry="22.5" fill="#868e96" stroke="none" transform="translate(394.15,171.093) scale(1.34818,1.34818) translate(-10,-10)"/>
     </g>
 </svg>
+`
+
+export default function TreeSVG() {
+  return <LazySVG svgString={svgString} />
+}

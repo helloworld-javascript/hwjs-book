@@ -1,17 +1,32 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Keyshape -->
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 640 337" style="white-space: pre;">
-    <g transform="translate(320,161.454) rotate(90) translate(-146,-67)">
-        <rect width="292" height="134" fill="#e9ecef" stroke="none" transform="translate(153.943,-11.5) scale(0.722101,1) translate(-157,11.5)"/>
-        <rect width="292" height="12" fill="#adb5bd" stroke="none" transform="translate(146,9) scale(0.722101,1) translate(-146,-9)"/>
-        <rect width="245.046" height="12" fill="#adb5bd" stroke="none" transform="translate(251.427,67) rotate(90) scale(0.546836,1) translate(-122.523,-6)"/>
-        <rect width="292" height="12" fill="#adb5bd" stroke="none" transform="translate(146,131) scale(0.722101,1) translate(-146,-9)"/>
+import React from 'react'
+import LazySVG from './LazySVG'
+
+const svgString = `
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 640 225" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" style="white-space: pre;">
+    <defs>
+        <symbol id="Symbol-1" preserveAspectRatio="none" width="79.3333" height="79.3333" viewBox="0 0 79.3333 79.3333" overflow="visible">
+            <path fill-rule="evenodd" d="M6,3L0,8L6,13L6,10L10,10L10,6L6,6Z" fill="#e9ecef" transform="translate(39.6667,39.6667) scale(7.93333,7.93333) translate(-5,-8)"/>
+        </symbol>
+    </defs>
+    <g id="container" transform="translate(320,96.9152) translate(-146,-67)">
+        <rect width="292" height="134" fill="#e9ecef" stroke="none" transform="translate(157,-11.5) translate(-157,11.5)"/>
+        <rect width="292" height="12" fill="#adb5bd" stroke="none" transform="translate(146,9) translate(-146,-9)"/>
+        <rect width="292" height="12" fill="#adb5bd" stroke="none" transform="translate(146,131) translate(-146,-9)"/>
     </g>
-    <rect id="item1" width="40" height="86" fill="#339af0" stroke="none" fill-rule="nonzero" fill-opacity="1" stroke-opacity="1" opacity="1" transform="translate(320,229.454) rotate(90) translate(-20,-43)"/>
-    <rect id="item1-2" width="40" height="86" fill="#339af0" stroke="none" fill-rule="nonzero" fill-opacity="1" stroke-opacity="1" opacity="1" transform="translate(320,177.227) rotate(90) translate(-20,-43)"/>
-    <rect id="item1-3" width="40" height="86" fill="#339af0" stroke="none" fill-rule="nonzero" fill-opacity="1" stroke-opacity="1" opacity="0" transform="translate(320,0) translate(0,0) rotate(90) translate(-20,-43)"/>
-    <text id="push" fill="#000000" font-size="24" font-family="Helvetica" font-weight="400" letter-spacing="0em" word-spacing="0em" text-anchor="middle" stroke="none" opacity="0" transform="translate(320,308.454)" style="line-height: 16px; white-space: pre;">Push</text>
-    <text id="pop" fill="#000000" font-size="24" font-family="Helvetica" font-weight="400" letter-spacing="0em" word-spacing="0em" text-anchor="middle" stroke="none" opacity="0" transform="translate(320,308.454)" style="line-height: 16px; white-space: pre;">Pop</text>
+    <g>
+        <text id="enqueue" fill="#000000" font-size="24" font-family="Helvetica" font-weight="400" letter-spacing="0em" word-spacing="0em" text-anchor="middle" stroke="none" opacity="0" transform="translate(320,202.48)" style="line-height: 16px;">Enqueue</text>
+        <text id="dequeue" fill="#000000" font-size="24" font-family="Helvetica" font-weight="400" letter-spacing="0em" word-spacing="0em" text-anchor="middle" stroke="none" opacity="0" transform="translate(320,202.48)" style="line-height: 16px;">Dequeue</text>
+    </g>
+    <path fill-rule="evenodd" d="M6,2L0,8L6,14Z" fill="#dee2e6" transform="translate(174,96.9152) scale(19.3333,9.09698) translate(0,-8)"/>
+    <path fill-rule="evenodd" d="M6,2L0,8L6,14Z" fill="#dee2e6" transform="translate(466,96.9152) scale(19.3333,9.09698) translate(-6,-8)"/>
+    <path fill-rule="evenodd" d="M6,2L0,8L6,14Z" fill="#dee2e6" transform="translate(320,96.9152) scale(19.3333,9.09698) translate(-3,-8)"/>
+    <g transform="translate(294,97) translate(-315,-96.9576)">
+        <rect id="item1" width="40" height="86" fill="#339af0" stroke="none" fill-rule="nonzero" fill-opacity="1" stroke-opacity="1" opacity="1" transform="translate(260.375,96.8728) translate(0,0) rotate(180) translate(-20,-43)"/>
+        <rect id="item1-2" width="40" height="86" fill="#339af0" stroke="none" fill-rule="nonzero" fill-opacity="1" stroke-opacity="1" opacity="1" transform="translate(314.125,96.8728) translate(0,0) rotate(180) translate(-20,-43)"/>
+        <rect id="item1-3" width="40" height="86" fill="#339af0" stroke="none" fill-rule="nonzero" fill-opacity="1" stroke-opacity="1" opacity="1" transform="translate(367.875,96.8728) translate(0,0) rotate(180) translate(-20,-43)"/>
+        <rect id="item1-4" width="40" height="86" fill="#339af0" stroke="none" fill-rule="nonzero" fill-opacity="1" stroke-opacity="1" opacity="1" transform="translate(421.625,96.8728) translate(0,0) rotate(180) translate(-20,-43)"/>
+        <rect id="item1-5" width="40" height="86" fill="#339af0" stroke="none" fill-rule="nonzero" fill-opacity="1" stroke-opacity="1" opacity="0" transform="translate(559,96.8728) translate(0,0) rotate(180) translate(-20,-43)"/>
+    </g>
     <script><![CDATA[window.ks=function(){function E(a){return"undefined"!==typeof a}function v(a,b){return a&&0==a.indexOf(b)}function N(a){if(!isFinite(a))throw"non-finite value";}function O(a){if(14>=a)return 16;(a=X[a])||(a=0);return a}function C(a){return 0<=a?Math.pow(a,1/3):-Math.pow(-a,1/3)}function Y(a,b,c,d){if(0==a)return 0==b?b=-d/c:(a=Math.sqrt(c*c-4*b*d),d=(-c+a)/(2*b),0<=d&&1>=d?b=d:(d=(-c-a)/(2*b),b=0<=d&&1>=d?d:0)),b;var e=c/a-b*b/(a*a)/3;c=b*b*b/(a*a*a)/13.5-b*c/(a*a)/3+d/a;var k=c*c/4+e*e*e/27;b=-b/
 (3*a);if(0>=k){if(0==e&&0==c)return-C(d/a);a=Math.sqrt(c*c/4-k);d=Math.acos(-c/2/a);c=Math.cos(d/3);d=Math.sqrt(3)*Math.sin(d/3);a=C(a);e=2*a*c+b;if(0<=e&&1>=e)return e;e=-a*(c+d)+b;if(0<=e&&1>=e)return e;e=a*(d-c)+b;if(0<=e&&1>=e)return e}else{a=C(-c/2+Math.sqrt(k));c=C(-c/2-Math.sqrt(k));d=a+c+b;if(0<=d&&1>=d)return d;d=-(a+c)/2+b;if(0<=d&&1>=d)return d}return 0}function Z(a,b){if(48==a&&"number"===typeof b)return"#"+("000000"+b.toString(16)).substr(-6);if(64==a)return b=b.map(function(a){return a+
 "px"}),b.join(",");if(96==a){a="";for(var c=b.length,d=0;d<c;d+=2)a+=b[d],a+=b[d+1].join(",");return a}if(80==a){if(0==b[0])return"none";a="";c=b.length;for(d=0;d<c;)a+=R[b[d]],1==b[d]?a+="("+b[d+1]+") ":5==b[d]?(a+="("+b[d+1]+"px "+b[d+2]+"px "+b[d+3]+"px rgba("+(b[d+4]>>>24)+","+(b[d+4]>>16&255)+","+(b[d+4]>>8&255)+","+(b[d+4]&255)/255+")) ",d+=3):a=2==b[d]?a+("("+b[d+1]+"px) "):7==b[d]?a+("("+b[d+1]+"deg) "):a+("("+(0>b[d+1]?0:b[d+1])+") "),d+=2;return a}return 32==a?b+"px":b}function w(a){return 0>=
@@ -35,10 +50,19 @@ var C=r.indexOf(") ");0>C&&(C=r.length-1);B=r.substring(B+1,C).split(" ");5==D?(
 (A=[]);A.length<n;)A.push([1,0,0,.58,1]);for(n=0;n<A.length;++n)A[n]=ba(A[n]);q=[l,q,y,w,m,t,A,z];m=G(h,"m","motionPath");E(m)&&0===l&&(q[8]=[],q[8][0]=h.motionRotate,h=document.createElementNS("http://www.w3.org/2000/svg","path"),m||(m="M0,0"),h.setAttribute("d",m),q[8][1]=h,q[8][2]=h.getTotalLength());g.push(q)}0<g.length&&(c.v.push(e),c.o.push(g))}c.g=b;!1===c.f&&(x.push(c),c.f=!0,!1!==c.C.autoplay&&c.play());return c},_priv_list:function(){return x.slice()},play:function(){return x[0]?x[0].play():
 this},pause:function(){return x[0]?x[0].pause():this},time:function(a){return x[0]?x[0].time(a):E(a)?this:null}}}();
 document.ks=ks;(function(ks){
-ks.setmptr({'item1-3':1});ks.animate("#item1-3",[{p:0,t:[500,1500,3500,4500],v:['0%','50%','50%','100%'],e:[[1,0.162655,0.480455,0.322438,0.982484],[1,0,0,1,0],[1,0.224827,0.400647,0.417597,0.910455],[0]],m:"M320,0L320,125L320,125L320,0"},{p:'opacity',t:[500,1500,3500,4500],v:[0,1,1,0],e:[[0],[0],[1,0,0.172267,0.0685547,0.979969],[0]]}],
-"#push",[{p:'opacity',t:[0,1000,1500,2500],v:[0,1,1,0],e:[[0],[0],[0],[0]]}],
-"#pop",[{p:'opacity',t:[3000,4000,4500,5500],v:[0,1,1,0],e:[[0],[0],[0],[0]]}],
+ks.setmptr({'item1':1,'item1-2':1,'item1-3':1,'item1-4':1,'item1-5':1});ks.animate("#enqueue",[{p:'opacity',t:[0,1000,1500,2500],v:[0,1,1,0],e:[[0],[0],[0],[0]]}],
+"#dequeue",[{p:'opacity',t:[3000,4000,4500,5500],v:[0,1,1,0],e:[[0],[0],[0],[0]]}],
+"#item1",[{p:0,t:[500,1500,3500,4500],v:['0%','19.970455%','19.970455%','100%'],e:[[1,0,0,0.58,1],[1,0,0,0.58,1],[1,0,0,0.58,1],[0]],m:"M260.375,96.8728L233.34,96.8728L233.34,96.8728L125,96.8728"},{p:'opacity',t:[3500,4500],v:[1,0],e:[[0],[0]]}],
+"#item1-2",[{p:0,t:[500,1500,3500,4500],v:['0%','50.148399%','50.148399%','100%'],e:[[1,0,0,0.58,1],[1,0,0,0.58,1],[1,0,0,0.58,1],[0]],m:"M314.125,96.8728L287.09,96.8728L287.09,96.8728L260.215,96.8728"}],
+"#item1-3",[{p:0,t:[500,1500,3500,4500],v:['0%','50.148399%','50.148399%','100%'],e:[[1,0,0,0.58,1],[1,0,0,0.58,1],[1,0,0,0.58,1],[0]],m:"M367.875,96.8728L340.84,96.8728L340.84,96.8728L313.965,96.8728"}],
+"#item1-4",[{p:0,t:[500,1500,3500,4500],v:['0%','50.148399%','50.148399%','100%'],e:[[1,0,0,0.58,1],[1,0,0,0.58,1],[1,0,0,0.58,1],[0]],m:"M421.625,96.8728L394.59,96.8728L394.59,96.8728L367.715,96.8728"}],
+"#item1-5",[{p:0,t:[500,1500,3500,4500],v:['0%','80.45952%','80.45952%','100%'],e:[[1,0,0,0.58,1],[1,0,0,0.58,1],[1,0,0,0.58,1],[0]],m:"M559,96.8728L448.34,96.8728L448.34,96.8728L421.465,96.8728"},{p:'opacity',t:[500,1500],v:[0,1],e:[[0],[0]]}],
 {autoplay:document.location.search.substr(1).split('&').indexOf('autoplay=false')<0})
 })(ks);
 ]]></script>
 </svg>
+`
+
+export default function QueueSVG() {
+  return <LazySVG svgString={svgString} />
+}
