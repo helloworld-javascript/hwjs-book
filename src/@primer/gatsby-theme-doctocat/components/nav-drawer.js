@@ -53,31 +53,6 @@ function NavDrawer({isOpen, onDismiss}) {
         style={{overflow: 'auto', WebkitOverflowScrolling: 'touch'}}
       >
         <Flex flexDirection="column" flex="0 0 auto" color="blue.2" bg="gray.9">
-          <BorderBox
-            borderWidth={0}
-            borderRadius={0}
-            borderBottomWidth={1}
-            borderColor="gray.7"
-          >
-            <Flex
-              py={3}
-              pl={4}
-              pr={3}
-              alignItems="center"
-              justifyContent="space-between"
-            >
-              <Link
-                href="https://primer.style"
-                fontFamily="mono"
-                color="inherit"
-              >
-                Primer
-              </Link>
-              <DarkButton aria-label="Close" onClick={onDismiss}>
-                <XIcon />
-              </DarkButton>
-            </Flex>
-          </BorderBox>
           <Flex flexDirection="column">
             <PrimerNavItems items={primerNavItems} />
           </Flex>
