@@ -4,7 +4,7 @@
   "description": "처음 시작하는 사람들을 위한 JavaScript 교재",
   "main": "index.js",
   "dependencies": {
-    "@primer/gatsby-theme-doctocat": "^1.4.0",
+    "@primer/gatsby-theme-doctocat": "^1.6.0",
     "gatsby": "^2.32.8",
     "gatsby-plugin-typescript": "^2.12.1",
     "react": "^16.13.1",
