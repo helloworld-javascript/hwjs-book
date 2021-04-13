@@ -16,5 +16,11 @@ export default {
         src: path.resolve(__dirname, '..', 'src'),
       },
     },
+    {
+      resolve: '@primer/gatsby-theme-doctocat',
+      options: {
+        icon: path.resolve(__dirname, '..', 'icon.png'),
+      },
+    },
   ],
 }
