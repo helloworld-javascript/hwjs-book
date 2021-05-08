@@ -196,7 +196,7 @@ const companyNameLength = person.company?.name?.length; // 0
 이 연산자는 속성 접근자와 비슷한 기능을 하지만, `obj?.prop` 에서, `obj` 가 `null` 혹은 `undefined` 이면 `obj`가 바로 반환되고, 아니면 `obj.prop`이 반환됩니다.
 덕분에 접근하는 대상이 `null` 혹은 `undefined` 인 경우에 에러가 날까봐 걱정할 필요가 없습니다.
 
-만약 입력된 주소가 없는(`null`, `undefined`) 경우 '주소 없음'을 표시하고 싶다면 `??` 연산자와 함께 활용할 수 있습니다.
+만약 아래 예시처럼 입력된 주소가 없는(`null`, `undefined`) 경우 '주소 없음'을 표시하고 싶다면 `??` 연산자와 함께 활용할 수도 있습니다.
 
 ```js
 const address = person.company?.office?.address ?? '주소 없음'; // '주소 없음'
