@@ -96,6 +96,114 @@ function func2(arg) {
 
 위에서 볼 수 있듯이 short-circuit evaluation을 사용하면 코드의 길이가 줄어드는 효과가 있습니다. 다만 코드의 의미가 불명확해질 수 있고 논리적으로 놓치는 부분이 생길 수 있으니 주의해서 사용하세요.
 
+## Optional chaining
+
+여러번 중첩된 객체의 속성에 접근할 때, 특정 깊이에 중첩된 객체가 없을 수도 있다면 이를 고려해서 코드를 짜야합니다.
+예를 들어 어떤 사람에 대한 정보를 다음과 같은 중첩된 객체로 가지고 있다고 가정해 보겠습니다.
+
+```js
+const person = {
+  name: '준하',
+  age: 28,
+  company: {
+    name: 'Hello World JS',
+    office: {
+      name: '판교 오피스',
+      address: '경기도 성남시 분당구 판교동',
+    }
+  }
+};
+```
+
+이때 준하의 회사의 주소에 접근하기 위해서는 다음과 같은 표현식을 작성할 수 있습니다.
+
+```js
+const address = person.company.office.address;
+```
+
+만약 준하가 아직 학생이어서 취업을 하지 않은 경우, 혹은 회사 주소를 입력하지 않은 경우, 다음과 같이 회사의 주소 정보를 가지지 않을 수 있습니다.
+
+```js
+// 회사 정보가 없음
+const person = {
+  name: '준하',
+  age: 28,
+};
+
+// 회사 오피스 정보를 입력하지 않음
+const person = {
+  name: '준하',
+  age: 28,
+  company: {
+    name: 'Hello World JS',
+  }
+};
+```
+
+이 때 그냥 `person.company.office.address` 에 접근하면 에러가 납니다!
+
+```js
+const officeAddress = person.company.office.address // Uncaught TypeError: Cannot read property 'office' of undefined
+```
+
+이 경우 회사의 주소에 접근하기 위해 중첩된 객체마다 속성에 데이터가 있는지 확인해야 합니다. 하나하나 if 문으로 null check를 할 수도 있지만, 앞서 언급한 `&&` 연산자를 사용하여 다음과 같이 작성할 수 있습니다.
+
+```js
+const address = person.company && person.company.office && person.company.office.address;
+```
+
+이렇게 논리 연산자를 사용하여 작성하면 if 문을 중첩하여 작성하는 것 보다는 간결하지만 다음과 같은 단점을 가집니다.
+
+- 객체가 많이 중첩될수록 코드의 길이가 길어진다. 
+- 값이 `null`과 `undefined`가 아닌 falsy 값인 경우도 고려해야 한다.
+
+```js
+// 많은 중첩
+const sixth = first && first.second && first.second.third && first.second.third.fourth && first.second.third.fourth.fifth && first.second.third.fourth.fifth.sixth;
+
+// 값이 null과 undefined가 아닌 falsy 값인 경우
+const person = {
+  name: '준하',
+  age: 28,
+  company: {
+    name: '',
+  }
+};
+
+// companyNameLength에 숫자 대신 빈 문자열이 할당됩니다.
+const companyNameLength = person.company && person.company.name && person.company.name.length && 0; // ''
+
+// 이를 고려하여 아래처럼 해주어야합니다.
+const companyNameLength = person.company && typeof person.company.name === 'string' && person.company.name.length; // 0
+```
+
+ES2020에 포함된 Optional chaining 문법을 사용하면 이러한 번거로움을 해소할 수 있습니다.
+
+```js
+const person = {
+    name: '준하',
+  age: 28,
+  company: {
+    name: '',
+  }
+};
+
+const address = person.company?.office?.address; // undefined
+const companyNameLength = person.company?.name?.length; // 0
+```
+
+여기서 `.?` 연산자를 Optional chaining 연산자라고 부릅니다.
+이 연산자는 속성 접근자와 비슷한 기능을 하지만, `obj?.prop` 에서, `obj` 가 `null` 혹은 `undefined` 이면 `obj`가 바로 반환되고, 아니면 `obj.prop`이 반환됩니다.
+덕분에 접근하는 대상이 `null` 혹은 `undefined` 인 경우에 에러가 날까봐 걱정할 필요가 없습니다.
+
+만약 아래 예시처럼 입력된 주소가 없는(`null`, `undefined`) 경우 '주소 없음'을 표시하고 싶다면 `??` 연산자와 함께 활용할 수도 있습니다.
+
+```js
+const address = person.company?.office?.address ?? '주소 없음'; // '주소 없음'
+```
+
+다만 Optional chaining을 남용하면 꼭 있어야 할 속성 값이 없는 경우 알아차리기 힘들고, 이는 또 다른 에러를 만들 수 있기 때문에 주의가 필요합니다.
+
 ## 삼항 연산자 (Ternary Operator)
 
 `a ? b : c`와 같이 쓰이는 삼항 연산자(ternary operator)는 조건부 연산자(conditional operator)라고도 불립니다. 앞의 표현식에서, `a`가 truthy이면 `b`가, falsy이면 `c`가 반환됩니다.
