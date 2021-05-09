@@ -143,7 +143,7 @@ const person = {
 이 때 그냥 `person.company.office.address` 에 접근하면 에러가 납니다!
 
 ```js
-const officeAddress = person.company.office.address // Uncaught TypeError: Cannot read property 'office' of undefined
+const address = person.company.office.address // Uncaught TypeError: Cannot read property 'office' of undefined
 ```
 
 이 경우 회사의 주소에 접근하기 위해 중첩된 객체마다 속성에 데이터가 있는지 확인해야 합니다. 하나하나 if 문으로 null check를 할 수도 있지만, 앞서 언급한 `&&` 연산자를 사용하여 다음과 같이 작성할 수 있습니다.
