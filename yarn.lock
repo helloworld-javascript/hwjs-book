@@ -1562,6 +1562,11 @@
     style-value-types "^3.1.7"
     tslib "^1.10.0"
 
+"@primer/component-metadata@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@primer/component-metadata/-/component-metadata-0.4.0.tgz#44b7d7b1285bea41c2a88621fd17f2c777a4c5e9"
+  integrity sha512-yppmDSSDrN2CHwjq3h+RWhfpjehFQAx21JcEipYyNTp0f/kC+iazFVNCKZE6DOavAxv003ti7QIrp+QkPT9tpg==
+
 "@primer/components@^20.0.0":
   version "20.3.0"
   resolved "https://registry.yarnpkg.com/@primer/components/-/components-20.3.0.tgz#6e71f600e6797a6d21be671ca064b76139746045"
@@ -1589,15 +1594,16 @@
     react-is "16.10.2"
     styled-system "5.1.2"
 
-"@primer/gatsby-theme-doctocat@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@primer/gatsby-theme-doctocat/-/gatsby-theme-doctocat-1.4.0.tgz#15435d2ea37fd012d1d7bb66c4fb9cac03c0cd82"
-  integrity sha512-NvkH762Hj+ZNXXqlCYgn0F6rAQQvQegTtOKBzRaUwjpbQylyjpW5BrPJuFARPQcwJmIqUkgWjy13xBRNhIZyrQ==
+"@primer/gatsby-theme-doctocat@^1.7.0":
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/@primer/gatsby-theme-doctocat/-/gatsby-theme-doctocat-1.7.0.tgz#57a8617a77807a87154137225095d9216585c5aa"
+  integrity sha512-c+HqWXniGTl738Lxc8qJYbQEnqJihpQZwYhBmW+jdiNLf5bOYJugXYHr5HpeCsqeKczvt/tUlPJBHhTN/B2PIA==
   dependencies:
     "@babel/preset-env" "^7.5.5"
     "@babel/preset-react" "^7.0.0"
     "@mdx-js/mdx" "^1.0.21"
     "@mdx-js/react" "^1.0.21"
+    "@primer/component-metadata" "^0.4.0"
     "@primer/components" "^20.0.0"
     "@primer/octicons-react" "^11.0.0"
     "@styled-system/theme-get" "^5.0.12"
