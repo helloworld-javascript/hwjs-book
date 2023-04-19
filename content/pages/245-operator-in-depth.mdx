@@ -192,7 +192,7 @@ const address = person.company?.office?.address; // undefined
 const companyNameLength = person.company?.name?.length; // 0
 ```
 
-여기서 `.?` 연산자를 Optional chaining 연산자라고 부릅니다.
+여기서 `?.` 연산자를 Optional chaining 연산자라고 부릅니다.
 이 연산자는 속성 접근자와 비슷한 기능을 하지만, `obj?.prop` 에서, `obj` 가 `null` 혹은 `undefined` 이면 `obj`가 바로 반환되고, 아니면 `obj.prop`이 반환됩니다.
 덕분에 접근하는 대상이 `null` 혹은 `undefined` 인 경우에 에러가 날까봐 걱정할 필요가 없습니다.
 
