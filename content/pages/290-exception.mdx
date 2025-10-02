@@ -96,7 +96,7 @@ try {
   connectToDatabase()
 } catch (originalError) {
   // 원본 에러를 cause로 포함하여 새로운 에러 발생
-  throw new Error('데이터베이스 연결 실패', { cause: originalError })
+  throw new Error('데이터베이스 연결 실패', {cause: originalError})
 }
 ```
 
@@ -107,7 +107,7 @@ try {
   try {
     throw new Error('원본 에러')
   } catch (err) {
-    throw new Error('상위 레벨 에러', { cause: err })
+    throw new Error('상위 레벨 에러', {cause: err})
   }
 } catch (err) {
   console.log(err.message) // '상위 레벨 에러'
