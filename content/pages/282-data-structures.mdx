@@ -127,3 +127,72 @@ traverse(tree);
 
 트리는 계층 구조를 나타내기 위해, 또한 계층 구조를 통해 알고리즘의 효율을 높이고자 할 때 널리 사용됩니다.
 
+## Set 집합 연산
+
+Set은 중복되지 않는 값들의 집합을 나타내는 자료구조입니다. ES2024와 ES2025에서는 Set에 집합 이론의 기본 연산들이 추가되어, 수학적인 집합 연산을 쉽게 수행할 수 있게 되었습니다.
+
+### 집합 연산 메소드
+
+```js
+const setA = new Set([1, 2, 3, 4]);
+const setB = new Set([3, 4, 5, 6]);
+
+// 합집합 (Union) - 두 집합의 모든 요소
+const union = setA.union(setB);
+console.log([...union]); // [1, 2, 3, 4, 5, 6]
+
+// 교집합 (Intersection) - 양쪽 집합 모두에 있는 요소
+const intersection = setA.intersection(setB);
+console.log([...intersection]); // [3, 4]
+
+// 차집합 (Difference) - setA에는 있지만 setB에는 없는 요소
+const difference = setA.difference(setB);
+console.log([...difference]); // [1, 2]
+
+// 대칭 차집합 (Symmetric Difference) - 한쪽에만 있는 요소
+const symDiff = setA.symmetricDifference(setB);
+console.log([...symDiff]); // [1, 2, 5, 6]
+```
+
+### 집합 비교 메소드
+
+Set 간의 포함 관계를 확인하는 메소드들도 추가되었습니다.
+
+```js
+const setA = new Set([1, 2, 3, 4]);
+const setB = new Set([1, 2]);
+const setC = new Set([5, 6]);
+
+// 부분집합 확인 (Subset) - setB의 모든 요소가 setA에 포함되는가?
+setB.isSubsetOf(setA);  // true
+setA.isSubsetOf(setB);  // false
+
+// 상위집합 확인 (Superset) - setA가 setB의 모든 요소를 포함하는가?
+setA.isSupersetOf(setB);  // true
+setB.isSupersetOf(setA);  // false
+
+// 서로소 집합 확인 (Disjoint) - 공통 요소가 없는가?
+setA.isDisjointFrom(setC);  // true (공통 요소 없음)
+setA.isDisjointFrom(setB);  // false (공통 요소 있음)
+```
+
+### 실용적인 예시
+
+이러한 Set 연산은 데이터 분석이나 권한 관리 등 다양한 실무 상황에서 유용하게 사용될 수 있습니다.
+
+```js
+// 예시: 사용자 권한 관리
+const adminPermissions = new Set(['read', 'write', 'delete']);
+const userPermissions = new Set(['read', 'write']);
+
+// 사용자에게 없는 권한 찾기
+const missingPermissions = adminPermissions.difference(userPermissions);
+console.log([...missingPermissions]); // ['delete']
+
+// 공통 권한 찾기
+const commonPermissions = adminPermissions.intersection(userPermissions);
+console.log([...commonPermissions]); // ['read', 'write']
+```
+
+이러한 Set 메소드들은 코드를 더 간결하고 읽기 쉽게 만들어주며, 집합 관련 로직을 직관적으로 표현할 수 있게 해줍니다.
+

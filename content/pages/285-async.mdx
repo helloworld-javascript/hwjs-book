@@ -275,6 +275,51 @@ const p = new Promise((resolve, reject) => {
 
 위 예제에서는 `setTimeout`을 이용해 2초가 지난 뒤에 콜백이 실행되도록 했습니다. 즉, `p` 변수에 저장된 Promise 객체는 2초 동안은 결과값이 없는 상태가 됩니다. 그리고 2초가 지나면, `resolve` 함수가 호출되어 `p` 객체는 결과값을 갖는 객체가 됩니다.
 
+#### Promise 생성의 새로운 방법 (ES2024)
+
+ES2024에서는 `Promise.withResolvers()` 메소드가 추가되어, Promise를 생성하면서 `resolve`와 `reject` 함수를 외부에서 사용할 수 있게 되었습니다.
+
+```js
+// 기존 방법 - resolve와 reject를 외부에서 사용하려면 변수에 저장해야 함
+let resolve, reject;
+const p = new Promise((res, rej) => {
+  resolve = res;
+  reject = rej;
+});
+
+// 새로운 방법 (ES2024) - 더 깔끔하고 직관적
+const { promise, resolve, reject } = Promise.withResolvers();
+
+setTimeout(() => {
+  resolve('완료!');
+}, 2000);
+
+promise.then(console.log); // 2초 후 '완료!' 출력
+```
+
+이 방법은 Promise의 `resolve`와 `reject`를 다른 곳에서 호출해야 할 때 특히 유용합니다.
+
+#### 동기/비동기 함수를 안전하게 실행하기 (ES2025)
+
+ES2025에는 `Promise.try()` 메소드가 추가되어, 동기 함수든 비동기 함수든 상관없이 안전하게 Promise로 감쌀 수 있게 되었습니다.
+
+```js
+// 함수가 동기인지 비동기인지 모를 때 유용
+Promise.try(() => maybeAsyncFunction())
+  .then(result => console.log('성공:', result))
+  .catch(err => console.error('실패:', err));
+
+// 동기 함수도 동일하게 처리
+Promise.try(() => {
+  if (Math.random() > 0.5) throw new Error('실패');
+  return '성공';
+})
+  .then(console.log)
+  .catch(console.error);
+```
+
+이 메소드는 에러 처리를 일관되게 할 수 있어 매우 유용합니다.
+
 Promise 객체의 **결과값을 사용해 추가 작업**을 하려면 `then` 메소드를 호출해야 합니다. `then` 메소드에 콜백을 넘겨서, 첫 번째 인수로 들어온 결과값을 가지고 추가 작업을 할 수 있습니다.
 
 ```js

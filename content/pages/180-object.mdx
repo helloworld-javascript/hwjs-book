@@ -527,6 +527,63 @@ Person.compareAge = function(person1, person2) {
 }
 ```
 
+## 객체 자신의 속성 확인하기
+
+객체가 특정 속성을 가지고 있는지 확인할 때는 `Object.hasOwn()` 메소드를 사용할 수 있습니다. 이 메소드는 객체 자신의 속성인지 확인하며, 프로토타입 체인을 따라 상속된 속성은 제외합니다.
+
+```js
+const obj = { name: 'John', age: 30 };
+
+Object.hasOwn(obj, 'name'); // true - 자신의 속성
+Object.hasOwn(obj, 'toString'); // false - 상속된 속성
+```
+
+이전에는 `hasOwnProperty` 메소드를 사용했지만, `Object.hasOwn()`이 더 안전하고 사용하기 편리합니다.
+
+```js
+// 이전 방식
+obj.hasOwnProperty('name'); // true
+
+// 새로운 방식 (ES2022)
+Object.hasOwn(obj, 'name'); // true
+```
+
+## 배열 요소 그룹핑하기
+
+`Object.groupBy()` 메소드를 사용하면 배열의 요소들을 특정 기준에 따라 그룹으로 나눌 수 있습니다. 이는 데이터를 분류하거나 정리할 때 매우 유용합니다.
+
+```js
+const people = [
+  { name: 'Alice', age: 25 },
+  { name: 'Bob', age: 25 },
+  { name: 'Charlie', age: 30 },
+  { name: 'David', age: 30 }
+];
+
+// 나이별로 그룹핑
+const grouped = Object.groupBy(people, person => person.age);
+
+console.log(grouped);
+// {
+//   25: [{name: 'Alice', age: 25}, {name: 'Bob', age: 25}],
+//   30: [{name: 'Charlie', age: 30}, {name: 'David', age: 30}]
+// }
+```
+
+이 메소드는 ES2024에 추가되었으며, 데이터를 카테고리별로 분류하는 작업을 간단하게 만들어줍니다.
+
+```js
+const products = [
+  { name: '사과', category: '과일' },
+  { name: '당근', category: '채소' },
+  { name: '바나나', category: '과일' },
+  { name: '배추', category: '채소' }
+];
+
+const byCategory = Object.groupBy(products, product => product.category);
+console.log(byCategory.과일); // [{name: '사과', category: '과일'}, {name: '바나나', category: '과일'}]
+```
+
 [^1]: 다른 언어에서 HashMap, Dictionary 등으로 불리는 자료 구조와 유사하다고 할 수 있습니다.
 [^2]: 한글은 JavaScript의 식별자로 사용할 수 있습니다만, 권장되지는 않습니다.
 [^3]: `Object.create` 함수에는 프로토타입을 지정하는 것 말고도 다른 기능이 있는데, 이에 대해서는 [객체 더 알아보기](./240-object-in-depth.md) 챕터에서 자세히 다룹니다.
