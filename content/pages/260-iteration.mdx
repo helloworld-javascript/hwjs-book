@@ -5,8 +5,8 @@ title: Iterable
 반복 가능한 객체(iterable object)는 `for...of` 구문과 함께 ES2015에서 도입되었습니다. 반복 가능한 객체를 다른 객체와 구분짓는 특징은, 객체의 `Symbol.iterator` 속성에 **특별한 형태의 함수**가 들어있다는 것입니다.
 
 ```js
-const str = 'hello';
-str[Symbol.iterator]; // [Function]
+const str = 'hello'
+str[Symbol.iterator] // [Function]
 ```
 
 객체의 `Symbol.iterator` 속성에 특정 형태의 함수가 들어있다면, 이를 반복 가능한 객체(iterable object) 혹은 줄여서 **iterable**이라 부르고, **해당 객체는 iterable protocol을 만족한다**고 말합니다. 이런 객체들에 대해서는 ES2015에서 추가된 다양한 기능들을 사용할 수 있습니다.
@@ -33,17 +33,17 @@ str[Symbol.iterator]; // [Function]
 ```js
 // `for...of`
 for (let c of 'hello') {
-  console.log(c);
+  console.log(c)
 }
 
 // spread 연산자
-const characters = [...'hello'];
+const characters = [...'hello']
 
 // 분해대입
-const [c1, c2] = 'hello';
+const [c1, c2] = 'hello'
 
 // `Array.from`은 iterable 혹은 array-like 객체를 인수로 받습니다.
-Array.from('hello');
+Array.from('hello')
 ```
 
 ## Generator 함수
@@ -69,9 +69,9 @@ const gen2 = function* () {
 
 // 메소드 문법으로 사용하기
 const obj = {
-  * gen3() {
+  *gen3() {
     // ...
-  }
+  },
 }
 ```
 
@@ -83,23 +83,23 @@ function* gen1() {
 }
 
 // `gen1`를 호출하면 iterable이 반환됩니다.
-const iterable = gen1();
+const iterable = gen1()
 
-iterable[Symbol.iterator]; // [Function]
+iterable[Symbol.iterator] // [Function]
 ```
 
 Generator 함수 안에서는 `yield`라는 특별한 키워드를 사용할 수 있습니다. Generator 함수 안에서 `yield` 키워드는 `return`과 유사한 역할을 하며, iterable의 기능을 사용할 때 **`yield` 키워드 뒤에 있는 값들을 순서대로 넘겨줍니다.**
 
 ```js
 function* numberGen() {
-  yield 1;
-  yield 2;
-  yield 3;
+  yield 1
+  yield 2
+  yield 3
 }
 
 // 1, 2, 3이 순서대로 출력됩니다.
 for (let n of numberGen()) {
-  console.log(n);
+  console.log(n)
 }
 ```
 
@@ -107,19 +107,19 @@ for (let n of numberGen()) {
 
 ```js
 function* numberGen() {
-  yield 1;
-  yield 2;
-  yield 3;
+  yield 1
+  yield 2
+  yield 3
 }
 
 function* numberGen2() {
-  yield* numberGen();
-  yield* numberGen();
+  yield* numberGen()
+  yield* numberGen()
 }
 
 // 1, 2, 3, 1, 2, 3이 순서대로 출력됩니다.
 for (let n of numberGen2()) {
-  console.log(n);
+  console.log(n)
 }
 ```
 
@@ -129,24 +129,24 @@ for (let n of numberGen2()) {
 // 등차수열 생성하기
 function* range(start = 0, end = Infinity, step = 1) {
   for (let i = start; i < end; i += step) {
-    yield i;
+    yield i
   }
 }
 
 // 피보나치 수열 생성하기
 function* fibonacci(count = Infinity) {
-  let x = 1;
-  let y = 1;
+  let x = 1
+  let y = 1
   for (let i = 0; i < count; i++) {
-    yield x;
-    [x, y] = [y, x + y];
+    yield x
+    ;[x, y] = [y, x + y]
   }
 }
 
 // 하나의 항목을 계속 넘겨주기
 function* repeat(item, count = Infinity) {
   for (let i = 0; i < count; i++) {
-    yield item;
+    yield item
   }
 }
 
@@ -154,14 +154,11 @@ function* repeat(item, count = Infinity) {
 function* repeatMany(array) {
   while (true) {
     for (let item of array) {
-      yield item;
+      yield item
     }
   }
 }
 ```
-
-
-
 
 Generator 함수를 사용할 때 주의할 점이 있습니다.
 
@@ -171,20 +168,20 @@ Generator 함수를 사용할 때 주의할 점이 있습니다.
 ```js
 // Generator 함수로부터 생성된 iterable은 한 번만 사용될 수 있습니다.
 function* gen() {
-  yield 1;
-  yield 2;
-  yield 3;
+  yield 1
+  yield 2
+  yield 3
 }
 
-const iter = gen();
+const iter = gen()
 
 for (let n of iter) {
   // 잘 출력됩니다.
-  console.log(n);
+  console.log(n)
 }
 for (let n of iter) {
   // `iter`는 한 번 사용되었으므로, 이 코드는 실행되지 않습니다.
-  console.log(n);
+  console.log(n)
 }
 ```
 
@@ -222,22 +219,22 @@ Iterator 객체는 아래의 특별한 조건을 만족하는 객체입니다.
 
 ```js
 // 문자열은 iterable이므로 이로부터 iterator를 생성할 수 있습니다.
-const strIterator = 'go'[Symbol.iterator]();
-strIterator.next(); // { value: 'g', done: false }
-strIterator.next(); // { value: 'o', done: false }
-strIterator.next(); // { value: undefined, done: true }
-strIterator.next(); // { value: undefined, done: true }
+const strIterator = 'go'[Symbol.iterator]()
+strIterator.next() // { value: 'g', done: false }
+strIterator.next() // { value: 'o', done: false }
+strIterator.next() // { value: undefined, done: true }
+strIterator.next() // { value: undefined, done: true }
 
 // generator 함수로부터 생성된 객체 역시 iterable이므로 이로부터 iterator를 생성할 수 있습니다.
 function* gen() {
-  yield 1;
-  yield 2;
+  yield 1
+  yield 2
 }
-const genIterator = gen()[Symbol.iterator]();
-genIterator.next(); // { value: 1, done: false }
-genIterator.next(); // { value: 2, done: false }
-genIterator.next(); // { value: undefined, done: true }
-genIterator.next(); // { value: undefined, done: true }
+const genIterator = gen()[Symbol.iterator]()
+genIterator.next() // { value: 1, done: false }
+genIterator.next() // { value: 2, done: false }
+genIterator.next() // { value: undefined, done: true }
+genIterator.next() // { value: undefined, done: true }
 ```
 
 Iterable protocol과 iterator protocol을 모두 이해하셨다면, 이제 직접 iterable을 만들 수 있습니다. 앞의 예제에 있었던 `range` 함수를 generator 함수를 사용하지 않고 똑같이 구현해보겠습니다.
@@ -252,20 +249,20 @@ function range(start = 0, end = Infinity, step = 1) {
       return {
         next: () => {
           if (this.currentValue < end) {
-            const value = this.currentValue;
-            this.currentValue += step;
+            const value = this.currentValue
+            this.currentValue += step
             return {
               done: false,
-              value
+              value,
             }
           } else {
             return {
-              done: true
+              done: true,
             }
           }
-        }
-      };
-    }
+        },
+      }
+    },
   }
 }
 ```
@@ -283,45 +280,45 @@ function* gen() {
   // ...
 }
 
-const genObj = gen();
-genObj[Symbol.iterator]().next === genObj.next; // true
+const genObj = gen()
+genObj[Symbol.iterator]().next === genObj.next // true
 ```
 
 즉, `Symbol.iterator`를 통해 iterator를 생성하지 않고도 바로 `next`를 호출할 수 있습니다.
 
 ```js
 function* gen() {
-  yield 1;
-  yield 2;
-  yield 3;
+  yield 1
+  yield 2
+  yield 3
 }
 
-const iter = gen();
+const iter = gen()
 
-iter.next(); // { value: 1, done: false }
-iter.next(); // { value: 2, done: false }
-iter.next(); // { value: 3, done: false }
-iter.next(); // { value: undefined, done: true }
+iter.next() // { value: 1, done: false }
+iter.next() // { value: 2, done: false }
+iter.next() // { value: 3, done: false }
+iter.next() // { value: undefined, done: true }
 ```
 
 두 번째로, generator 함수 안에서 `return` 키워드를 사용하면 반복이 바로 끝나면서 `next` 메소드에서 반환되는 객체의 속성에 앞의 반환값이 저장됩니다. 다만, `return`을 통해 반환된 값이 반복 절차에 포함되지는 않습니다.
 
 ```js
 function* gen() {
-  yield 1;
-  return 2; // generator 함수는 여기서 종료됩니다.
-  yield 3;
+  yield 1
+  return 2 // generator 함수는 여기서 종료됩니다.
+  yield 3
 }
 
-const iter = gen();
+const iter = gen()
 
-iter.next(); // { value: 1, done: false }
-iter.next(); // { value: 2, done: true }
-iter.next(); // { value: undefined, done: true }
+iter.next() // { value: 1, done: false }
+iter.next() // { value: 2, done: true }
+iter.next() // { value: undefined, done: true }
 
 // `1`만 출력됩니다.
 for (let v of gen()) {
-  console.log(v);
+  console.log(v)
 }
 ```
 
@@ -329,15 +326,15 @@ for (let v of gen()) {
 
 ```js
 function* gen() {
-  const received = yield 1;
-  console.log(received);
+  const received = yield 1
+  console.log(received)
 }
 
-const iter = gen();
-iter.next(); // { value: 1, done: false }
+const iter = gen()
+iter.next() // { value: 1, done: false }
 
 // 'hello'가 출력됩니다.
-iter.next('hello'); // { value: undefined, done: true }
+iter.next('hello') // { value: undefined, done: true }
 ```
 
 Generator 함수의 이런 성질은 비동기 프로그래밍을 위해 활용되기도 합니다. 이에 대한 자세한 내용은 [비동기 프로그래밍](./285-async.md) 챕터에서 다룹니다.
@@ -350,16 +347,16 @@ Generator 함수의 이런 성질은 비동기 프로그래밍을 위해 활용�
 // 각 항목을 변환한 후 넘겨주기
 function* map(iterable, mapper) {
   for (let item of iterable) {
-    yield mapper(item);
+    yield mapper(item)
   }
 }
 
 // 각 순서까지의 누적값을 넘겨주기
 function* reduce(iterable, reducer, initial) {
-  let acc = initial;
+  let acc = initial
   for (let item of iterable) {
-    acc = reducer(acc, item);
-    yield acc;
+    acc = reducer(acc, item)
+    yield acc
   }
 }
 
@@ -367,7 +364,7 @@ function* reduce(iterable, reducer, initial) {
 function* filter(iterable, predicate) {
   for (let item of iterable) {
     if (predicate(item)) {
-      yield item;
+      yield item
     }
   }
 }
@@ -375,18 +372,18 @@ function* filter(iterable, predicate) {
 // 여러 iterable을 연결하기
 function* concat(iterables) {
   for (let iterable of iterables) {
-    yield* iterable;
+    yield* iterable
   }
 }
 
 // 앞쪽 몇 개의 항목만 넘겨주기
 function* take(iterable, count = Infinity) {
-  const iterator = iterable[Symbol.iterator]();
+  const iterator = iterable[Symbol.iterator]()
   for (let i = 0; i < count; i++) {
     // `yield*`와는 다르게, iterator의 `next` 메소드를 이용하면 iterable의 일부만 가져올 수 있습니다.
-    const {value, done} = iterator.next();
-    if (done) break;
-    yield value;
+    const {value, done} = iterator.next()
+    if (done) break
+    yield value
   }
 }
 ```
@@ -394,4 +391,5 @@ function* take(iterable, count = Infinity) {
 위 generator 함수들이 어떻게 구현되었는지 파악해보세요. 그리고 위 generator 함수들을 이용해서 iterable이 제공하는 여러 기능들을 사용해보세요.
 
 [^1]: Generator 함수로부터 생성된 객체를 'generator 객체'라고 부르기도 합니다만, 여기서는 혼동을 피하기 위해 generator라는 용어를 '함수'의 의미로만 사용하겠습니다.
+
 [^2]: 이는 모든 iterable에 해당되는 사항은 아닙니다. 문자열이나 배열 역시 iterable이지만, 횟수에 제한 없이 사용될 수 있습니다.

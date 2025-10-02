@@ -28,11 +28,11 @@ JSON.stringify({
   key: 'value',
   arr: [1, 2, 3],
   nullProp: null,
-  undefinedProp: undefined // 값이 `undefined`인 속성은 직렬화 과정에서 제외됩니다.
-}); // '{"key":"value","arr":[1,2,3],"nullProp":null}'
+  undefinedProp: undefined, // 값이 `undefined`인 속성은 직렬화 과정에서 제외됩니다.
+}) // '{"key":"value","arr":[1,2,3],"nullProp":null}'
 
 // `JSON.parse`로 역직렬화를 할 수 있습니다.
-JSON.parse('{"key":"value","arr":[1,2,3],"nullProp":null}');
+JSON.parse('{"key":"value","arr":[1,2,3],"nullProp":null}')
 ```
 
 `JSON.stringify`, `JSON.parse`의 자세한 사용법은 MDN 문서를 참고하세요.
@@ -66,13 +66,13 @@ JavaScript에는 날짜과 시각을 다루기 위한 `Date` 생성자가 내장
 `Date` 객체가 나타내는 시각을 여러 가지 방법으로 문자열로 변환할 수도 있습니다.
 
 ```js
-const now = new Date();
-console.log(now.toString()); // Sun Dec 10 2017 12:49:31 GMT+0900 (KST)
-console.log(now.toLocaleString()); // 2017. 12. 10. 오후 12:49:31
-console.log(now.toDateString()); // Sun Dec 10 2017
-console.log(now.toTimeString()); // 12:49:31 GMT+0900 (KST)
-console.log(now.toISOString()); // 2017-12-10T03:49:31.145Z
-console.log(now.toUTCString()); // Sun, 10 Dec 2017 03:49:31 GMT
+const now = new Date()
+console.log(now.toString()) // Sun Dec 10 2017 12:49:31 GMT+0900 (KST)
+console.log(now.toLocaleString()) // 2017. 12. 10. 오후 12:49:31
+console.log(now.toDateString()) // Sun Dec 10 2017
+console.log(now.toTimeString()) // 12:49:31 GMT+0900 (KST)
+console.log(now.toISOString()) // 2017-12-10T03:49:31.145Z
+console.log(now.toUTCString()) // Sun, 10 Dec 2017 03:49:31 GMT
 ```
 
 ### 시간 간격 측정하기
@@ -80,10 +80,10 @@ console.log(now.toUTCString()); // Sun, 10 Dec 2017 03:49:31 GMT
 `-` 연산자를 사용해서 두 `Date` 객체 사이의 시간 간격이 얼마나 되는지를 밀리초 단위로 측정할 수 있습니다.
 
 ```js
-const start = new Date();
-alert('시간이 가고 있습니다...');
-const end = new Date();
-alert(`${end - start} 밀리초 만큼의 시간이 경과되었습니다.`);
+const start = new Date()
+alert('시간이 가고 있습니다...')
+const end = new Date()
+alert(`${end - start} 밀리초 만큼의 시간이 경과되었습니다.`)
 ```
 
 ### 라이브러리 사용하기
@@ -91,13 +91,13 @@ alert(`${end - start} 밀리초 만큼의 시간이 경과되었습니다.`);
 JavaScript에 내장되어 있는 `Date` 객체는 컴퓨터에서 시간 데이터를 다루기 위한 기본적인 기능들을 제공하지만, 실제 서비스에서 사용하기에는 부족한 점이 많습니다. 이 때문에, 실무에서는 [moment.js](https://momentjs.com/) 혹은 [date-fns](https://date-fns.org/)와 같은 별도의 라이브러리를 사용하는 경우가 많습니다. [이 링크](https://runkit.com/seungha-kim/moment-example)에서 가장 널리 사용되는 시간 관련 라이브러리인 moment.js를 시험해보세요.
 
 ```js
-const moment = require("moment")
-moment.locale('ko');
+const moment = require('moment')
+moment.locale('ko')
 
-const now = moment();
-console.log(now.format("dddd, MMMM Do YYYY, h:mm:ss a")); // 일요일, 12월 10일 2017, 1:02:42 오후
-console.log(now.subtract(7, 'days').calendar()); // 2017.12.03
-console.log(moment("20120101", "YYYYMMDD").fromNow()); // 6년 전
+const now = moment()
+console.log(now.format('dddd, MMMM Do YYYY, h:mm:ss a')) // 일요일, 12월 10일 2017, 1:02:42 오후
+console.log(now.subtract(7, 'days').calendar()) // 2017.12.03
+console.log(moment('20120101', 'YYYYMMDD').fromNow()) // 6년 전
 ```
 
 ## Symbol
@@ -107,29 +107,29 @@ console.log(moment("20120101", "YYYYMMDD").fromNow()); // 6년 전
 `Symbol` 내장 함수를 통해 새 심볼을 생성할 수 있습니다.
 
 ```js
-const sym = Symbol();
-console.log(typeof sym); // symbol
-console.log(sym); // Symbol()
+const sym = Symbol()
+console.log(typeof sym) // symbol
+console.log(sym) // Symbol()
 ```
 
 `Symbol` 함수에 문자열을 넘겨서, 해당 심볼에 대한 설명을 포함한 심볼을 생성할 수 있습니다. 이 때 넘겨지는 문자열은 그저 심볼의 설명일 뿐이므로, 심볼의 비교 연산에 영향을 주지 않습니다. 즉, 어떤 문자열이 인수열에 들어오는 지와 상관없이 **새로 생성된 심볼은 다른 모든 심볼과 다른 것으로 취급됩니다.**
 
 ```js
-console.log(Symbol('my symbol')); // Symbol(my symbol)
-console.log(Symbol('my symbol') === Symbol('my symbol')); // false
-console.log(Symbol() === Symbol()); // false
+console.log(Symbol('my symbol')) // Symbol(my symbol)
+console.log(Symbol('my symbol') === Symbol('my symbol')) // false
+console.log(Symbol() === Symbol()) // false
 ```
 
 **심볼은 객체의 속성 키로 사용하기 위해 만들어졌습니다.** 아래와 같이 대괄호 표기법을 통해 심볼을 객체의 속성 키로 사용할 수 있습니다.
 
 ```js
-const mySymbol = Symbol('my symbol');
+const mySymbol = Symbol('my symbol')
 
 const obj = {
-  [mySymbol]: 'hello'
-};
+  [mySymbol]: 'hello',
+}
 
-console.log(obj); // { [Symbol(my symbol)]: 'hello' }
+console.log(obj) // { [Symbol(my symbol)]: 'hello' }
 ```
 
 **내장 심볼(well-known symbol)**을 객체의 속성 키로 사용하면, 특정 상황에서의 객체의 동작 방식을 마음대로 바꿀 수 있습니다.
@@ -153,15 +153,15 @@ console.log(obj); // { [Symbol(my symbol)]: 'hello' }
 ES2015에서 도입된 `Map` 생성자는 객체와 유사하게 **키-값 쌍(key-value pair)**을 저장할 수 있는 새로운 자료구조를 제공합니다.
 
 ```js
-const m = new Map();
+const m = new Map()
 
-m.set('hello', 'world');
-console.log(m.get('hello')); // 'world'
-console.log(m.has('hello')); // true
+m.set('hello', 'world')
+console.log(m.get('hello')) // 'world'
+console.log(m.has('hello')) // true
 
-m.delete('hello');
-console.log(m.get('hello')); // undefined
-console.log(m.has('hello')); // false
+m.delete('hello')
+console.log(m.get('hello')) // undefined
+console.log(m.has('hello')) // false
 ```
 
 `Map`으로 생성된 객체는, 일반적인 객체와 비교했을 때 아래와 같은 차이점을 갖습니다.
@@ -178,13 +178,13 @@ console.log(m.has('hello')); // false
 ES2015에서 도입된 `Set` 생성자는 **집합** 형태의 자료구조를 제공합니다. `Set` 객체 내부에 이미 존재하는 데이터를 추가하려고 하면, 이는 무시됩니다. 즉, `Set` 객체는 내부에 **중복된 데이터가 저장되는 것을 허용하지 않습니다**
 
 ```js
-const s = new Set();
+const s = new Set()
 
-s.add(1);
-s.add(1);
-s.add(2);
+s.add(1)
+s.add(1)
+s.add(2)
 
-console.log(s); // Set { 1, 2 }
+console.log(s) // Set { 1, 2 }
 ```
 
 **배열과 유사한 형태의 자료구조**가 필요하지만 **순서가 중요하지 않은 경우,** 그리고 **중복된 데이터의 저장을 허용하지 않아야** 할 경우, `Set`의 사용을 고려해보세요.
@@ -193,6 +193,7 @@ console.log(s); // Set { 1, 2 }
 
 이 밖에, ES2015 또는 그 이후에 추가된 여러 가지 내장 객체 및 생성자들과 그 설명을 아래에 나열합니다.
 
+- `Promise` - 비동기 작업을 다루기 위한 객체입니다. ES2024에는 `Promise.withResolvers()`, ES2025에는 `Promise.try()` 등의 유용한 메소드가 추가되었습니다. 자세한 내용은 [비동기 프로그래밍](./285-async.mdx) 챕터를 참고하세요.
 - `Proxy` - 다른 객체처럼 행세하면서, 특정한 행동에 대해서는 다른 동작방식을 보이는 새로운 객체를 만들고 싶을 때 사용합니다.
 - `Reflect` - `Reflect` 객체의 메소드를 통해, JavaScript의 몇 가지 내장 기능을 메소드로서 사용할 수 있습니다.
 - `Intl` - `Intl` 객체를 이용하면, 사용 중인 언어에 따라 문자열 비교, 숫자 표현 형식, 시간 표현 형식을 바꿀 수 있습니다.

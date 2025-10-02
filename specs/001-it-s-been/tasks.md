@@ -244,26 +244,26 @@
 
 ## Phase 3.3: Medium Priority Content Updates (Chapter by Chapter)
 
-- [ ] **T014** [P] Update Object.groupBy() placement consideration in `content/pages/240-object-in-depth.mdx`
+- [x] **T014** [P] Update Object.groupBy() placement consideration in `content/pages/240-object-in-depth.mdx`
   - If Object.groupBy() fits better in advanced objects chapter, add it here instead of T007
   - Review chapter structure to determine best placement
   - Add Korean explanation of advanced grouping patterns if placed here
   - File: `content/pages/240-object-in-depth.mdx`
 
-- [ ] **T015** [P] Update Promise methods section in `content/pages/250-builtins.mdx`
+- [x] **T015** [P] Update Promise methods section in `content/pages/250-builtins.mdx`
   - Section: Find Promise-related built-in objects section
   - Update: Mention Promise.withResolvers() and Promise.try() if Promise object is covered
   - Cross-reference: Link to async chapter for detailed explanation
   - File: `content/pages/250-builtins.mdx`
 
-- [ ] **T016** [P] Emphasize immutable array methods in `content/pages/255-fp.mdx`
+- [x] **T016** [P] Emphasize immutable array methods in `content/pages/255-fp.mdx`
   - Section: Functional programming patterns
   - Update: Add note that toSorted(), toReversed(), with() are functional programming best practices
   - Emphasize: Immutability as core FP principle
   - Cross-reference: Link back to array chapter for details
   - File: `content/pages/255-fp.mdx`
 
-- [ ] **T017** [P] Add error cause parameter to `content/pages/290-exception.mdx`
+- [x] **T017** [P] Add error cause parameter to `content/pages/290-exception.mdx`
   - Section: Error handling / Error creation section
   - Content to add:
     - Korean explanation of error chaining with cause
@@ -280,7 +280,7 @@
   - Test: Verify code runs in Node.js 22
   - File: `content/pages/290-exception.mdx`
 
-- [ ] **T018** [P] Verify ESM current status in `content/pages/293-module.mdx`
+- [x] **T018** [P] Verify ESM current status in `content/pages/293-module.mdx`
   - Section: ES Modules section
   - Update: Remove any "experimental" language about ES modules
   - Update: Note that ESM is now standard in Node.js 22+ and all modern browsers
@@ -293,32 +293,32 @@
 
 ### Verification Tasks (Parallel)
 
-- [ ] **T019** [P] Verify Node.js installation instructions in `content/pages/020-tutorial.mdx`
+- [x] **T019** [P] Verify Node.js installation instructions in `content/pages/020-tutorial.mdx`
   - Section: Node.js installation section
   - Update: Recommend Node.js 22 LTS if version is mentioned
   - Verify: Installation instructions are still current
   - File: `content/pages/020-tutorial.mdx`
 
-- [ ] **T020** [P] Verify numeric separator syntax in `content/pages/130-number.mdx`
+- [x] **T020** [P] Verify numeric separator syntax in `content/pages/130-number.mdx`
   - Section: Number literals section
   - Verify: Numeric separators (1_000_000) are present (ES2021 feature)
   - If missing: Add example of numeric separators
   - File: `content/pages/130-number.mdx`
 
-- [ ] **T021** [P] Check for deprecated String.substr() in `content/pages/140-string.mdx`
+- [x] **T021** [P] Check for deprecated String.substr() in `content/pages/140-string.mdx`
   - Section: String methods section
   - Search: Look for any usage of substr() method
   - Replace: Change substr() to substring() or slice() if found
   - Add note: substr() is deprecated, use slice() or substring()
   - File: `content/pages/140-string.mdx`
 
-- [ ] **T022** [P] Verify no deprecated arguments.callee in `content/pages/170-function.mdx`
+- [x] **T022** [P] Verify no deprecated arguments.callee in `content/pages/170-function.mdx`
   - Section: Arguments object section
   - Search: Look for any mention of arguments.callee
   - Update: Add deprecation note if mentioned
   - File: `content/pages/170-function.mdx`
 
-- [ ] **T023** [P] Verify optional chaining section is current in `content/pages/245-operator-in-depth.mdx`
+- [x] **T023** [P] Verify optional chaining section is current in `content/pages/245-operator-in-depth.mdx`
   - Section: Optional chaining (?.) section (added in 2021)
   - Verify: Content accurately reflects current usage
   - Verify: Examples are clear and correct
@@ -327,7 +327,7 @@
 
 ### Minimal Change Chapters (Can batch review)
 
-- [ ] **T024** [P] Batch review chapters with minimal/no changes needed
+- [x] **T024** [P] Batch review chapters with minimal/no changes needed
   - Files to review:
     - `content/pages/120-value-variable-type.mdx` (timeless content)
     - `content/pages/150-boolean.mdx` (no changes)

@@ -9,19 +9,19 @@ title: 값 다루기
 프로그래밍 언어에서 값을 생성하는 가장 쉬운 방법은 리터럴(literal)을 사용하는 것입니다. 리터럴은 **값의 표기법**으로, 프로그래밍 언어마다 값을 표현하는 여러 가지 리터럴을 가지고 있습니다.
 
 ```js
-1; // 정수 리터럴
-2.5; // 부동 소수점 리터럴
-'hello'; // 문자열 리터럴
-true; // 진리값 리터럴
+1 // 정수 리터럴
+2.5 // 부동 소수점 리터럴
+;('hello') // 문자열 리터럴
+true // 진리값 리터럴
 ```
 
 리터럴과 연산자(operator)를 이용해 REPL에서 간단한 계산을 할 수 있습니다.
 
 ```js
-1 + 2; // 3
-3 * 4; // 12
-'hello' + 'world'; // 'helloworld'
-true || false; // true
+1 + 2 // 3
+3 * 4 // 12
+'hello' + 'world' // 'helloworld'
+true || false // true
 ```
 
 여러 연산자에 대한 자세한 사용법은 이어지는 챕터에서 다룹니다.
@@ -33,29 +33,29 @@ true || false; // true
 `let`은 변수(variable)를 선언(declare)할 때 쓰는 키워드로, ES2015에서 도입되었습니다. 변수의 사용법은 다음과 같습니다.
 
 ```js
-let seven = 7;
+let seven = 7
 ```
 
 위에서는 `7`이라는 값에 `seven`이라는 이름을 붙이기 위해서 다음과 같이 선언과 동시에 대입(assign)을 했습니다. 물론 변수의 선언이 끝난 이후에 대입을 하거나, 이미 값이 대입되어 있는 변수에 다른 값을 대입할 수도 있습니다.
 
 ```js
-let eight;
-eight = 8;
-let seven = 7;
-seven = 77;
-seven = 777;
+let eight
+eight = 8
+let seven = 7
+seven = 77
+seven = 777
 ```
 
 `const`는 재대입(reassign)이 불가능한 변수를 선언할 때 쓰는 키워드로, 역시 ES2015에 도입되었습니다.
 
 ```js
-const myConstant = 7;
+const myConstant = 7
 ```
 
 `const`로 변수를 선언할 때는 반드시 선언 시에 값을 대입해주어야 합니다. 값 없이 선언만 하게 되면 에러가 발생합니다. 또한 추후에 다른 값을 대입할 수 없습니다.
 
 ```js
-const notAssigned; // Uncaught SyntaxError: Missing initializer in const declaration
+const notAssigned // Uncaught SyntaxError: Missing initializer in const declaration
 ```
 
 ```js
@@ -66,15 +66,18 @@ assigned = 2; // Uncaught TypeError: Assignment to constant variable.
 `let`과 `const` 모두 한꺼번에 여러 개의 변수를 선언하는 문법을 지원합니다.
 
 ```js
-let one = 1, two = 2, nothing;
-const three = 3, four = 4;
+let one = 1,
+  two = 2,
+  nothing
+const three = 3,
+  four = 4
 ```
 
 `let`과 `const`로 선언한 이름은 다시 선언될 수 없습니다.
 
 ```js
-let seven = 7;
-let seven = 77; // Uncaught SyntaxError: Identifier 'seven' has already been declared
+let seven = 7
+let seven = 77 // Uncaught SyntaxError: Identifier 'seven' has already been declared
 ```
 
 ## `let`과 `const` 중 무엇을 쓸 것인가?
@@ -85,7 +88,7 @@ let seven = 77; // Uncaught SyntaxError: Identifier 'seven' has already been dec
 
 위에서 사용한 변수의 이름은 모두 **식별자(Identifier)**입니다. 프로그래밍 언어에서 식별자는 어떤 개체를 유일하게 식별하기 위해 사용됩니다. JavaScript 식별자는 아래와 같이 정해진 규칙에 따라 지어져야 합니다.
 
-- 숫자, 알파벳, 달러 문자($), 언더스코어(_)가 포함될 수 있다.
+- 숫자, 알파벳, 달러 문자($), 언더스코어(\_)가 포함될 수 있다.
 - 단, 숫자로 시작되어서는 안 된다.
 - 예약어는 식별자가 될 수 없다.
 
@@ -107,16 +110,16 @@ const const; // X - 예약어는 식별자가 될 수 없습니다.
 
 ```js
 // Camel case
-let fastCampus;
-let fooBar;
+let fastCampus
+let fooBar
 ```
 
-이와는 다르게 대문자를 사용하지 않고 단어 사이에 언더스코어(_)를 사용해서 단어를 구분해주는 관례도 있는데, 이를 Snake case라고 부릅니다. 이 관례는 JavaScript에서는 잘 사용되지 않고, Python 등의 프로그래밍 언어에서 많이 사용됩니다.
+이와는 다르게 대문자를 사용하지 않고 단어 사이에 언더스코어(\_)를 사용해서 단어를 구분해주는 관례도 있는데, 이를 Snake case라고 부릅니다. 이 관례는 JavaScript에서는 잘 사용되지 않고, Python 등의 프로그래밍 언어에서 많이 사용됩니다.
 
 ```js
 // Snake case
-let fast_campus;
-let foo_bar;
+let fast_campus
+let foo_bar
 ```
 
 이 밖에 식별자 이름을 지을 때 사용하는 다른 관례들도 있는데, 그에 대해서는 [객체](./180-object.md) 챕터에서 자세히 다룹니다.
@@ -128,8 +131,8 @@ JavaScript를 비롯한 대부분의 프로그래밍 언어는 여러 가지 종
 값의 타입을 알아보기 위해 `typeof` 연산자를 사용할 수 있습니다.
 
 ```js
-typeof 1; // 'number'
-typeof 'hello'; // 'string'
+typeof 1 // 'number'
+typeof 'hello' // 'string'
 ```
 
 이어지는 챕터에서는 JavaScript가 지원하는 여러 가지 타입의 값의 사용법에 대해 다룰 것입니다.

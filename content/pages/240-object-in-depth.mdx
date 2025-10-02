@@ -8,45 +8,47 @@ title: 객체 더 알아보기
 
 ```js
 // 객체 `obj`는 프로토타입의 `inheritedProp` 속성을 상속받습니다.
-const obj = Object.create({inheritedProp: 'inheritedProp'});
+const obj = Object.create({inheritedProp: 'inheritedProp'})
 // 객체 `obj`에 직접 `ownProp` 속성을 만들어주었습니다.
-obj.ownProp = 'ownProp';
+obj.ownProp = 'ownProp'
 
-console.log(obj.inheritedProp); // inheritedProp
-console.log(obj.ownProp); // ownProp
-console.log(obj.constructor); // [Function: Object]
+console.log(obj.inheritedProp) // inheritedProp
+console.log(obj.ownProp) // ownProp
+console.log(obj.constructor) // [Function: Object]
 
-console.log('inheritedProp' in obj); // true
-console.log('ownProp' in obj); // true
-console.log('constructor' in obj); // true
+console.log('inheritedProp' in obj) // true
+console.log('ownProp' in obj) // true
+console.log('constructor' in obj) // true
 ```
 
-이 때, **객체 자신이** 특정 속성을 가지고 있는지를 확인하기 위해 `Object.prototype.hasOwnProperty` 메소드를 사용할 수 있습니다.
+이 때, **객체 자신이** 특정 속성을 가지고 있는지를 확인하기 위해 `Object.hasOwn()` 정적 메소드를 사용할 수 있습니다.
 
 ```js
-const obj = Object.create({inheritedProp: 'inheritedProp'});
-obj.ownProp = 'ownProp';
+const obj = Object.create({inheritedProp: 'inheritedProp'})
+obj.ownProp = 'ownProp'
 
-console.log(obj.hasOwnProperty('inheritedProp')); // false
-console.log(obj.hasOwnProperty('ownProp')); // true
-console.log(obj.hasOwnProperty('constructor')); // false
+console.log(Object.hasOwn(obj, 'inheritedProp')) // false
+console.log(Object.hasOwn(obj, 'ownProp')) // true
+console.log(Object.hasOwn(obj, 'constructor')) // false
 ```
+
+> **참고**: `Object.hasOwn()`은 ES2022에 추가된 메소드로, 이전의 `hasOwnProperty` 메소드보다 안전하고 사용하기 쉽습니다. 자세한 내용은 [객체](./180-object.mdx) 챕터를 참고하세요.
 
 ## 데이터 속성(Data Property)의 부수속성(Property Attribute)
 
 앞서 `delete` 연산자를 통해 객체의 속성을 지울 수 있다는 것을 배웠습니다.
 
 ```js
-const obj = {prop: 1};
-delete obj.prop; // true
-obj.prop; // undefined;
+const obj = {prop: 1}
+delete obj.prop // true
+obj.prop // undefined;
 ```
 
 하지만, 객체의 속성을 항상 삭제할 수 있는 것은 아닙니다. 내장 객체 중에 어떤 속성은 `delete` 연산자를 통해 삭제하려고 해도 삭제가 되지 않는 것이 있습니다.
 
 ```js
-delete Math.PI; // false
-Math.PI; // 3.141592653589793
+delete Math.PI // false
+Math.PI // 3.141592653589793
 ```
 
 이처럼, JavaScript에서는 **각 속성마다 동작 방식이 다를 수 있습니다.** 이에 대한 정보는 **속성의 부수속성(property attribute)**이라고 불리는 곳에 숨겨져 있습니다.
@@ -54,12 +56,12 @@ Math.PI; // 3.141592653589793
 객체의 부수속성을 알아보려면, `Object.getOwnPropertyDescriptor`라는 정적 메소드를 사용해 부수속성을 나타내는 객체를 얻을 수 있습니다. 이 객체를 일러 **속성 기술자(property descriptor)**라고 부릅니다.
 
 ```js
-const obj = {prop: 1};
+const obj = {prop: 1}
 
-Object.getOwnPropertyDescriptor(obj, 'prop');
+Object.getOwnPropertyDescriptor(obj, 'prop')
 // { value: 1, writable: true, enumerable: true, configurable: true }
 
-Object.getOwnPropertyDescriptor(Math, 'PI');
+Object.getOwnPropertyDescriptor(Math, 'PI')
 // { value: 3.141592653589793, writable: false, enumerable: false, configurable: false }
 ```
 
@@ -75,8 +77,8 @@ Object.getOwnPropertyDescriptor(Math, 'PI');
 두 속성의 `writable` 부수속성에도 차이가 있습니다. `Math.PI`는 속성의 값을 변경하려고 해도 변경이 되지 않습니다.
 
 ```js
-Math.PI = 10;
-Math.PI; // 3.141592653589793
+Math.PI = 10
+Math.PI // 3.141592653589793
 ```
 
 `enumerable` 부수속성이 `false`이면 이 속성을 열거 불가능한 속성이 됩니다. 속성의 열거에 대해서는 잠시 뒤에 알아보겠습니다.
@@ -84,7 +86,7 @@ Math.PI; // 3.141592653589793
 어떤 객체의 전체 속성에 대한 속성 기술자를 얻어오려면, `Object.getOwnPropertyDescriptors` 정적 메소드를 사용하면 됩니다.
 
 ```js
-Object.getOwnPropertyDescriptors(Math);
+Object.getOwnPropertyDescriptors(Math)
 // ...
 ```
 
@@ -92,16 +94,16 @@ Object.getOwnPropertyDescriptors(Math);
 
 ```js
 function func1() {
-  delete Math.PI;
+  delete Math.PI
 }
 
 function func2() {
-  'use strict';
-  delete Math.PI;
+  'use strict'
+  delete Math.PI
 }
 
-func1(); // 에러가 나지 않습니다.
-func2(); // TypeError: Cannot delete property 'PI' of #<Object>
+func1() // 에러가 나지 않습니다.
+func2() // TypeError: Cannot delete property 'PI' of #<Object>
 ```
 
 ## 속성 기술자를 통해 객체의 속성 정의하기
@@ -114,20 +116,20 @@ const obj = Object.create(Object.prototype, {
     value: 1,
     writable: false,
     enumerable: true,
-    configurable: false
+    configurable: false,
   },
   another: {
-    value: 2
-  }
-});
+    value: 2,
+  },
+})
 
-console.log(obj); // {prop: 1}
+console.log(obj) // {prop: 1}
 
-obj.prop = 2;
-console.log(obj.prop); // 1
+obj.prop = 2
+console.log(obj.prop) // 1
 
-delete obj.prop;
-console.log(obj.prop); // 1
+delete obj.prop
+console.log(obj.prop) // 1
 ```
 
 속성 기술자에 `writable`, `enumerable`, `configurable` 속성을 주지 않으면, 해당 부수속성은 모두 `false`로 취급됩니다. 위 예제의 `another` 속성을 시험해보세요.
@@ -135,13 +137,13 @@ console.log(obj.prop); // 1
 `Object.create` 외에, `Object.defineProperty` 혹은 `Object.defineProperties` 정적 메소드를 사용해서 이미 만들어진 객체에 대한 속성을 정의할 수도 있습니다.
 
 ```js
-const obj = {};
+const obj = {}
 Object.defineProperty(obj, 'prop', {
   value: 1,
   writable: false,
   enumerable: true,
-  configurable: false
-});
+  configurable: false,
+})
 ```
 
 ## 접근자 속성(Accessor Property)과 그 부수속성
@@ -153,55 +155,56 @@ Object.defineProperty(obj, 'prop', {
 ```js
 const money = {
   won: 1086,
-  dollar: 1
-};
+  dollar: 1,
+}
 ```
 
 하지만 위의 코드에는 문제가 있습니다. `won` 속성이 변경되었을 때 `dollar` 속성까지 자동으로 변경되지 않으므로, 둘 사이의 동기화가 깨지게 됩니다.
 
 ```js
-money.won += 1086;
+money.won += 1086
 
 // 2172원이 되었지만, 2달러로 변경되지 않았습니다.
-money.dollar; // 1
+money.dollar // 1
 ```
 
 이를 해결하기 위해, 객체에는 `_won` 속성을 저장하고 달러 단위가 필요할 때는 원 단위로부터 계산해내도록 **일일이 메소드를 두는 방법**을 사용할 수 있습니다.[^1]
+
 ```js
 function Money(won = 0) {
   Object.defineProperty(this, '_won', {
     value: won,
-    writable: true
-  }); // enumerable: false, configurable: false
+    writable: true,
+  }) // enumerable: false, configurable: false
 }
 
 // 원 단위 값을 가져오는 메소드
-Money.prototype.getWon = function() {
-  return this._won;
-};
+Money.prototype.getWon = function () {
+  return this._won
+}
 
 // 원 단위 값을 저장하는 메소드
-Money.prototype.setWon = function(amount) {
-  this._won = amount;
-};
+Money.prototype.setWon = function (amount) {
+  this._won = amount
+}
 
 // 달러 단위 값을 가져오는 메소드
-Money.prototype.getDollar = function() {
-  return this._won / 1086;
-};
+Money.prototype.getDollar = function () {
+  return this._won / 1086
+}
 
 // 달러 단위 값을 저장하는 메소드
-Money.prototype.setDollar = function(amount) {
-  this._won = amount * 1086;
-};
+Money.prototype.setDollar = function (amount) {
+  this._won = amount * 1086
+}
 
-const m = new Money();
+const m = new Money()
 
-m.setWon(1086);
-m.getDollar(); // 1
+m.setWon(1086)
+m.getDollar() // 1
 
-m.setDollar(2);
-m.getWon(); // 2172
+m.setDollar(2)
+m.getWon() // 2172
 ```
 
 이제 원하던대로 두 단위 사이의 동기화가 잘 유지되지만, **코드가 꽤 길어졌습니다.** 특히, 속성을 사용하기 위해 **매번 메소드를 호출해야 하는** 것이 조금 불편하게 느껴집니다.
@@ -210,27 +213,26 @@ Getter와 setter 기능을 사용해서, 위와 같은 코드를 조금 더 깔�
 
 ```js
 const obj = {
-
   // 메소드 이름 앞에 `get`을 써주면, 이 메소드는 getter 메소드가 됩니다.
   get prop() {
-    console.log('getter가 호출되었습니다.');
-    return this._hidden;
+    console.log('getter가 호출되었습니다.')
+    return this._hidden
   },
-  
+
   // 메소드 이름 앞에 `set`을 써주면, 이 메소드는 setter 메소드가 됩니다.
   set prop(arg) {
-    console.log('setter가 호출되었습니다.');
-    this._hidden = arg;
-  }
+    console.log('setter가 호출되었습니다.')
+    this._hidden = arg
+  },
 }
 
 // `set prop` 메소드가 `1`을 인수로 해서 호출됩니다.
-obj.prop = 1;
+obj.prop = 1
 
 // `get prop` 메소드가 호출되고 해당 메소드의 반환값을 읽어옵니다.
-obj.prop; // 1
+obj.prop // 1
 
-Object.getOwnPropertyDescriptors(obj);
+Object.getOwnPropertyDescriptors(obj)
 // {
 //   prop: {
 //     get: [Function: get],
@@ -257,7 +259,7 @@ Object.getOwnPropertyDescriptors(obj);
 
 ```js
 function Money(won) {
-  this._won = won;
+  this._won = won
 }
 
 // `Object.defineProperties` 정적 메소드를 사용해서
@@ -265,31 +267,31 @@ function Money(won) {
 Object.defineProperties(Money.prototype, {
   // `Money.prototype` 객체에 `won` 이라는 속성을 정의합니다.
   won: {
-    get: function() {
-      return this._won;
+    get: function () {
+      return this._won
     },
-    set: function(arg) {
-      this._won = arg;
-    }
+    set: function (arg) {
+      this._won = arg
+    },
   },
   // `Money.prototype` 객체에 `dollar` 라는 속성을 정의합니다.
   dollar: {
-    get: function() {
-      return this._won / 1086;
+    get: function () {
+      return this._won / 1086
     },
-    set: function(arg) {
-      this._won = arg * 1086;
-    }
-  }
-});
+    set: function (arg) {
+      this._won = arg * 1086
+    },
+  },
+})
 
-const w = new Money(1086);
+const w = new Money(1086)
 
-w.won += 1086;
-console.log(w.dollar); // 2
+w.won += 1086
+console.log(w.dollar) // 2
 
-w.dollar += 1;
-console.log(w.won); // 3258
+w.dollar += 1
+console.log(w.won) // 3258
 ```
 
 `Money` 생성자를 사용하는 쪽의 코드가 훨씬 더 알아보기 쉬워졌고, 덧셈 할당 연산자(`+=`)을 사용할 수도 있게 되었습니다.
@@ -306,16 +308,15 @@ console.log(w.won); // 3258
 - `Object.getOwnPropertyNames` - **객체 자신의 모든 속성**의 이름을 배열로 반환합니다. 열거 불가능한 속성도 포함합니다.
 - `for...in` 구문 - **객체 자신의 속성** 및 **상속받은 속성** 중 **열거 가능한(enumerable) 속성**의 이름을 배열로 반환합니다.
 
-
 대개의 경우 `Object.keys`를 사용하면 되지만, 상속받은 속성까지 열거하고 싶을 때는 `for...in`을, 열거 불가능한 속성도 열거하고 싶을 때는 `Object.getOwnPropertyNames`를 사용하세요.
 
 ```js
 const obj = {
   a: 1,
-  b: 2
-};
+  b: 2,
+}
 
-Object.keys(obj); // ['a', 'b']
+Object.keys(obj) // ['a', 'b']
 ```
 
 ## 얕은 복사(Shallow Copy) & 깊은 복사(Deep Copy)
@@ -323,10 +324,10 @@ Object.keys(obj); // ['a', 'b']
 `Object.assign` 정적 메소드는 인수로 받은 객체들의 **모든 열거 가능한 속성**을 **대상 객체에 복사**합니다.
 
 ```js
-const obj = {};
-Object.assign(obj, {a: 1}, {b: 2});
+const obj = {}
+Object.assign(obj, {a: 1}, {b: 2})
 
-console.log(obj); // { a: 1, b: 2 }
+console.log(obj) // { a: 1, b: 2 }
 ```
 
 `Object.assign`은 객체를 복제하는 수단으로도 사용됩니다.
@@ -334,12 +335,12 @@ console.log(obj); // { a: 1, b: 2 }
 ```js
 const obj = {
   a: 1,
-  b: 2
-};
+  b: 2,
+}
 
 // 빈 객체를 대상으로 `Object.assign`을 사용하면, 객체를 간단히 복제할 수 있습니다.
-const obj2 = Object.assign({}, obj);
-console.log(obj2); // { a: 1, b: 2 }
+const obj2 = Object.assign({}, obj)
+console.log(obj2) // { a: 1, b: 2 }
 ```
 
 다만, 여기서 주의해야 할 점이 있습니다. 객체가 중첩되어 있다면, **내부에 있는 객체는 복제되지 않습니다.** `Object.assign`을 통해 속성이 값이 복사될 때, 실제로 복사되는 것은 중첩된 객체가 아니라 그에 대한 **참조**이기 때문입니다.
@@ -348,16 +349,16 @@ console.log(obj2); // { a: 1, b: 2 }
 const obj = {
   innerObj: {
     a: 1,
-    b: 2
-  }
-};
+    b: 2,
+  },
+}
 
-const obj2 = Object.assign({}, obj);
+const obj2 = Object.assign({}, obj)
 
 // `innerObj`는 복제되지 않았습니다.
-obj.innerObj === obj2.innerObj;
-obj.innerObj.a = 3;
-obj2.innerObj.a; // 3
+obj.innerObj === obj2.innerObj
+obj.innerObj.a = 3
+obj2.innerObj.a // 3
 ```
 
 프로그래밍 분야에서는 중첩된 자료구조까지 모두 복사하는 것을 가지고 **깊은 복사(deep copy)**라고 합니다. JavaScript에는 깊은 복사를 위한 기능이 내장되어 있기 않기 때문에, 직접 구현을 해서 사용해야 합니다. 그런데 깊을 복사를 할 때 고려해야 할 것들이 많아서 (순환참조, 프로토타입, 열거 불가능한 속성, getter/setter 등) 정말로 직접 구현하기는 어렵고, [관련 라이브러리](https://www.npmjs.com/package/clone)를 사용하는 것을 추천합니다.
@@ -369,17 +370,17 @@ obj2.innerObj.a; // 3
 JavaScript는 특정 객체에 더 이상 속성을 추가하지 못하도록 막아버리는 기능을 제공합니다.
 
 ```js
-const obj = {};
+const obj = {}
 
 // 객체에 속성이 추가되는 것을 막습니다.
-Object.preventExtensions(obj);
+Object.preventExtensions(obj)
 
 function func() {
-  'use strict';
-  obj.a = 1;
+  'use strict'
+  obj.a = 1
 }
 
-func(); // TypeError: Cannot add property a, object is not extensible
+func() // TypeError: Cannot add property a, object is not extensible
 ```
 
 JavaScript의 모든 객체에는 `[[Extensible]]`이라는 숨겨진 속성이 있습니다. 이 속성의 기본값은 `true`인데, 이 값이 `false`가 되면 해당 객체에 속성을 추가하는 것이 불가능해집니다. `Object.preventExtensions` 정적 메소드는 `[[Extensible]]` 속성을 `false`로 바꿔주는 역할을 합니다. **즉, 객체에 속성을 추가하는 것이 불가능해집니다.**
@@ -387,10 +388,10 @@ JavaScript의 모든 객체에는 `[[Extensible]]`이라는 숨겨진 속성이 
 객체의 `[[Extensible]]` 속성 값은 `Object.isExtensible` 정적 메소드를 통해 알아볼 수 있습니다.
 
 ```js
-const obj = {};
-Object.isExtensible(obj); // true
-Object.preventExtensions(obj);
-Object.isExtensible(obj); // false
+const obj = {}
+Object.isExtensible(obj) // true
+Object.preventExtensions(obj)
+Object.isExtensible(obj) // false
 ```
 
 `Object` 생성자의 정적 메소드 중에 `[[Extensible]]` 속성을 바꿔버리는 메소드가 두 개 더 있습니다.
@@ -400,11 +401,11 @@ Object.isExtensible(obj); // false
 
 아래의 표는 앞에서 다뤘던 세 정적 메소드를 호출한 뒤에 객체가 어떻게 변하는지를 나타냅니다. O는 가능, X는 불가능을 나타냅니다.
 
-| 메소드 | 속성 추가 | 속성 읽기 | 속성 변경 | 속성 삭제 및 재정의 |
-|---|---|---|---|---|
-| `Object.preventExtensions` | X | O | O | O |
-| `Object.seal` | X | O | O | X |
-| `Object.freeze` | X | O | X | X |
+| 메소드                     | 속성 추가 | 속성 읽기 | 속성 변경 | 속성 삭제 및 재정의 |
+| -------------------------- | --------- | --------- | --------- | ------------------- |
+| `Object.preventExtensions` | X         | O         | O         | O                   |
+| `Object.seal`              | X         | O         | O         | X                   |
+| `Object.freeze`            | X         | O         | X         | X                   |
 
 객체에 `Object.seal` 혹은 `Object.freeze`가 호출되었는지를 확인하기 위해 다음 메소드를 사용할 수 있습니다. 단, 객체에 대해 `Object.seal` 혹은 `Object.freeze`가 호출된 적이 없더라도 아래 조건만 충족하면 이 메소드들은 `true`를 반환할 수 있습니다.
 

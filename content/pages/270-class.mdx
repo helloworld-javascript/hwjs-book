@@ -11,19 +11,19 @@ ES2015 이전까지는 비슷한 종류의 객체를 많이 만들어내기 위�
 ```js
 // 생성자
 function Person({name, age}) {
-  this.name = name;
-  this.age = age;
+  this.name = name
+  this.age = age
 }
-Person.prototype.introduce = function() {
-  return `안녕하세요, 제 이름은 ${this.name}입니다.`;
-};
+Person.prototype.introduce = function () {
+  return `안녕하세요, 제 이름은 ${this.name}입니다.`
+}
 
-const person = new Person({name: '윤아준', age: 19});
-console.log(person.introduce()); // 안녕하세요, 제 이름은 윤아준입니다.
-console.log(typeof Person); // function
-console.log(typeof Person.prototype.constructor); // function
-console.log(typeof Person.prototype.introduce); // function
-console.log(person instanceof Person); // true
+const person = new Person({name: '윤아준', age: 19})
+console.log(person.introduce()) // 안녕하세요, 제 이름은 윤아준입니다.
+console.log(typeof Person) // function
+console.log(typeof Person.prototype.constructor) // function
+console.log(typeof Person.prototype.introduce) // function
+console.log(person instanceof Person) // true
 ```
 
 ES2015에서 도입된 **클래스**는 생성자의 기능을 대체합니다. `class` 표현식을 사용하면, 생성자와 같은 기능을 하는 함수를 훨씬 더 깔끔한 문법으로 정의할 수 있습니다.
@@ -33,22 +33,22 @@ ES2015에서 도입된 **클래스**는 생성자의 기능을 대체합니다. 
 class Person {
   // 이전에서 사용하던 생성자 함수는 클래스 안에 `constructor`라는 이름으로 정의합니다.
   constructor({name, age}) {
-    this.name = name;
-    this.age = age;
+    this.name = name
+    this.age = age
   }
 
   // 객체에서 메소드를 정의할 때 사용하던 문법을 그대로 사용하면, 메소드가 자동으로 `Person.prototype`에 저장됩니다.
   introduce() {
-    return `안녕하세요, 제 이름은 ${this.name}입니다.`;
+    return `안녕하세요, 제 이름은 ${this.name}입니다.`
   }
 }
 
-const person = new Person({name: '윤아준', age: 19});
-console.log(person.introduce()); // 안녕하세요, 제 이름은 윤아준입니다.
-console.log(typeof Person); // function
-console.log(typeof Person.prototype.constructor); // function
-console.log(typeof Person.prototype.introduce); // function
-console.log(person instanceof Person); // true
+const person = new Person({name: '윤아준', age: 19})
+console.log(person.introduce()) // 안녕하세요, 제 이름은 윤아준입니다.
+console.log(typeof Person) // function
+console.log(typeof Person.prototype.constructor) // function
+console.log(typeof Person.prototype.introduce) // function
+console.log(person instanceof Person) // true
 ```
 
 `class` 블록에서는 JavaScript의 다른 곳에서는 사용되지 않는 **별도의 문법**으로 코드를 작성해야 합니다. 함수 혹은 객체의 내부에서 사용하는 문법과 혼동하지 않도록 주의하세요.
@@ -70,9 +70,6 @@ class Person {
 // 에러: Unexpected token
 ```
 
-
-
-
 문법이 아니라 동작방식의 측면에서 보면, ES2015 이전의 생성자와 ES2015의 클래스는 다음과 같은 차이점이 있습니다.
 
 - 클래스는 **함수로 호출될 수 없습니다.**
@@ -88,10 +85,10 @@ class Person {
 ```js
 class Calculator {
   add(x, y) {
-    return x + y;
+    return x + y
   }
   subtract(x, y) {
-    return x - y;
+    return x - y
   }
 }
 ```
@@ -99,19 +96,19 @@ class Calculator {
 객체 리터럴의 문법과 마찬가지로, 임의의 표현식을 **대괄호**로 둘러싸서 메소드의 이름으로 사용할 수도 있습니다.
 
 ```js
-const methodName = 'introduce';
+const methodName = 'introduce'
 class Person {
   constructor({name, age}) {
-    this.name = name;
-    this.age = age;
+    this.name = name
+    this.age = age
   }
   // 아래 메소드의 이름은 `introduce`가 됩니다.
   [methodName]() {
-    return `안녕하세요, 제 이름은 ${this.name}입니다.`;
+    return `안녕하세요, 제 이름은 ${this.name}입니다.`
   }
 }
 
-console.log(new Person({name: '윤아준', age: 19}).introduce()); // 안녕하세요, 제 이름은 윤아준입니다.
+console.log(new Person({name: '윤아준', age: 19}).introduce()) // 안녕하세요, 제 이름은 윤아준입니다.
 ```
 
 **Getter 혹은 setter**를 정의하고 싶을 때는 메소드 이름 앞에 `get` 또는 `set`을 붙여주면 됩니다.
@@ -119,19 +116,19 @@ console.log(new Person({name: '윤아준', age: 19}).introduce()); // 안녕하�
 ```js
 class Account {
   constructor() {
-    this._balance = 0;
+    this._balance = 0
   }
   get balance() {
-    return this._balance;
+    return this._balance
   }
   set balance(newBalance) {
-    this._balance = newBalance;
+    this._balance = newBalance
   }
 }
 
-const account = new Account();
-account.balance = 10000;
-account.balance; // 10000
+const account = new Account()
+account.balance = 10000
+account.balance // 10000
 ```
 
 `static` 키워드를 메소드 이름 앞에 붙여주면 해당 메소드는 **정적 메소드**가 됩니다.
@@ -139,19 +136,19 @@ account.balance; // 10000
 ```js
 class Person {
   constructor({name, age}) {
-    this.name = name;
-    this.age = age;
+    this.name = name
+    this.age = age
   }
   // 이 메소드는 정적 메소드입니다.
   static sumAge(...people) {
-    return people.reduce((acc, person) => acc + person.age, 0);
+    return people.reduce((acc, person) => acc + person.age, 0)
   }
 }
 
-const person1 = new Person({name: '윤아준', age: 19});
-const person2 = new Person({name: '신하경', age: 20});
+const person1 = new Person({name: '윤아준', age: 19})
+const person2 = new Person({name: '신하경', age: 20})
 
-Person.sumAge(person1, person2); // 39
+Person.sumAge(person1, person2) // 39
 ```
 
 Generator 메소드를 정의하려면, 메소드 이름 앞에 `*` 기호를 붙여주면 됩니다.
@@ -161,15 +158,15 @@ Generator 메소드를 정의하려면, 메소드 이름 앞에 `*` 기호를 �
 ```js
 class Gen {
   *[Symbol.iterator]() {
-    yield 1;
-    yield 2;
-    yield 3;
+    yield 1
+    yield 2
+    yield 3
   }
 }
 
 // 1, 2, 3이 차례대로 출력됩니다.
 for (let n of new Gen()) {
-  console.log(n);
+  console.log(n)
 }
 ```
 
@@ -179,19 +176,19 @@ for (let n of new Gen()) {
 
 ```js
 class Counter {
-  static initial = 0; // static class field
-  count = Counter.initial; // class field
+  static initial = 0 // static class field
+  count = Counter.initial // class field
   inc() {
-    return this.count++;
+    return this.count++
   }
 }
 
-const counter = new Counter();
-console.log(counter.inc()); // 0
-console.log(counter.inc()); // 1
+const counter = new Counter()
+console.log(counter.inc()) // 0
+console.log(counter.inc()) // 1
 
-Counter.initial = 10;
-console.log(new Counter().count); // 10
+Counter.initial = 10
+console.log(new Counter().count) // 10
 ```
 
 클래스 필드는 ES2022(2022년 6월)에 정식 표준으로 채택되었으며, 모든 주요 브라우저에서 지원됩니다.[^1] Chrome 72+, Firefox 69+, Safari 14.1+, Edge 79+ 버전에서 사용할 수 있으며, Babel, TypeScript 등의 트랜스파일러를 통해서도 사용할 수 있습니다.
@@ -202,24 +199,24 @@ console.log(new Counter().count); // 10
 
 ```js
 class MyClass {
-  a = 1;
-  b = this.a;
+  a = 1
+  b = this.a
 }
 
-new MyClass().b; // 1
+new MyClass().b // 1
 ```
 
 이 성질을 이용하면, **화살표 함수를 통해서 메소드를 정의할 수 있습니다.** (화살표 함수 안에서의 `this` 키워드는 바로 바깥쪽 스코프에 존재하는 `this`와 같은 객체를 가리킨다는 사실을 떠올려보세요.)
 
 ```js
 class MyClass {
-  a = 1;
+  a = 1
   getA = () => {
-    return this.a;
+    return this.a
   }
 }
 
-new MyClass().getA(); // 1
+new MyClass().getA() // 1
 ```
 
 이렇게만 보면 일반적인 메소드와 별로 차이가 없어 보이지만, 사실 동작방식 측면에서 굉장히 큰 차이점이 있습니다.
@@ -252,24 +249,24 @@ class Child extends Parent {
 
 ```js
 class Parent {
-  static staticProp = 'staticProp';
+  static staticProp = 'staticProp'
   static staticMethod() {
-    return 'I\'m a static method.';
+    return "I'm a static method."
   }
-  instanceProp = 'instanceProp';
+  instanceProp = 'instanceProp'
   instanceMethod() {
-    return 'I\'m a instance method.';
+    return "I'm a instance method."
   }
 }
 
 class Child extends Parent {}
 
-console.log(Child.staticProp); // staticProp
-console.log(Child.staticMethod()); // I'm a static method.
+console.log(Child.staticProp) // staticProp
+console.log(Child.staticMethod()) // I'm a static method.
 
-const c = new Child();
-console.log(c.instanceProp); // instanceProp
-console.log(c.instanceMethod()); // I'm a instance method.
+const c = new Child()
+console.log(c.instanceProp) // instanceProp
+console.log(c.instanceMethod()) // I'm a instance method.
 ```
 
 ### super
@@ -279,18 +276,18 @@ console.log(c.instanceMethod()); // I'm a instance method.
 ```js
 class Melon {
   getColor() {
-    return '제 색깔은 초록색입니다.';
+    return '제 색깔은 초록색입니다.'
   }
 }
 
 class WaterMelon extends Melon {
   getColor() {
-    return '속은 빨강색입니다.';
+    return '속은 빨강색입니다.'
   }
 }
 
-const waterMelon = new WaterMelon();
-waterMelon.getColor(); // 속은 빨강색입니다.
+const waterMelon = new WaterMelon()
+waterMelon.getColor() // 속은 빨강색입니다.
 ```
 
 이런 경우에, `super` 키워드를 통해 부모 클래스의 메소드에 직접 접근할 수 있습니다.
@@ -298,18 +295,18 @@ waterMelon.getColor(); // 속은 빨강색입니다.
 ```js
 class Melon {
   getColor() {
-    return '제 색깔은 초록색입니다.';
+    return '제 색깔은 초록색입니다.'
   }
 }
 
 class WaterMelon extends Melon {
   getColor() {
-    return super.getColor() + ' 하지만 속은 빨강색입니다.';
+    return super.getColor() + ' 하지만 속은 빨강색입니다.'
   }
 }
 
-const waterMelon = new WaterMelon();
-waterMelon.getColor(); // 제 색깔은 초록색입니다. 하지만 속은 빨강색입니다.
+const waterMelon = new WaterMelon()
+waterMelon.getColor() // 제 색깔은 초록색입니다. 하지만 속은 빨강색입니다.
 ```
 
 `super` 키워드의 동작 방식은 다음과 같습니다.
@@ -321,8 +318,8 @@ waterMelon.getColor(); // 제 색깔은 초록색입니다. 하지만 속은 빨
 ```js
 class Person {
   constructor({name, age}) {
-    this.name = name;
-    this.age = age;
+    this.name = name
+    this.age = age
   }
   introduce() {
     return `제 이름은 ${this.name}입니다.`
@@ -332,17 +329,17 @@ class Person {
 class Student extends Person {
   constructor({grade, ...rest}) {
     // 부모 클래스의 생성자를 호출할 수 있습니다.
-    super(rest);
-    this.grade = grade;
+    super(rest)
+    this.grade = grade
   }
   introduce() {
     // 부모 클래스의 `introduce` 메소드를 호출할 수 있습니다.
-    return super.introduce() + ` 저는 ${this.grade}학년입니다.`;
+    return super.introduce() + ` 저는 ${this.grade}학년입니다.`
   }
 }
 
-const s = new Student({grade: 3, name: '윤아준', age: 19});
-s.introduce(); // 제 이름은 윤아준입니다. 저는 3학년입니다.
+const s = new Student({grade: 3, name: '윤아준', age: 19})
+s.introduce() // 제 이름은 윤아준입니다. 저는 3학년입니다.
 ```
 
 ## 클래스 상속과 프로토타입 상속
@@ -352,10 +349,11 @@ s.introduce(); // 제 이름은 윤아준입니다. 저는 3학년입니다.
 ```js
 class Person {}
 class Student extends Person {}
-const student = new Student();
+const student = new Student()
 ```
 
 <ClassInheritancePrototypeChainSVG />
 
 [^1]: 클래스 필드 제안 사항에 대한 공식 명세는 [이 링크](https://tc39.github.io/proposal-class-fields/)를, 브라우저 지원 여부는 [이 링크](http://kangax.github.io/compat-table/esnext/)를 참고하세요.
+
 [^2]: 이와 같이 부모 클래스의 메소드와 이름이 같은 메소드를 자식 클래스에 정의하는 것을 보고 **메소드 오버라이딩(method overriding)**이라고 합니다.

@@ -9,27 +9,27 @@ JavaScript에는 코드 실행 중에 예기치 못한 에러가 발생했을 �
 JavaScript 코드에서 발생할 수 있는 에러에는 다양한 것들이 있습니다. 문법 에러와 같이 프로그래머의 실수로 인해 에러가 발생하는 경우도 있지만, 네트워크 에러와 같이 코드와는 무관한 이유로 발생하는 에러도 있습니다.
 
 ```js
-new Array(-1); // RangeError: Invalid array length
+new Array(-1) // RangeError: Invalid array length
 ```
 
 ```js
-console.log(foo); // ReferenceError: foo is not defined
+console.log(foo) // ReferenceError: foo is not defined
 ```
 
 ```js
-fetch('https://nonexistent-domain.nowhere'); // TypeError: Failed to fetch
+fetch('https://nonexistent-domain.nowhere') // TypeError: Failed to fetch
 ```
 
 코드 실행 중에 에러가 발생하면, **코드의 실행이 중단되어 그 시점에 실행 중이었던 작업을 완료할 수 없게 됩니다.** JavaScript는 이로부터 **코드의 실행 흐름을 원상복구**할 수 있는 기능을 제공하며, `try...catch...finally` 구문을 사용하면 에러가 나더라도 코드의 실행을 지속할 수 있습니다.
 
 ```js
 try {
-  console.log('에러가 나기 직전까지의 코드는 잘 실행됩니다.');
-  new Array(-1); // RangeError: Invalid array length
-  console.log('에러가 난 이후의 코드는 실행되지 않습니다.');
+  console.log('에러가 나기 직전까지의 코드는 잘 실행됩니다.')
+  new Array(-1) // RangeError: Invalid array length
+  console.log('에러가 난 이후의 코드는 실행되지 않습니다.')
 } catch (e) {
-  console.log('코드의 실행 흐름이 catch 블록으로 옮겨집니다.');
-  alert(`다음과 같은 에러가 발생했습니다: ${e.name}: ${e.message}`);
+  console.log('코드의 실행 흐름이 catch 블록으로 옮겨집니다.')
+  alert(`다음과 같은 에러가 발생했습니다: ${e.name}: ${e.message}`)
 }
 ```
 
@@ -37,9 +37,9 @@ try {
 
 ```js
 try {
-  new Array(-1); // RangeError: Invalid array length
+  new Array(-1) // RangeError: Invalid array length
 } catch {
-  alert(`에러가 발생했습니다.`);
+  alert(`에러가 발생했습니다.`)
 }
 ```
 
@@ -49,10 +49,10 @@ try {
 for (let i of [1, 2, 3]) {
   try {
     if (i === 3) {
-      break;
+      break
     }
   } finally {
-    console.log(`현재 i의 값: ${i}`);
+    console.log(`현재 i의 값: ${i}`)
   }
 }
 ```
@@ -66,12 +66,12 @@ for (let i of [1, 2, 3]) {
 
 ```js
 try {
-  console.log('try');
-  new Array(-1); // RangeError: Invalid array length
+  console.log('try')
+  new Array(-1) // RangeError: Invalid array length
 } catch (e) {
-  console.log('catch');
+  console.log('catch')
 } finally {
-  console.log('finally');
+  console.log('finally')
 }
 ```
 
@@ -80,9 +80,38 @@ try {
 `Error` 생성자와 `throw` 구문을 사용해서 프로그래머가 직접 에러를 발생시킬 수 있습니다.
 
 ```js
-const even = parseInt(prompt('짝수를 입력하세요'));
+const even = parseInt(prompt('짝수를 입력하세요'))
 if (even % 2 !== 0) {
-  throw new Error('짝수가 아닙니다.');
+  throw new Error('짝수가 아닙니다.')
+}
+```
+
+### 에러 원인 추적하기 (Error Cause)
+
+ES2022부터는 에러를 생성할 때 **`cause`** 옵션을 사용하여 에러의 원인이 된 다른 에러를 함께 저장할 수 있습니다. 이를 통해 **에러 체이닝(error chaining)**을 구현하여 디버깅을 더 쉽게 만들 수 있습니다.
+
+```js
+try {
+  // 데이터베이스 연결 시도
+  connectToDatabase()
+} catch (originalError) {
+  // 원본 에러를 cause로 포함하여 새로운 에러 발생
+  throw new Error('데이터베이스 연결 실패', { cause: originalError })
+}
+```
+
+`cause` 속성을 통해 원본 에러 정보를 추적할 수 있습니다:
+
+```js
+try {
+  try {
+    throw new Error('원본 에러')
+  } catch (err) {
+    throw new Error('상위 레벨 에러', { cause: err })
+  }
+} catch (err) {
+  console.log(err.message) // '상위 레벨 에러'
+  console.log(err.cause.message) // '원본 에러'
 }
 ```
 
@@ -93,20 +122,20 @@ if (even % 2 !== 0) {
 ```js
 class MyError extends Error {
   constructor(value, ...params) {
-    super(...params);
-    this.value = value;
-    this.name = 'MyError';
+    super(...params)
+    this.value = value
+    this.name = 'MyError'
   }
 }
 
 try {
-  const even = parseInt(prompt('짝수를 입력하세요'));
+  const even = parseInt(prompt('짝수를 입력하세요'))
   if (even % 2 !== 0) {
-    throw new MyError(even, '짝수가 아닙니다.');
+    throw new MyError(even, '짝수가 아닙니다.')
   }
 } catch (e) {
   if (e instanceof MyError) {
-    console.log(e.value);
+    console.log(e.value)
   }
 }
 ```
@@ -120,10 +149,10 @@ try {
 ```js
 try {
   setTimeout(() => {
-    throw new Error('에러!');
-  });
+    throw new Error('에러!')
+  })
 } catch (e) {
-  console.error(e);
+  console.error(e)
 }
 ```
 
@@ -134,11 +163,11 @@ JavaScript 엔진은 에러가 발생하는 순간 **호출 스택을 되감는 
 ```js
 setTimeout(() => {
   try {
-    throw new Error('에러!');
+    throw new Error('에러!')
   } catch (e) {
-    console.error(e);
+    console.error(e)
   }
-});
+})
 ```
 
 ### Promise
@@ -152,30 +181,35 @@ Promise 객체는 세 가지 상태를 가질 수 있습니다.
 Promise 객체가 rejected 상태가 되면, 이 Promise에 대해서는 `then` 메소드에 첫 번째 인수로 넘겨준 콜백이 실행되지 않고, **두 번째 인수로 넘겨준 콜백**이 대신 실행됩니다. 그리고 이 콜백에는 **에러 객체가 첫 번째 인수**로 주어집니다.
 
 ```js
-const p = new Promise(resolve => {
-  const even = parseInt(prompt('짝수를 입력하세요'));
+const p = new Promise((resolve) => {
+  const even = parseInt(prompt('짝수를 입력하세요'))
   if (even % 2 !== 0) {
-    throw new Error('짝수가 아닙니다.');
+    throw new Error('짝수가 아닙니다.')
   } else {
-    resolve(even);
+    resolve(even)
   }
-});
+})
 
-p.then(even => {
-  return '짝수입니다.';
-}, e => {
-  return e.message;
-}).then(alert);
+p.then(
+  (even) => {
+    return '짝수입니다.'
+  },
+  (e) => {
+    return e.message
+  },
+).then(alert)
 ```
 
 혹은, **`catch` 메소드**를 통해 에러 처리 콜백을 지정해줄 수도 있습니다.
 
 ```js
-p.then(even => {
-  return '짝수입니다.';
-}).catch(e => {
-  return e.message;
-}).then(alert);
+p.then((even) => {
+  return '짝수입니다.'
+})
+  .catch((e) => {
+    return e.message
+  })
+  .then(alert)
 ```
 
 만약, `then` 메소드의 연쇄 안에서 에러가 발생하면, `try...catch` 구문과 유사하게 **처음 만나는 에러 처리 콜백으로 코드의 실행 흐름이 건너뛰는 결과**를 낳게 됩니다.
@@ -183,15 +217,15 @@ p.then(even => {
 ```js
 Promise.resolve()
   .then(() => {
-    throw new Error('catch 메소드를 통해 예외 처리를 할 수 있습니다.');
+    throw new Error('catch 메소드를 통해 예외 처리를 할 수 있습니다.')
   })
   .then(() => {
-    console.log('이 코드는 실행되지 않습니다.');
+    console.log('이 코드는 실행되지 않습니다.')
   })
-  .catch(e => {
-    return e.message;
+  .catch((e) => {
+    return e.message
   })
-  .then(console.log);
+  .then(console.log)
 ```
 
 ### 비동기 함수
@@ -203,13 +237,13 @@ Promise.resolve()
 ```js
 async function func() {
   try {
-    const res = await fetch('https://nonexistent-domain.nowhere');
+    const res = await fetch('https://nonexistent-domain.nowhere')
   } catch (e) {
-    console.log(e.message);
+    console.log(e.message)
   }
 }
 
-func(); // 출력 결과: Failed to fetch
+func() // 출력 결과: Failed to fetch
 ```
 
 단, Promise 객체에 대해 **`await` 구문**을 사용하지 않는 경우, 에러가 발생해도 `catch` 블록으로 코드의 실행 흐름이 이동하지 않는다는 사실을 기억하세요.
@@ -217,11 +251,11 @@ func(); // 출력 결과: Failed to fetch
 ```js
 async function func() {
   try {
-    fetch('https://nonexistent-domain.nowhere');
+    fetch('https://nonexistent-domain.nowhere')
   } catch (e) {
-    console.log(e.message);
+    console.log(e.message)
   }
 }
 
-func(); // 아무것도 출력되지 않습니다.
+func() // 아무것도 출력되지 않습니다.
 ```

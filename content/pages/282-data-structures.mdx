@@ -23,21 +23,21 @@ JavaScript에서는 배열을 이용해서 간단하게 큐를 구현할 수 있
 ```js
 class Queue {
   constructor() {
-    this._arr = [];
+    this._arr = []
   }
   enqueue(item) {
-    this._arr.push(item);
+    this._arr.push(item)
   }
   dequeue() {
-    return this._arr.shift();
+    return this._arr.shift()
   }
 }
 
-const queue = new Queue();
-queue.enqueue(1);
-queue.enqueue(2);
-queue.enqueue(3);
-queue.dequeue(); // 1
+const queue = new Queue()
+queue.enqueue(1)
+queue.enqueue(2)
+queue.enqueue(3)
+queue.dequeue() // 1
 ```
 
 큐는 **순서대로 처리해야 하는 작업을 임시로 저장해두는 버퍼(buffer)**로서 많이 사용됩니다.
@@ -57,24 +57,24 @@ JavaScript에서는 배열을 이용해서 간단하게 스택을 구현할 수 
 ```js
 class Stack {
   constructor() {
-    this._arr = [];
+    this._arr = []
   }
   push(item) {
-    this._arr.push(item);
+    this._arr.push(item)
   }
   pop() {
-    return this._arr.pop();
+    return this._arr.pop()
   }
   peek() {
-    return this._arr[this._arr.length - 1];
+    return this._arr[this._arr.length - 1]
   }
 }
 
-const stack = new Stack();
-stack.push(1);
-stack.push(2);
-stack.push(3);
-stack.pop(); // 3
+const stack = new Stack()
+stack.push(1)
+stack.push(2)
+stack.push(3)
+stack.pop() // 3
 ```
 
 스택은 서로 관계가 있는 여러 작업을 연달아 수행하면서 **이전의 작업 내용을 저장해 둘 필요가 있을 때** 널리 사용됩니다.
@@ -101,27 +101,25 @@ stack.pop(); // 3
 ```js
 class Node {
   constructor(content, children = []) {
-    this.content = content;
-    this.children = children;
+    this.content = content
+    this.children = children
   }
 }
 
 const tree = new Node('hello', [
   new Node('world'),
   new Node('and'),
-  new Node('fun', [
-    new Node('javascript!')
-  ])
-]);
+  new Node('fun', [new Node('javascript!')]),
+])
 
 function traverse(node) {
-  console.log(node.content);
+  console.log(node.content)
   for (let child of node.children) {
-    traverse(child);
+    traverse(child)
   }
 }
 
-traverse(tree);
+traverse(tree)
 // hello world and fun javascript!
 ```
 
@@ -134,24 +132,24 @@ Set은 중복되지 않는 값들의 집합을 나타내는 자료구조입니�
 ### 집합 연산 메소드
 
 ```js
-const setA = new Set([1, 2, 3, 4]);
-const setB = new Set([3, 4, 5, 6]);
+const setA = new Set([1, 2, 3, 4])
+const setB = new Set([3, 4, 5, 6])
 
 // 합집합 (Union) - 두 집합의 모든 요소
-const union = setA.union(setB);
-console.log([...union]); // [1, 2, 3, 4, 5, 6]
+const union = setA.union(setB)
+console.log([...union]) // [1, 2, 3, 4, 5, 6]
 
 // 교집합 (Intersection) - 양쪽 집합 모두에 있는 요소
-const intersection = setA.intersection(setB);
-console.log([...intersection]); // [3, 4]
+const intersection = setA.intersection(setB)
+console.log([...intersection]) // [3, 4]
 
 // 차집합 (Difference) - setA에는 있지만 setB에는 없는 요소
-const difference = setA.difference(setB);
-console.log([...difference]); // [1, 2]
+const difference = setA.difference(setB)
+console.log([...difference]) // [1, 2]
 
 // 대칭 차집합 (Symmetric Difference) - 한쪽에만 있는 요소
-const symDiff = setA.symmetricDifference(setB);
-console.log([...symDiff]); // [1, 2, 5, 6]
+const symDiff = setA.symmetricDifference(setB)
+console.log([...symDiff]) // [1, 2, 5, 6]
 ```
 
 ### 집합 비교 메소드
@@ -159,21 +157,21 @@ console.log([...symDiff]); // [1, 2, 5, 6]
 Set 간의 포함 관계를 확인하는 메소드들도 추가되었습니다.
 
 ```js
-const setA = new Set([1, 2, 3, 4]);
-const setB = new Set([1, 2]);
-const setC = new Set([5, 6]);
+const setA = new Set([1, 2, 3, 4])
+const setB = new Set([1, 2])
+const setC = new Set([5, 6])
 
 // 부분집합 확인 (Subset) - setB의 모든 요소가 setA에 포함되는가?
-setB.isSubsetOf(setA);  // true
-setA.isSubsetOf(setB);  // false
+setB.isSubsetOf(setA) // true
+setA.isSubsetOf(setB) // false
 
 // 상위집합 확인 (Superset) - setA가 setB의 모든 요소를 포함하는가?
-setA.isSupersetOf(setB);  // true
-setB.isSupersetOf(setA);  // false
+setA.isSupersetOf(setB) // true
+setB.isSupersetOf(setA) // false
 
 // 서로소 집합 확인 (Disjoint) - 공통 요소가 없는가?
-setA.isDisjointFrom(setC);  // true (공통 요소 없음)
-setA.isDisjointFrom(setB);  // false (공통 요소 있음)
+setA.isDisjointFrom(setC) // true (공통 요소 없음)
+setA.isDisjointFrom(setB) // false (공통 요소 있음)
 ```
 
 ### 실용적인 예시
@@ -182,17 +180,16 @@ setA.isDisjointFrom(setB);  // false (공통 요소 있음)
 
 ```js
 // 예시: 사용자 권한 관리
-const adminPermissions = new Set(['read', 'write', 'delete']);
-const userPermissions = new Set(['read', 'write']);
+const adminPermissions = new Set(['read', 'write', 'delete'])
+const userPermissions = new Set(['read', 'write'])
 
 // 사용자에게 없는 권한 찾기
-const missingPermissions = adminPermissions.difference(userPermissions);
-console.log([...missingPermissions]); // ['delete']
+const missingPermissions = adminPermissions.difference(userPermissions)
+console.log([...missingPermissions]) // ['delete']
 
 // 공통 권한 찾기
-const commonPermissions = adminPermissions.intersection(userPermissions);
-console.log([...commonPermissions]); // ['read', 'write']
+const commonPermissions = adminPermissions.intersection(userPermissions)
+console.log([...commonPermissions]) // ['read', 'write']
 ```
 
 이러한 Set 메소드들은 코드를 더 간결하고 읽기 쉽게 만들어주며, 집합 관련 로직을 직관적으로 표현할 수 있게 해줍니다.
-
