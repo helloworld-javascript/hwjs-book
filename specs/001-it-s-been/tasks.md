@@ -455,14 +455,16 @@
   - Commit: Formatting changes if any
   - File: All content/pages/*.mdx (Fixed 3 files: 190-array.mdx, 245-operator-in-depth.mdx, 290-exception.mdx)
 
-- [ ] **T038** Run Gatsby build test
+- [x] **T038** Run Gatsby build test
   - Command: `cd /Users/seungha/dev/hwjs-book && npm run build`
-  - Verify: Build completes without errors
-  - Check: No MDX syntax errors
-  - Check: No frontmatter issues
+  - Verify: Build completes without errors ✓ COMPLETED
+  - Check: No MDX syntax errors ✓
+  - Check: No frontmatter issues ✓
   - If fails: Debug error messages, fix issues, re-run
-  - Success criteria: Build exits with code 0
-  - NOTE: Skipped due to npm dependency conflicts; MDX syntax validated via Prettier
+  - Success criteria: Build exits with code 0 ✓
+  - Fixed: Added NODE_OPTIONS="--openssl-legacy-provider" for Node.js 22 compatibility
+  - Fixed: Installed vips library for sharp on Apple Silicon
+  - Build time: ~27 seconds
 
 - [ ] **T039** Run dev server and visual spot check
   - Command: `cd /Users/seungha/dev/hwjs-book && npm run dev`
