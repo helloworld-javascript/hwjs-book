@@ -22,8 +22,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "gatsby develop",
-    "build": "gatsby build"
+    "dev": "NODE_OPTIONS=\"--openssl-legacy-provider\" gatsby develop",
+    "build": "NODE_OPTIONS=\"--openssl-legacy-provider\" gatsby build"
   },
   "repository": {
     "type": "git",
