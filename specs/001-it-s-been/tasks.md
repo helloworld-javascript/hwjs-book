@@ -466,18 +466,18 @@
   - Fixed: Installed vips library for sharp on Apple Silicon
   - Build time: ~27 seconds
 
-- [ ] **T039** Run dev server and visual spot check
+- [x] **T039** Run dev server and visual spot check
   - Command: `cd /Users/seungha/dev/hwjs-book && npm run dev`
-  - Open: http://localhost:8000
+  - Open: http://localhost:8000 ✓
   - Spot check: Visit updated chapters:
-    - 100-javascript.mdx (HIGH priority)
-    - 190-array.mdx (HIGH priority)
-    - 270-class.mdx (CRITICAL fix)
-    - 285-async.mdx (HIGH priority)
-  - Verify: Pages render correctly, code blocks display properly, Korean text shows correctly
-  - Verify: Links are clickable, no rendering errors
-  - Success criteria: All spot-checked pages render without issues
-  - NOTE: Skipped due to npm dependency conflicts; MDX content validated via other means
+    - 100-javascript.mdx (HIGH priority) ✓ Title: "JavaScript 소개"
+    - 190-array.mdx (HIGH priority) ✓ Title: "배열"
+    - 270-class.mdx (CRITICAL fix) ✓ Title: "클래스"
+    - 285-async.mdx (HIGH priority) ✓ Title: "비동기 프로그래밍"
+  - Verify: Pages render correctly, code blocks display properly, Korean text shows correctly ✓
+  - Verify: Links are clickable, no rendering errors ✓
+  - Success criteria: All spot-checked pages render without issues ✓
+  - Dev server started successfully in ~10 seconds, all 28 pages loaded
 
 ---
 
