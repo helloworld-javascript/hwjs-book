@@ -363,7 +363,7 @@ obj2.innerObj.a // 3
 
 프로그래밍 분야에서는 중첩된 자료구조까지 모두 복사하는 것을 가지고 **깊은 복사(deep copy)**라고 합니다. JavaScript에는 깊은 복사를 위한 기능이 내장되어 있기 않기 때문에, 직접 구현을 해서 사용해야 합니다. 그런데 깊을 복사를 할 때 고려해야 할 것들이 많아서 (순환참조, 프로토타입, 열거 불가능한 속성, getter/setter 등) 정말로 직접 구현하기는 어렵고, [관련 라이브러리](https://www.npmjs.com/package/clone)를 사용하는 것을 추천합니다.
 
-비슷한 객체의 복제가 빈번하게 이루어져야 하는 경우에는 [Immutable.js](https://facebook.github.io/immutable-js/)와 같은 라이브러리의 사용도 고려해 보시길 바랍니다.
+비슷한 객체의 복제가 빈번하게 이루어져야 하는 경우에는 [Immutable.js](https://immutable-js.com/)와 같은 라이브러리의 사용도 고려해 보시길 바랍니다.
 
 ## Object.preventExtensions
 

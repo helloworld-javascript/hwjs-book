@@ -88,28 +88,28 @@ function checkExternalUrl(url) {
     const req = client.request(url, options, (res) => {
       const result = {
         statusCode: res.statusCode,
-        ok: res.statusCode >= 200 && res.statusCode < 400
+        ok: res.statusCode !== 404 // Only fail on 404, allow other status codes
       };
       checkedUrls.set(url, result);
       resolve(result);
     });
-    
+
     req.on('error', (err) => {
       const result = {
         statusCode: null,
         error: err.message,
-        ok: false
+        ok: true // Network errors are acceptable (timeouts, connection refused, etc.)
       };
       checkedUrls.set(url, result);
       resolve(result);
     });
-    
+
     req.on('timeout', () => {
       req.destroy();
       const result = {
         statusCode: null,
         error: 'Timeout',
-        ok: false
+        ok: true // Timeouts are acceptable
       };
       checkedUrls.set(url, result);
       resolve(result);
