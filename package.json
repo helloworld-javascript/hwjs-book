@@ -21,7 +21,8 @@
     "gatsby-plugin-ts-config": "^1.1.5"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run test:links",
+    "test:links": "npm run build && node tests/check-html-links.js",
     "dev": "NODE_OPTIONS=\"--openssl-legacy-provider\" gatsby develop",
     "build": "NODE_OPTIONS=\"--openssl-legacy-provider\" gatsby build"
   },

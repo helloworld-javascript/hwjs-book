@@ -22,7 +22,7 @@ function func1() {
 
 예를 들어, 함수를 인수로 받는 `Array`의 많은 메소드들(`forEach`, `map`, `reduce`, `filter`, `sort`, `every`, `some`, `find` 등)은 고차 함수입니다.
 
-> **함수형 프로그래밍과 불변성**: ES2023부터 추가된 `toSorted()`, `toReversed()`, `with()`, `toSpliced()` 같은 배열 메소드들은 원본 배열을 변경하지 않고 새로운 배열을 반환합니다. 이러한 **불변성(immutability)**은 함수형 프로그래밍의 핵심 원칙이며, 예측 가능한 코드를 작성하는 데 도움이 됩니다. 자세한 내용은 [배열](./190-array.mdx) 챕터를 참고하세요.
+> **함수형 프로그래밍과 불변성**: ES2023부터 추가된 `toSorted()`, `toReversed()`, `with()`, `toSpliced()` 같은 배열 메소드들은 원본 배열을 변경하지 않고 새로운 배열을 반환합니다. 이러한 **불변성(immutability)**은 함수형 프로그래밍의 핵심 원칙이며, 예측 가능한 코드를 작성하는 데 도움이 됩니다. 자세한 내용은 [배열](./190-array) 챕터를 참고하세요.
 
 다른 함수의 인수로 넘겨지는 함수를 **콜백(callback)**이라고 부르기도 합니다.
 
@@ -151,10 +151,7 @@ add2(3) // 5
 ```
 
 ```js
-const makeCounter =
-  (x = 1) =>
-  () =>
-    x++
+const makeCounter = (x = 1) => () => x++
 
 const counter = makeCounter()
 console.log(counter()) // 1
@@ -290,9 +287,6 @@ const fiboRecMemoized = (() => {
 [여기](https://repl.it/@seungha/fiboRecMemoized)에서 메모이제이션 적용 전과 적용 후의 실행 속도를 비교해보세요.
 
 [^1]: 클래스 필드를 클래스 외부에서는 사용할 수 없도록 만들어주는 [private class field](https://github.com/tc39/proposal-class-fields#private-fields) 기능이 곧 ECMAScript 명세에 추가될 예정입니다.
-
 [^2]: 이 제한을 뛰어넘을 수 있게 해주는 'tail call optimisation'이라는 기능이 ES2015 명세에 포함되었지만, 사파리 외에는 아직 이 기능을 구현한 브라우저가 없는 상태입니다.
-
 [^3]: 단, 메모이제이션 기법은 '반환값이 오로지 주어진 인수에 의해서만 결정되는 함수'에 대해서만 적용할 수 있습니다. 이와 같은 함수를 순수 함수(pure function)라고 부릅니다.
-
 [^4]: `fiboRecMemoized`를 만들 때, 클로저에 `memo`라는 저장소를 숨기기 위해서 화살표 함수 리터럴을 통해 함수를 만든 후 이 함수를 바로 호출했습니다. 이렇게 함수 리터럴을 바로 호출하는 기법을 IIFE(Immediately Invoked Function Expression) 혹은 '즉시 호출 함수 표현식'이라고 부릅니다. 이전에는 전역 스코프를 오염시키지 않고 변수를 선언하려는 목적에서 IIFE가 널리 사용되었지만, CommonJS 혹은 ES2015 모듈이 같은 역할을 해 줄 수 있기 때문에 최근에는 IIFE가 자주 사용되지는 않습니다.

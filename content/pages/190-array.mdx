@@ -57,7 +57,7 @@ new Array(1000) // [empty × 1000]
 
 ### Array.from
 
-JavaScript에는 **유사 배열 객체(array-like object)**와 **iterable**이라는 개념이 있어서, 이에 해당하는 값들은 `Array.from` 정적 메소드를 통해 배열로 쉽게 변환될 수 있습니다. 앞의 두 개념에 대해서는 [Iterable](./260-iteration.md) 챕터에서 자세히 다룹니다.
+JavaScript에는 **유사 배열 객체(array-like object)**와 **iterable**이라는 개념이 있어서, 이에 해당하는 값들은 `Array.from` 정적 메소드를 통해 배열로 쉽게 변환될 수 있습니다. 앞의 두 개념에 대해서는 [Iterable](./260-iteration) 챕터에서 자세히 다룹니다.
 
 ```js
 // `string` 타입은 래퍼 객체를 통해 iterable로 다루어질 수 있습니다.
@@ -380,7 +380,7 @@ arr.forEach((item, index, array) => {
 
 ### `for...of` 구문
 
-ES2015에 도입된 `for...of` 구문은, 역시 ES2015에 도입된 **iterable**을 순회하기 위해 사용할 수 있습니다. 배열 역시 iterable이므로, `for...of` 구문을 사용해 순회할 수 있습니다. Iterable에 대해서는 [Iterable](./260-iteration.md) 챕터에서 자세히 다룹니다.
+ES2015에 도입된 `for...of` 구문은, 역시 ES2015에 도입된 **iterable**을 순회하기 위해 사용할 수 있습니다. 배열 역시 iterable이므로, `for...of` 구문을 사용해 순회할 수 있습니다. Iterable에 대해서는 [Iterable](./260-iteration) 챕터에서 자세히 다룹니다.
 
 ```js
 const arr = [1, 2, 3, 4, 5]
@@ -422,7 +422,7 @@ console.log(arr) // [1, 2, 3, 4, 5]
 const arr2 = arr.slice() // [1, 2, 3, 4, 5];
 ```
 
-다만, `slice`는 **얕은 복사(shallow copy)**를 하므로, 배열 안에 배열 또는 객체가 들어있을 때는 주의해서 사용해야 합니다. 얕은 복사에 대해서는 [객체 더 알아보기](./240-object-in-depth.md) 챕터에서 자세히 다룹니다.
+다만, `slice`는 **얕은 복사(shallow copy)**를 하므로, 배열 안에 배열 또는 객체가 들어있을 때는 주의해서 사용해야 합니다. 얕은 복사에 대해서는 [객체 더 알아보기](./240-object-in-depth) 챕터에서 자세히 다룹니다.
 
 ### map
 

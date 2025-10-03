@@ -146,7 +146,7 @@ console.log(obj) // { [Symbol(my symbol)]: 'hello' }
 - `Symbol.toStringTag` - `Object.prototype.toString()` 메소드를 객체에 대해 직접 호출할 때의 동작을 바꿉니다.
 - `Symbol.unscopable` - `with` 블록 안에서 어떤 속성을 참조할 수 있는 지를 지정합니다.
 
-이 중 `Symbol.iterator` 내장 심볼의 기능에 대해서는 [Iterable](./260-iteration.md) 챕터에서 자세히 다룹니다. 나머지 심볼에 대해 자세히 알아보려면 [MDN 문서](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)를 참고하세요.
+이 중 `Symbol.iterator` 내장 심볼의 기능에 대해서는 [Iterable](./260-iteration) 챕터에서 자세히 다룹니다. 나머지 심볼에 대해 자세히 알아보려면 [MDN 문서](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)를 참고하세요.
 
 ## Map
 
@@ -193,7 +193,7 @@ console.log(s) // Set { 1, 2 }
 
 이 밖에, ES2015 또는 그 이후에 추가된 여러 가지 내장 객체 및 생성자들과 그 설명을 아래에 나열합니다.
 
-- `Promise` - 비동기 작업을 다루기 위한 객체입니다. ES2024에는 `Promise.withResolvers()`, ES2025에는 `Promise.try()` 등의 유용한 메소드가 추가되었습니다. 자세한 내용은 [비동기 프로그래밍](./285-async.mdx) 챕터를 참고하세요.
+- `Promise` - 비동기 작업을 다루기 위한 객체입니다. ES2024에는 `Promise.withResolvers()`, ES2025에는 `Promise.try()` 등의 유용한 메소드가 추가되었습니다. 자세한 내용은 [비동기 프로그래밍](./285-async) 챕터를 참고하세요.
 - `Proxy` - 다른 객체처럼 행세하면서, 특정한 행동에 대해서는 다른 동작방식을 보이는 새로운 객체를 만들고 싶을 때 사용합니다.
 - `Reflect` - `Reflect` 객체의 메소드를 통해, JavaScript의 몇 가지 내장 기능을 메소드로서 사용할 수 있습니다.
 - `Intl` - `Intl` 객체를 이용하면, 사용 중인 언어에 따라 문자열 비교, 숫자 표현 형식, 시간 표현 형식을 바꿀 수 있습니다.

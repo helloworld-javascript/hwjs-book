@@ -1,14 +1,16 @@
 <!--
 Sync Impact Report:
-- Version: NONE → 1.0.0 (Initial constitution)
+- Version: 1.0.0 → 1.1.0 (Added Link Integrity standards)
 - Principles created: 5 core principles for JavaScript tutorial book
-- Sections added: Core Principles, Content Standards, Development Workflow, Governance
+- Sections added: Core Principles, Content Standards (+ Link Integrity), Development Workflow, Governance
+- New standards: Link validation MUST be performed before every commit (npm run test:links)
 - Templates status:
   ✅ plan-template.md - aligned with accuracy and research principles
   ✅ spec-template.md - aligned with clarity and user-focused requirements
   ✅ tasks-template.md - aligned with validation and review workflow
+- Tool added: tests/check-html-links.js - validates all internal and external links in built HTML
 - Deferred items: NONE
-- Notes: First constitution version tailored for educational JavaScript content
+- Notes: Added mandatory link checking to prevent broken links in production
 -->
 
 # JavaScript로 만나는 세상 Constitution
@@ -61,6 +63,14 @@ Prioritize ES6+ syntax and modern JavaScript features. Legacy patterns should be
 - Include both "correct usage" and "common mistakes" where helpful
 - Code snippets MUST follow Prettier formatting rules (.prettierrc)
 
+### Link Integrity
+- **Internal links MUST NOT include file extensions** (`.md`, `.mdx`)
+  - Correct: `[배열](./190-array)`
+  - Incorrect: `[배열](./190-array.mdx)`
+- All links MUST be validated before committing via `npm run test:links`
+- External links returning 4XX status codes MUST be updated or removed
+- Broken links undermine user experience and content credibility
+
 ## Development Workflow
 
 ### Content Creation Process
@@ -72,6 +82,7 @@ Prioritize ES6+ syntax and modern JavaScript features. Legacy patterns should be
 
 ### Review Checklist (Per Content Section)
 - [ ] Code examples tested and working
+- [ ] **All hyperlinks verified (internal and external) - MUST run `npm run test:links` before every commit**
 - [ ] Technical accuracy verified against current standards
 - [ ] Language is accessible to programming beginners
 - [ ] Section fits logically in learning progression
@@ -102,4 +113,4 @@ Prioritize ES6+ syntax and modern JavaScript features. Legacy patterns should be
 - **MINOR** version: Addition of new principles or significant expansion of standards
 - **PATCH** version: Clarifications, wording improvements, non-semantic refinements
 
-**Version**: 1.0.0 | **Ratified**: 2025-10-02 | **Last Amended**: 2025-10-02
+**Version**: 1.1.0 | **Ratified**: 2025-10-02 | **Last Amended**: 2025-10-03
